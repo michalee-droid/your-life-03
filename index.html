@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanvas Hidup - Executive Life Simulator</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts: Inter & Orbitron -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        tech: ['Orbitron', 'sans-serif'],
+                    },
+                    colors: {
+                        cyber: {
+                            bg: '#040711',
+                            card: 'rgba(11, 17, 32, 0.85)',
+                            border: 'rgba(255, 255, 255, 0.08)',
+                            cyan: '#00F2FE',
+                            purple: '#8B5CF6',
+                            gold: '#F59E0B',
+                            emerald: '#10B981',
+                            rose: '#F43F5E'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #040711;
+            color: #E2E8F0;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* High-End Dark Atmospheric Background */
+        .bg-luxury-overlay {
+            background-image: 
+                radial-gradient(circle at 50% 20%, rgba(0, 242, 254, 0.18) 0%, transparent 60%),
+                radial-gradient(circle at 85% 70%, rgba(139, 92, 246, 0.14) 0%, transparent 55%),
+                radial-gradient(circle at 15% 85%, rgba(16, 185, 129, 0.12) 0%, transparent 50%),
+                linear-gradient(to bottom, rgba(4, 7, 17, 0.82), rgba(4, 7, 17, 0.96)),
+                url('https://images.unsplash.com/photo-1514565131-fce0801e5785?w=1920&auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Glassmorphism Panels */
+        .glass-panel {
+            background: rgba(11, 18, 33, 0.82);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        /* Central Orb Ring Pulse Effect */
+        @keyframes orb-rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes orb-pulse {
+            0%, 100% {
+                box-shadow: 0 0 35px rgba(0, 242, 254, 0.4), inset 0 0 25px rgba(139, 92, 246, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 65px rgba(0, 242, 254, 0.85), inset 0 0 45px rgba(139, 92, 246, 0.65);
+            }
+        }
+
+        .central-orb-ring {
+            animation: orb-rotate 20s linear infinite;
+        }
+
+        .central-core-glow {
+            animation: orb-pulse 4s infinite ease-in-out;
+        }
+
+        /* Smooth Accordion Unroll Animation for Dossier Expansion */
+        .expand-grid {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+            opacity: 0;
+        }
+
+        .expand-grid.expanded {
+            grid-template-rows: 1fr;
+            opacity: 1;
+        }
+
+        .expand-content {
+            overflow: hidden;
+        }
+
+        /* Teleportation Module Portal Card */
+        .teleport-btn {
+            background: rgba(13, 22, 41, 0.85);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .teleport-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 242, 254, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .teleport-btn:hover::before {
+            left: 100%;
+        }
+
+        .teleport-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            background: rgba(22, 36, 66, 0.95);
+            border-color: rgba(0, 242, 254, 0.5);
+            box-shadow: 0 12px 30px -8px rgba(0, 242, 254, 0.3);
+        }
+
+        /* Custom Scrollbar for Event Log */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 5px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(10, 15, 30, 0.5);
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(0, 242, 254, 0.3);
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 242, 254, 0.6);
+        }
+
+        .glow-text-cyan {
+            text-shadow: 0 0 15px rgba(0, 242, 254, 0.6);
+        }
+        .glow-text-gold {
+            text-shadow: 0 0 15px rgba(245, 158, 11, 0.6);
+        }
+    </style>
+</head>
+<body class="bg-luxury-overlay min-h-screen flex flex-col justify-between relative selection:bg-cyan-500 selection:text-slate-950">
+
+    <!-- TOP HUD BAR (Profil Kiri Atas Dihapus Sepenuhnya) -->
+    <header class="w-full glass-panel sticky top-0 z-40 border-b border-white/10 px-4 py-3">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
+            
+            <!-- Vitals HUD Summary (Digeser ke Kiri Menggantikan Info Profil Lama) -->
+            <div class="flex flex-wrap items-center gap-3 sm:gap-4 text-xs font-mono">
+                <div class="flex items-center gap-2 bg-slate-900/80 px-3 py-1.5 rounded-xl border border-rose-500/20 shadow-inner">
+                    <i class="fa-solid fa-heart-pulse text-rose-400"></i>
+                    <span class="text-slate-400 hidden sm:inline">Kesehatan:</span>
+                    <span class="text-rose-400 font-bold" id="stat-health">88%</span>
+                </div>
+                <div class="flex items-center gap-2 bg-slate-900/80 px-3 py-1.5 rounded-xl border border-amber-500/20 shadow-inner">
+                    <i class="fa-solid fa-bolt text-amber-400"></i>
+                    <span class="text-slate-400 hidden sm:inline">Energi:</span>
+                    <span class="text-amber-400 font-bold" id="stat-energy">95%</span>
+                </div>
+                <div class="flex items-center gap-2 bg-slate-900/80 px-3 py-1.5 rounded-xl border border-purple-500/20 shadow-inner">
+                    <i class="fa-solid fa-brain text-purple-400"></i>
+                    <span class="text-slate-400 hidden sm:inline">Jiwa:</span>
+                    <span class="text-purple-400 font-bold" id="stat-soul">92%</span>
+                </div>
+                <div class="flex items-center gap-2 bg-slate-900/80 px-3 py-1.5 rounded-xl border border-cyan-500/20 shadow-inner">
+                    <i class="fa-solid fa-star text-cyan-400"></i>
+                    <span class="text-slate-400 hidden sm:inline">Reputasi:</span>
+                    <span class="text-cyan-400 font-bold" id="stat-rep">85%</span>
+                </div>
+                <div class="flex items-center gap-2 bg-slate-900/80 px-3 py-1.5 rounded-xl border border-emerald-500/20 shadow-inner">
+                    <i class="fa-solid fa-wallet text-emerald-400"></i>
+                    <span class="text-slate-400 hidden sm:inline">Kekayaan:</span>
+                    <span class="text-emerald-400 font-bold" id="stat-wealth">Rp 2.45B</span>
+                </div>
+            </div>
+
+            <!-- Year Indicator HUD -->
+            <div class="flex items-center gap-3 bg-slate-900/90 px-4 py-1.5 rounded-xl border border-cyan-500/30 shadow-inner">
+                <i class="fa-solid fa-calendar-days text-amber-400 text-sm"></i>
+                <div class="text-right">
+                    <div class="text-[9px] text-slate-400 font-mono uppercase tracking-wider">Garis Waktu</div>
+                    <div class="text-lg font-bold font-tech text-amber-300 glow-text-gold leading-none" id="hud-year">TAHUN 2026</div>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-6 flex-1 w-full space-y-8">
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Left Main Column (Pusat Kendali & Modules) -->
+            <div class="lg:col-span-8 flex flex-col space-y-6">
+                
+                <!-- PUSAT KENDALI PANEL -->
+                <section class="glass-panel rounded-3xl p-6 sm:p-8 relative overflow-hidden border border-cyan-500/40 shadow-2xl transition-all duration-500" id="pusat-kendali-card">
+                    
+                    <!-- Ambient Core Glowing Lights -->
+                    <div class="absolute -top-24 -left-24 w-96 h-96 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none"></div>
+                    <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-purple-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+                    <!-- PUSAT KENDALI HEADER & ORB -->
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-8 relative z-10 border-b border-white/10 pb-8">
+                        
+                        <!-- Dynamic Character Title & Informative Age Phase Description -->
+                        <div class="space-y-3 text-center md:text-left flex-1">
+                            
+                            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-950/90 border border-cyan-500/40 text-cyan-300 text-xs font-mono">
+                                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+                                <span id="age-phase-badge">USIA: 25 TAHUN • FASE DEWASA MUDA</span>
+                            </div>
+
+                            <!-- JUDUL UTAMA DIGANTI MENJADI NAMA KARAKTER -->
+                            <h1 class="text-3xl sm:text-4xl font-black font-tech tracking-tight text-white uppercase glow-text-cyan" id="char-name-title">
+                                ALEXANDER VANCE
+                            </h1>
+
+                            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-lg font-light" id="age-phase-desc">
+                                Masa produktivitas tinggi dan konsolidasi independensi. Pada fase ini, fokus utama tertuju pada akselerasi pencapaian karir, pembentukan portofolio finansial awal, perluasan jaringan profesional eksekutif, dan pemantapan gaya hidup mandiri.
+                            </p>
+                        </div>
+
+                        <!-- Animated Central Orb Visual Hub with Fingerprint Button -->
+                        <div class="relative flex items-center justify-center shrink-0">
+                            <!-- Outer Rotating Neon Rings -->
+                            <div class="w-32 h-32 sm:w-36 sm:h-36 rounded-full border border-dashed border-cyan-400/50 central-orb-ring absolute pointer-events-none"></div>
+                            <div class="w-40 h-40 sm:w-44 sm:h-44 rounded-full border border-purple-500/30 central-orb-ring absolute pointer-events-none" style="animation-duration: 35s; animation-direction: reverse;"></div>
+
+                            <!-- Inner Core Sphere - Tombol Sidik Jari untuk Memperpanjang Frame Profil Kebawah -->
+                            <button onclick="toggleProfileDossier()" id="btn-fingerprint" title="Klik untuk Buka/Tutup Profil Lengkap" 
+                                    class="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gradient-to-br from-cyan-950 via-slate-900 to-purple-950 border border-cyan-400/60 central-core-glow flex flex-col items-center justify-center p-2 text-center shadow-xl hover:scale-105 hover:border-cyan-300 transition-all cursor-pointer group">
+                                <i class="fa-solid fa-fingerprint text-3xl text-cyan-300 group-hover:text-cyan-200 group-hover:scale-110 transition-all animate-pulse mb-1" id="fingerprint-icon"></i>
+                                <span class="text-[9px] font-mono text-cyan-400 tracking-wider font-bold" id="fingerprint-label-1">AKSES PROFIL</span>
+                                <span class="text-[8px] text-slate-400 font-mono" id="fingerprint-label-2">SIDIK JARI</span>
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <!-- FRAME MEMANJANG KE BAWAH: DOSIER PROFIL KARAKTER LENGKAP -->
+                    <div id="profile-dossier-expand" class="expand-grid relative z-10">
+                        <div class="expand-content">
+                            <div class="pt-6 pb-2 border-b border-white/10 my-2">
+                                
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="flex items-center gap-2.5">
+                                        <div class="w-8 h-8 rounded-lg bg-cyan-950 border border-cyan-500/40 flex items-center justify-center text-cyan-300 text-sm">
+                                            <i class="fa-solid fa-id-card"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-sm font-bold font-tech text-white uppercase tracking-wider">DOSIER PROFIL KARAKTER</h3>
+                                            <p class="text-[10px] text-slate-400 font-mono">IDENTITAS DAN ATRIBUT UTAMA EKSEKUTIF</p>
+                                        </div>
+                                    </div>
+                                    <button onclick="toggleProfileDossier()" class="text-xs text-slate-400 hover:text-cyan-300 font-mono flex items-center gap-1 bg-slate-900 px-2.5 py-1 rounded-lg border border-white/5">
+                                        <i class="fa-solid fa-chevron-up text-[10px]"></i> Sembunyikan
+                                    </button>
+                                </div>
+
+                                <!-- Grid Atribut Karakter Lengkap -->
+                                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 text-xs">
+                                    
+                                    <div class="p-3 rounded-xl bg-slate-900/80 border border-white/5 hover:border-cyan-500/30 transition-colors">
+                                        <span class="text-[10px] font-mono text-slate-400 uppercase block mb-0.5">
+                                            <i class="fa-solid fa-signature text-cyan-400 mr-1"></i> Nama Lengkap
+                                        </span>
+                                        <span class="font-bold font-tech text-white text-sm" id="dossier-fullname">Alexander Vance</span>
+                                    </div>
+
+                                    <div class="p-3 rounded-xl bg-slate-900/80 border border-white/5 hover:border-cyan-500/30 transition-colors">
+                                        <span class="text-[10px] font-mono text-slate-400 uppercase block mb-0.5">
+                                            <i class="fa-solid fa-hourglass-half text-amber-400 mr-1"></i> Umur
+                                        </span>
+                                        <span class="font-bold font-tech text-cyan-300 text-sm" id="dossier-age">25 Tahun</span>
+                                    </div>
+
+                                    <div class="p-3 rounded-xl bg-slate-900/80 border border-white/5 hover:border-cyan-500/30 transition-colors">
+                                        <span class="text-[10px] font-mono text-slate-400 uppercase block mb-0.5">
+                                            <i class="fa-solid fa-mars text-blue-400 mr-1"></i> Jenis Kelamin
+                                        </span>
+                                        <span class="font-bold text-slate-200">Laki-laki</span>
+                                    </div>
+
+                                    <div class="p-3 rounded-xl bg-slate-900/80 border border-white/5 hover:border-cyan-500/30 transition-colors">
+                                        <span class="text-[10px] font-mono text-slate-400 uppercase block mb-0.5">
+                                            <i class="fa-solid fa-ruler-vertical text-emerald-400 mr-1"></i> Tinggi & Berat
+                                        </span>
+                                        <span class="font-bold text-slate-200">178 cm / 72 kg</span>
+                                    </div>
+
+                                    <div class="p-3 rounded-xl bg-slate-900/80 border border-white/5 hover:border-cyan-500/30 transition-colors">
+                                        <span class="text-[10px] font-mono text-slate-400 uppercase block mb-0.5">
+                                            <i class="fa-solid fa-graduation-cap text-indigo-400 mr-1"></i> Pendidikan
+                                        </span>
+                                        <span class="font-bold text-indigo-300">Magister Manajemen Bisnis (MBA)</span>
+                                    </div>
+
+                                    <div class="p-3 rounded-xl bg-slate-900/80 border border-white/5 hover:border-cyan-500/30 transition-colors">
+                                        <span class="text-[10px] font-mono text-slate-400 uppercase block mb-0.5">
+                                            <i class="fa-solid fa-briefcase text-blue-400 mr-1"></i> Pekerjaan
+                                        </span>
+                                        <span class="font-bold text-blue-300">Managing Director / CEO</span>
+                                    </div>
+
+                                    <div class="p-3 rounded-xl bg-slate-900/80 border border-white/5 hover:border-cyan-500/30 transition-colors">
+                                        <span class="text-[10px] font-mono text-slate-400 uppercase block mb-0.5">
+                                            <i class="fa-solid fa-ring text-rose-400 mr-1"></i> Status Pernikahan
+                                        </span>
+                                        <span class="font-bold text-slate-200">Lajang (Belum Menikah)</span>
+                                    </div>
+
+                                    <div class="p-3 rounded-xl bg-slate-900/80 border border-white/5 hover:border-cyan-500/30 transition-colors sm:col-span-2">
+                                        <span class="text-[10px] font-mono text-slate-400 uppercase block mb-0.5">
+                                            <i class="fa-solid fa-vault text-emerald-400 mr-1"></i> Tingkat Kekayaan
+                                        </span>
+                                        <span class="font-bold text-emerald-400 font-mono text-sm">Kelas Elit (Rp 2.450.000.000)</span>
+                                    </div>
+
+                                    <div class="p-3 rounded-xl bg-slate-900/80 border border-white/5 hover:border-cyan-500/30 transition-colors sm:col-span-3">
+                                        <span class="text-[10px] font-mono text-slate-400 uppercase block mb-0.5">
+                                            <i class="fa-solid fa-users text-purple-400 mr-1"></i> Orang Tua
+                                        </span>
+                                        <span class="font-bold text-slate-200">Raymond Vance & Eleanor Vance</span>
+                                    </div>
+
+                                    <div class="p-3 rounded-xl bg-slate-900/80 border border-white/5 hover:border-cyan-500/30 transition-colors sm:col-span-3">
+                                        <span class="text-[10px] font-mono text-slate-400 uppercase block mb-0.5">
+                                            <i class="fa-solid fa-house text-teal-400 mr-1"></i> Alamat Rumah
+                                        </span>
+                                        <span class="font-bold text-slate-200">Penthouse District 8, Senopati, Jakarta Selatan</span>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CONTROL BUTTONS INSIDE PUSAT KENDALI -->
+                    <div class="mt-6 flex flex-wrap items-center justify-between gap-4 relative z-10">
+                        
+                        <!-- 1. Tambah Umur Button (+1 Tahun) -->
+                        <button id="btn-add-age" 
+                                onclick="triggerAgeAdvance()"
+                                class="flex-1 min-w-[220px] inline-flex items-center justify-center px-6 py-4 rounded-2xl bg-gradient-to-r from-cyan-500 via-indigo-600 to-purple-600 text-white font-tech font-bold text-xs sm:text-sm tracking-wider uppercase shadow-xl hover:brightness-125 transition-all duration-300 cursor-pointer active:scale-95 border border-cyan-300/30">
+                            <i class="fa-solid fa-hourglass-start mr-2.5 text-cyan-200"></i>
+                            <span>TAMBAH UMUR (+1 TAHUN)</span>
+                        </button>
+
+                        <!-- 2. Buka / Sembunyikan Matriks Modul Toggle Button -->
+                        <button id="btn-toggle-modules" 
+                                onclick="toggleModuleDrawer()"
+                                class="flex-1 min-w-[220px] inline-flex items-center justify-center px-6 py-4 rounded-2xl bg-slate-900/90 hover:bg-slate-800 text-cyan-300 font-tech font-bold text-xs sm:text-sm tracking-wider uppercase border border-cyan-500/40 shadow-lg transition-all duration-300 cursor-pointer active:scale-95 group">
+                            <i class="fa-solid fa-bars-staggered mr-2.5 text-cyan-400 group-hover:rotate-90 transition-transform duration-300" id="drawer-icon"></i>
+                            <span id="drawer-toggle-text">BUKA MATRIKS MODUL (10 SEKTOR)</span>
+                        </button>
+
+                    </div>
+
+                    <!-- MODULE MATRIX DRAWER (10 SEKTOR PERMAINAN) -->
+                    <div id="module-drawer-container" class="mt-6 pt-6 border-t border-white/10 hidden opacity-0 transition-all duration-500 ease-in-out">
+                        
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xs font-tech font-bold text-cyan-300 uppercase tracking-widest flex items-center gap-2">
+                                <i class="fa-solid fa-door-open text-cyan-400"></i> TELEPORTASI SEKTOR PERMAINAN (10 MODUL MPA)
+                            </h3>
+                            <span class="text-[10px] font-mono text-slate-400 bg-slate-900/90 px-2.5 py-1 rounded-lg border border-white/5">PILIH SEKTOR</span>
+                        </div>
+
+                        <!-- 10 Module Portals Grid inside Pusat Kendali -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3.5">
+                            
+                            <!-- 1. Modul Pendidikan -->
+                            <a href="pendidikan.html" class="teleport-btn p-3.5 rounded-2xl flex flex-col justify-between group">
+                                <div>
+                                    <div class="flex items-center justify-between mb-2">
+                                        <div class="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                            <i class="fa-solid fa-graduation-cap text-sm"></i>
+                                        </div>
+                                        <span class="text-[9px] font-mono text-indigo-300 bg-indigo-950/80 px-2 py-0.5 rounded border border-indigo-500/30">SEKTOR 01</span>
+                                    </div>
+                                    <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors">1. PENDIDIKAN</h4>
+                                    <p class="text-[10px] text-slate-400 mt-0.5">Gelar eksekutif, sertifikasi & keahlian.</p>
+                                </div>
+                                <div class="mt-2.5 pt-1.5 border-t border-white/5 flex items-center justify-between text-[10px] font-medium text-indigo-400 group-hover:text-cyan-300">
+                                    <span class="font-mono text-[9px]">TELEPORTASI</span>
+                                    <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
+                                </div>
+                            </a>
+
+                            <!-- 2. Modul Pekerjaan -->
+                            <a href="pekerjaan.html" class="teleport-btn p-3.5 rounded-2xl flex flex-col justify-between group">
+                                <div>
+                                    <div class="flex items-center justify-between mb-2">
+                                        <div class="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-400 border border-blue-500/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                            <i class="fa-solid fa-briefcase text-sm"></i>
+                                        </div>
+                                        <span class="text-[9px] font-mono text-blue-300 bg-blue-950/80 px-2 py-0.5 rounded border border-blue-500/30">SEKTOR 02</span>
+                                    </div>
+                                    <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors">2. PEKERJAAN</h4>
+                                    <p class="text-[10px] text-slate-400 mt-0.5">Karir korporat, posisi & kepemimpinan.</p>
+                                </div>
+                                <div class="mt-2.5 pt-1.5 border-t border-white/5 flex items-center justify-between text-[10px] font-medium text-blue-400 group-hover:text-cyan-300">
+                                    <span class="font-mono text-[9px]">TELEPORTASI</span>
+                                    <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
+                                </div>
+                            </a>
+
+                            <!-- 3. Modul Finansial & Aset -->
+                            <a href="finansial.html" class="teleport-btn p-3.5 rounded-2xl flex flex-col justify-between group">
+                                <div>
+                                    <div class="flex items-center justify-between mb-2">
+                                        <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                            <i class="fa-solid fa-chart-line text-sm"></i>
+                                        </div>
+                                        <span class="text-[9px] font-mono text-emerald-300 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-500/30">SEKTOR 03</span>
+                                    </div>
+                                    <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors">3. FINANSIAL & ASET</h4>
+                                    <p class="text-[10px] text-slate-400 mt-0.5">Portofolio saham, obligasi & real estat.</p>
+                                </div>
+                                <div class="mt-2.5 pt-1.5 border-t border-white/5 flex items-center justify-between text-[10px] font-medium text-emerald-400 group-hover:text-cyan-300">
+                                    <span class="font-mono text-[9px]">TELEPORTASI</span>
+                                    <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
+                                </div>
+                            </a>
+
+                            <!-- 4. Modul Aktivitas -->
+                            <a href="aktivitas.html" class="teleport-btn p-3.5 rounded-2xl flex flex-col justify-between group">
+                                <div>
+                                    <div class="flex items-center justify-between mb-2">
+                                        <div class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                            <i class="fa-solid fa-dumbbell text-sm"></i>
+                                        </div>
+                                        <span class="text-[9px] font-mono text-amber-300 bg-amber-950/80 px-2 py-0.5 rounded border border-amber-500/30">SEKTOR 04</span>
+                                    </div>
+                                    <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors">4. AKTIVITAS</h4>
+                                    <p class="text-[10px] text-slate-400 mt-0.5">Kebugaran fisik, hobi & rekreasi elit.</p>
+                                </div>
+                                <div class="mt-2.5 pt-1.5 border-t border-white/5 flex items-center justify-between text-[10px] font-medium text-amber-400 group-hover:text-cyan-300">
+                                    <span class="font-mono text-[9px]">TELEPORTASI</span>
+                                    <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
+                                </div>
+                            </a>
+
+                            <!-- 5. Modul Bisnis & Risiko -->
+                            <a href="bisnis.html" class="teleport-btn p-3.5 rounded-2xl flex flex-col justify-between group">
+                                <div>
+                                    <div class="flex items-center justify-between mb-2">
+                                        <div class="w-8 h-8 rounded-lg bg-purple-500/20 text-purple-400 border border-purple-500/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                            <i class="fa-solid fa-rocket text-sm"></i>
+                                        </div>
+                                        <span class="text-[9px] font-mono text-purple-300 bg-purple-950/80 px-2 py-0.5 rounded border border-purple-500/30">SEKTOR 05</span>
+                                    </div>
+                                    <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors">5. BISNIS & RISIKO</h4>
+                                    <p class="text-[10px] text-slate-400 mt-0.5">Pendirian startup, M&A & usaha berisiko.</p>
+                                </div>
+                                <div class="mt-2.5 pt-1.5 border-t border-white/5 flex items-center justify-between text-[10px] font-medium text-purple-400 group-hover:text-cyan-300">
+                                    <span class="font-mono text-[9px]">TELEPORTASI</span>
+                                    <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
+                                </div>
+                            </a>
+
+                            <!-- 6. Modul Soul System -->
+                            <a href="soul.html" class="teleport-btn p-3.5 rounded-2xl flex flex-col justify-between group">
+                                <div>
+                                    <div class="flex items-center justify-between mb-2">
+                                        <div class="w-8 h-8 rounded-lg bg-rose-500/20 text-rose-400 border border-rose-500/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                            <i class="fa-solid fa-yin-yang text-sm"></i>
+                                        </div>
+                                        <span class="text-[9px] font-mono text-rose-300 bg-rose-950/80 px-2 py-0.5 rounded border border-rose-500/30">SEKTOR 06</span>
+                                    </div>
+                                    <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors">6. SOUL SYSTEM</h4>
+                                    <p class="text-[10px] text-slate-400 mt-0.5">Meditasi, kesehatan jiwa & filsafat.</p>
+                                </div>
+                                <div class="mt-2.5 pt-1.5 border-t border-white/5 flex items-center justify-between text-[10px] font-medium text-rose-400 group-hover:text-cyan-300">
+                                    <span class="font-mono text-[9px]">TELEPORTASI</span>
+                                    <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
+                                </div>
+                            </a>
+
+                            <!-- 7. Modul Jejaring Digital -->
+                            <a href="jejaring.html" class="teleport-btn p-3.5 rounded-2xl flex flex-col justify-between group">
+                                <div>
+                                    <div class="flex items-center justify-between mb-2">
+                                        <div class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                            <i class="fa-solid fa-network-wired text-sm"></i>
+                                        </div>
+                                        <span class="text-[9px] font-mono text-cyan-300 bg-cyan-950/80 px-2 py-0.5 rounded border border-cyan-500/30">SEKTOR 07</span>
+                                    </div>
+                                    <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors">7. JEJARING DIGITAL</h4>
+                                    <p class="text-[10px] text-slate-400 mt-0.5">Personal branding, media & pengaruh.</p>
+                                </div>
+                                <div class="mt-2.5 pt-1.5 border-t border-white/5 flex items-center justify-between text-[10px] font-medium text-cyan-400 group-hover:text-cyan-300">
+                                    <span class="font-mono text-[9px]">TELEPORTASI</span>
+                                    <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
+                                </div>
+                            </a>
+
+                            <!-- 8. Modul Kondisi Dunia -->
+                            <a href="kondisi-dunia.html" class="teleport-btn p-3.5 rounded-2xl flex flex-col justify-between group">
+                                <div>
+                                    <div class="flex items-center justify-between mb-2">
+                                        <div class="w-8 h-8 rounded-lg bg-teal-500/20 text-teal-400 border border-teal-500/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                            <i class="fa-solid fa-earth-americas text-sm"></i>
+                                        </div>
+                                        <span class="text-[9px] font-mono text-teal-300 bg-teal-950/80 px-2 py-0.5 rounded border border-teal-500/30">SEKTOR 08</span>
+                                    </div>
+                                    <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors">8. KONDISI DUNIA</h4>
+                                    <p class="text-[10px] text-slate-400 mt-0.5">Intelijen geopolitik & tren global.</p>
+                                </div>
+                                <div class="mt-2.5 pt-1.5 border-t border-white/5 flex items-center justify-between text-[10px] font-medium text-teal-400 group-hover:text-cyan-300">
+                                    <span class="font-mono text-[9px]">TELEPORTASI</span>
+                                    <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
+                                </div>
+                            </a>
+
+                            <!-- 9. Shopping -->
+                            <a href="shopping.html" class="teleport-btn p-3.5 rounded-2xl flex flex-col justify-between group">
+                                <div>
+                                    <div class="flex items-center justify-between mb-2">
+                                        <div class="w-8 h-8 rounded-lg bg-amber-400/20 text-amber-300 border border-amber-400/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                            <i class="fa-solid fa-gem text-sm"></i>
+                                        </div>
+                                        <span class="text-[9px] font-mono text-amber-300 bg-amber-950/80 px-2 py-0.5 rounded border border-amber-500/30">SEKTOR 09</span>
+                                    </div>
+                                    <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors">9. SHOPPING MEWAH</h4>
+                                    <p class="text-[10px] text-slate-400 mt-0.5">Supercar, arloji & barang koleksi.</p>
+                                </div>
+                                <div class="mt-2.5 pt-1.5 border-t border-white/5 flex items-center justify-between text-[10px] font-medium text-amber-300 group-hover:text-cyan-300">
+                                    <span class="font-mono text-[9px]">TELEPORTASI</span>
+                                    <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
+                                </div>
+                            </a>
+
+                            <!-- 10. Interaksi -->
+                            <a href="interaksi.html" class="teleport-btn p-3.5 rounded-2xl flex flex-col justify-between group sm:col-span-2 md:col-span-3">
+                                <div>
+                                    <div class="flex items-center justify-between mb-2">
+                                        <div class="w-8 h-8 rounded-lg bg-fuchsia-500/20 text-fuchsia-400 border border-fuchsia-500/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                            <i class="fa-solid fa-comments text-sm"></i>
+                                        </div>
+                                        <span class="text-[9px] font-mono text-fuchsia-300 bg-fuchsia-950/80 px-2 py-0.5 rounded border border-fuchsia-500/30">SEKTOR 10</span>
+                                    </div>
+                                    <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors">10. INTERAKSI SOSIAL & ASMARA</h4>
+                                    <p class="text-[10px] text-slate-400 mt-0.5">Relasi romantis, jejaring elit & persahabatan.</p>
+                                </div>
+                                <div class="mt-2.5 pt-1.5 border-t border-white/5 flex items-center justify-between text-[10px] font-medium text-fuchsia-400 group-hover:text-cyan-300">
+                                    <span class="font-mono text-[9px]">TELEPORTASI SEKTOR</span>
+                                    <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
+                                </div>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+            <!-- Right Column (Log Peristiwa & Rekam Aktivitas Panel) -->
+            <div class="lg:col-span-4 flex flex-col space-y-6">
+                
+                <div class="glass-panel rounded-3xl p-6 border border-cyan-500/30 shadow-xl flex flex-col h-[520px]">
+                    
+                    <!-- Log Header -->
+                    <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-4">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse"></span>
+                            <h3 class="text-xs font-bold font-tech text-white uppercase tracking-wider">LOG PERISTIWA & REKAM AKTIVITAS</h3>
+                        </div>
+                        <button onclick="clearEventLogs()" class="text-[10px] font-mono text-slate-400 hover:text-cyan-300 transition-colors flex items-center gap-1">
+                            <i class="fa-solid fa-rotate-left"></i> CLEAR
+                        </button>
+                    </div>
+
+                    <!-- Stream Scrollable Container -->
+                    <div class="flex-1 overflow-y-auto custom-scrollbar space-y-3 pr-1" id="event-log-container">
+                        
+                        <!-- Initial Log Entries -->
+                        <div class="p-3 rounded-xl bg-slate-900/90 border border-cyan-500/30">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-[9px] font-mono text-cyan-400 border border-cyan-500/30 px-2 py-0.5 rounded bg-cyan-950">SISTEM GAME</span>
+                                <span class="text-[10px] font-mono text-slate-400">THN 2026 (USIA 25)</span>
+                            </div>
+                            <p class="text-xs font-semibold text-slate-100">Sesi Simulasi Dimulai</p>
+                            <p class="text-[11px] text-slate-300 mt-0.5">Pusat Kendali Eksekutif aktif secara penuh.</p>
+                        </div>
+
+                        <div class="p-3 rounded-xl bg-slate-900/90 border border-white/5">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-[9px] font-mono text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded bg-emerald-950">FINANSIAL</span>
+                                <span class="text-[10px] font-mono text-slate-400">THN 2026 (USIA 25)</span>
+                            </div>
+                            <p class="text-xs font-semibold text-slate-100">Portofolio Didaftarkan</p>
+                            <p class="text-[11px] text-slate-300 mt-0.5">Aset awal terverifikasi sebesar Rp 2.45 Miliar.</p>
+                        </div>
+
+                    </div>
+
+                    <!-- Log Footer Status -->
+                    <div class="pt-3 border-t border-white/10 text-[10px] font-mono text-slate-400 flex items-center justify-between">
+                        <span><i class="fa-solid fa-terminal text-cyan-400 mr-1"></i> STATUS: AKTIF</span>
+                        <span class="text-emerald-400">REALTIME LOGGING</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Event Decision Modal Pop-Up -->
+    <div id="event-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+        <div class="glass-panel w-full max-w-xl rounded-3xl p-6 md:p-8 border border-cyan-500/40 shadow-2xl relative transform scale-95 transition-transform duration-300" id="event-modal-card">
+            
+            <!-- Modal Header Badge -->
+            <div class="flex items-center justify-between mb-4">
+                <span id="modal-category-badge" class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-cyan-950 text-cyan-300 border border-cyan-500/40 uppercase tracking-widest">
+                    [KATEGORI: FINANSIAL & ASET]
+                </span>
+                <span id="modal-year-badge" class="text-xs font-mono text-slate-400">TAHUN 2027</span>
+            </div>
+
+            <!-- Modal Title -->
+            <h3 id="modal-title" class="text-xl sm:text-2xl font-bold font-tech text-white mb-3">
+                Peluang Investasi Venture Capital Strategis
+            </h3>
+
+            <!-- Modal Narrative Description -->
+            <p id="modal-description" class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6 font-light">
+                Sebuah startup bioteknologi lokal yang sedang berkembang pesat menawarkan alokasi saham putaran awal sebesar Rp 250 Juta. Apakah Anda akan mengambil risiko modal ini?
+            </p>
+
+            <!-- Choices Container -->
+            <div id="modal-choices-container" class="space-y-3 mb-6">
+                <!-- Populated via JavaScript -->
+            </div>
+
+            <!-- Modal Footer Note -->
+            <div class="pt-4 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+                <span><i class="fa-solid fa-shield-cat text-cyan-400 mr-1"></i> Kanvas Hidup Engine</span>
+                <span class="text-cyan-400">Pilihan Berdampak Pada Log</span>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="w-full glass-panel border-t border-white/10 py-3 px-4 z-20 mt-8">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4 text-xs text-slate-400 font-mono">
+            <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                <span class="font-bold text-slate-200 font-tech">KANVAS HIDUP</span>
+                <span class="text-slate-500">• EXECUTIVE SIMULATOR COCKPIT</span>
+            </div>
+            
+            <div class="flex items-center gap-6">
+                <span>PUSAT KENDALI: <span class="text-emerald-400 font-bold">ONLINE</span></span>
+                <span>MODE: <span class="text-cyan-400 font-bold">MPA MATRIX</span></span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Engine Logic -->
+    <script>
+        let currentAge = 25;
+        let currentYear = 2026;
+        let isDrawerOpen = false;
+        let isProfileExpanded = false;
+
+        // Age Phase Descriptions Database
+        function getAgePhaseData(age) {
+            if (age < 20) {
+                return {
+                    badge: `USIA: ${age} TAHUN • FASE REMAJA AKHIR`,
+                    desc: `Masa penemuan jati diri, eksplorasi wawasan, serta penyusunan cita-cita dasar. Pada tahap ini, energi dialokasikan untuk pendidikan lanjutan, pembentukan karakter, dan eksperimentasi hobi.`
+                };
+            } else if (age >= 20 && age <= 29) {
+                return {
+                    badge: `USIA: ${age} TAHUN • FASE DEWASA MUDA`,
+                    desc: `Masa produktivitas tinggi dan konsolidasi independensi. Pada fase ini, fokus utama tertuju pada akselerasi pencapaian karir, pembentukan portofolio finansial awal, perluasan jaringan profesional eksekutif, dan pemantapan gaya hidup mandiri.`
+                };
+            } else if (age >= 30 && age <= 39) {
+                return {
+                    badge: `USIA: ${age} TAHUN • FASE KEMAPANAN STRATEGIS`,
+                    desc: `Fase puncak pembangunan stabilitas dan kepemimpinan strategis. Fokus bergeser pada akumulasi aset produktif, pendirian atau akuisisi bisnis berisiko terukur, pembentukan keluarga, dan konsolidasi pengaruh di tingkat eksekutif.`
+                };
+            } else if (age >= 40 && age <= 49) {
+                return {
+                    badge: `USIA: ${age} TAHUN • FASE EKSEKUSI PUNCAK`,
+                    desc: `Masa kematangan kapasitas kepemimpinan puncak. Individu memanfaatkan kekuatan jejaring sosial dan modal keuangan untuk menguasai posisi penentu kebijakan, pengelolaan dana investasi besar, dan kepemimpinan industri.`
+                };
+            } else if (age >= 50 && age <= 59) {
+                return {
+                    badge: `USIA: ${age} TAHUN • FASE KEMATANGAN MENTORSHIP`,
+                    desc: `Masa pergeseran dari operasional harian menuju pengawasan strategis dan mentoring. Pemikiran berfokus pada diversifikasi aset, suksesi organisasi, serta keseimbangan kesehatan jiwa dan kontribusi sosial.`
+                };
+            } else {
+                return {
+                    badge: `USIA: ${age} TAHUN • FASE MASA KEEMASAN`,
+                    desc: `Masa menikmati kebebasan finansial mutlak dan mengawasi warisan yang telah dibangun. Prioritas mencakup filantropi, penyaluran kekayaan intergenerasional, dan menjaga kesehatan fisik serta jiwa di masa tua.`
+                };
+            }
+        }
+
+        // Update Dynamic Age Narrative Display
+        function updateAgePhaseDisplay() {
+            const data = getAgePhaseData(currentAge);
+            document.getElementById('age-phase-badge').innerText = data.badge;
+            document.getElementById('age-phase-desc').innerText = data.desc;
+            
+            // Update Dossier Age Field if rendered
+            const dossierAgeEl = document.getElementById('dossier-age');
+            if (dossierAgeEl) dossierAgeEl.innerText = `${currentAge} Tahun`;
+        }
+
+        // Toggle Downward Expanding Profile Dossier Frame
+        function toggleProfileDossier() {
+            const dossierExpand = document.getElementById('profile-dossier-expand');
+            const icon = document.getElementById('fingerprint-icon');
+            const label1 = document.getElementById('fingerprint-label-1');
+            const label2 = document.getElementById('fingerprint-label-2');
+
+            isProfileExpanded = !isProfileExpanded;
+
+            if (isProfileExpanded) {
+                dossierExpand.classList.add('expanded');
+                label1.innerText = "TUTUP PROFIL";
+                label2.innerText = "SEMBUNYIKAN";
+                icon.classList.remove('fa-fingerprint');
+                icon.classList.add('fa-chevron-up');
+            } else {
+                dossierExpand.classList.remove('expanded');
+                label1.innerText = "AKSES PROFIL";
+                label2.innerText = "SIDIK JARI";
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-fingerprint');
+            }
+        }
+
+        // Toggle Module Drawer inside Pusat Kendali
+        function toggleModuleDrawer() {
+            const drawerContainer = document.getElementById('module-drawer-container');
+            const drawerText = document.getElementById('drawer-toggle-text');
+            const drawerIcon = document.getElementById('drawer-icon');
+
+            isDrawerOpen = !isDrawerOpen;
+
+            if (isDrawerOpen) {
+                drawerContainer.classList.remove('hidden');
+                setTimeout(() => {
+                    drawerContainer.classList.remove('opacity-0');
+                }, 20);
+                drawerText.innerText = "SEMBUNYIKAN MATRIKS MODUL";
+                drawerIcon.classList.add('rotate-90');
+            } else {
+                drawerContainer.classList.add('opacity-0');
+                setTimeout(() => {
+                    drawerContainer.classList.add('hidden');
+                }, 500);
+                drawerText.innerText = "BUKA MATRIKS MODUL (10 SEKTOR)";
+                drawerIcon.classList.remove('rotate-90');
+            }
+        }
+
+        // Categorized Adult Life Events Database
+        const adultEvents = [
+            {
+                category: "FINANSIAL & ASET",
+                title: "Lonjakan Industri Kripto & Web3",
+                description: "Pasar keuangan mengalami lonjakan tak terduga. Penasihat keuangan Anda menyarankan rebalancing portofolio ke aset berisiko tinggi.",
+                choices: [
+                    { text: "Alokasikan 20% Aset ke Kripto Elit", outcome: "Investasi Kripto berhasil memberikan pengembalian modal tinggi.", resultBadge: "+ Rp 350.000.000" },
+                    { text: "Pertahankan Aset Pada Saham Blue Chip Safe Haven", outcome: "Memilih stabilitas konservatif tanpa risiko volatil.", resultBadge: "Stabilitas Finansial Terjaga" }
+                ]
+            },
+            {
+                category: "PEKERJAAN & BISNIS",
+                title: "Penawaran Akuisisi Startup Utama",
+                description: "Sebuah konglomerat multinasional mengajukan penawaran akuisisi untuk lini usaha teknologi yang Anda rintis.",
+                choices: [
+                    { text: "Terima Akuisisi Cash & Stock", outcome: "Akuisisi tuntas! Anda mengantongi dana segar dan posisi penasihat.", resultBadge: "Akuisisi bernilai Rp 1.2 Miliar" },
+                    { text: "Tolak & Lakukan Ekspansi Mandiri", outcome: "Memilih independensi bisnis dan meluncurkan ekspansi ke regional Asia.", resultBadge: "Ekspansi Regional Dimulai" }
+                ]
+            },
+            {
+                category: "SOUL SYSTEM",
+                title: "Krisis Eksistensial & Panggilan Jiwa",
+                description: "Di tengah padatnya jadwal eksekutif, Anda merasakan kejenuhan mental yang mendalam dan membutuhkan penyeimbang spiritual.",
+                choices: [
+                    { text: "Ikuti Retret Meditasi Zen di Pegunungan 2 Minggu", outcome: "Menemukan keheningan batin dan pemikiran stoik yang lebih matang.", resultBadge: "Ketenangan Jiwa Maksimal" },
+                    { text: "Sewa Mentor Eksekutif & Psikolog Kinerja", outcome: "Mendapatkan wawasan mentalitas berkinerja tinggi dari profesional.", resultBadge: "Resiliensi Mental Meningkat" }
+                ]
+            },
+            {
+                category: "INTERAKSI SOSIAL",
+                title: "Undangan Gala Dinner Elit & Diplomasi",
+                description: "Anda diundang ke forum malam gala pebisnis dan politisi papan atas nasional. Kesempatan emas memperluas lingkar pengaruh.",
+                choices: [
+                    { text: "Hadir & Bangun Relasi dengan Tokoh Kunci", outcome: "Mendapatkan kontak langsung dengan investor utama & birokrat senior.", resultBadge: "Lingkar Koneksi Terbuka" },
+                    { text: "Kirim Perwakilan & Fokus Pada Keluarga", outcome: "Menjaga keseimbangan waktu personal dan menghindari panggung politik.", resultBadge: "Harmoni Personal Terjaga" }
+                ]
+            },
+            {
+                category: "KONDISI DUNIA",
+                title: "Disrupsi AI & Otomasi Sektor Global",
+                description: "Tren teknologi kecerdasan buatan baru mengubah peta industri secara dramatis. Perusahaan Anda harus beradaptasi cepat.",
+                choices: [
+                    { text: "Rombak Total Alur Kerja dengan Integrasi AI", outcome: "Efisiensi operasional naik pesat dan memangkas biaya hingga 40%.", resultBadge: "Efisiensi AI Maksimal" },
+                    { text: "Tingkatkan Pelatihan SDM Secara Bertahap", outcome: "Menjaga loyalitas tim dengan program pemutakhiran skill bertahap.", resultBadge: "Stabilitas Tim Terjaga" }
+                ]
+            }
+        ];
+
+        // Function to increment age and trigger dynamic year event
+        function triggerAgeAdvance() {
+            currentAge++;
+            currentYear++;
+
+            // Update Top HUD Year Counter
+            document.getElementById('hud-year').innerText = `TAHUN ${currentYear}`;
+
+            // Update Age Phase Badge and Narrative Description
+            updateAgePhaseDisplay();
+
+            // Pick Random Life Event
+            const randomIndex = Math.floor(Math.random() * adultEvents.length);
+            const selectedEvent = adultEvents[randomIndex];
+
+            // Show Event Decision Modal Pop-Up
+            openEventModal(selectedEvent);
+        }
+
+        // Open Modal Event Function
+        function openEventModal(eventData) {
+            const modal = document.getElementById('event-modal');
+            const modalCard = document.getElementById('event-modal-card');
+            
+            // Populate Modal Content
+            document.getElementById('modal-category-badge').innerText = `[KATEGORI: ${eventData.category}]`;
+            document.getElementById('modal-year-badge').innerText = `TAHUN ${currentYear} (USIA ${currentAge})`;
+            document.getElementById('modal-title').innerText = eventData.title;
+            document.getElementById('modal-description').innerText = eventData.description;
+
+            // Populate Choice Buttons
+            const choicesContainer = document.getElementById('modal-choices-container');
+            choicesContainer.innerHTML = '';
+
+            eventData.choices.forEach((choice, idx) => {
+                const choiceBtn = document.createElement('button');
+                choiceBtn.className = "w-full p-3.5 rounded-xl bg-slate-900/90 border border-white/10 hover:border-cyan-400 hover:bg-slate-800 transition-all text-left flex flex-col justify-between group cursor-pointer active:scale-98";
+                choiceBtn.onclick = () => makeChoice(eventData, choice);
+
+                choiceBtn.innerHTML = `
+                    <div class="flex items-center justify-between w-full">
+                        <span class="text-xs font-semibold text-slate-100 group-hover:text-cyan-300 transition-colors">
+                            <i class="fa-solid fa-chevron-right text-[10px] text-cyan-400 mr-2"></i> ${choice.text}
+                        </span>
+                        <span class="text-[10px] font-mono text-slate-500 group-hover:text-slate-300">PILIHAN ${idx + 1}</span>
+                    </div>
+                `;
+                choicesContainer.appendChild(choiceBtn);
+            });
+
+            // Show Backdrop and Trigger Smooth Scale Animation
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalCard.classList.remove('scale-95');
+                modalCard.classList.add('scale-100');
+            }, 20);
+        }
+
+        // Handle Choice Selection
+        function makeChoice(eventData, choice) {
+            closeEventModal();
+            appendEventLog(eventData.category, eventData.title, choice.outcome, choice.resultBadge);
+        }
+
+        // Close Modal Function
+        function closeEventModal() {
+            const modal = document.getElementById('event-modal');
+            const modalCard = document.getElementById('event-modal-card');
+
+            modal.classList.add('opacity-0');
+            modalCard.classList.remove('scale-100');
+            modalCard.classList.add('scale-95');
+
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // Function to Append Entry into Event Log
+        function appendEventLog(category, categoryBadge, outcome, resultBadge) {
+            const logContainer = document.getElementById('event-log-container');
+
+            const newLogItem = document.createElement('div');
+            newLogItem.className = "p-3 rounded-xl bg-slate-900/90 border border-cyan-500/30 transition-all hover:border-cyan-500/50 animate-fade-in";
+
+            let categoryColorClass = "text-cyan-400 border-cyan-500/30 bg-cyan-950";
+            if (category.includes("FINANSIAL")) categoryColorClass = "text-emerald-400 border-emerald-500/30 bg-emerald-950";
+            else if (category.includes("PEKERJAAN") || category.includes("BISNIS")) categoryColorClass = "text-blue-400 border-blue-500/30 bg-blue-950";
+            else if (category.includes("SOUL")) categoryColorClass = "text-purple-400 border-purple-500/30 bg-purple-950";
+            else if (category.includes("INTERAKSI")) categoryColorClass = "text-fuchsia-400 border-fuchsia-500/30 bg-fuchsia-950";
+
+            newLogItem.innerHTML = `
+                <div class="flex items-center justify-between mb-1">
+                    <span class="text-[9px] font-mono px-2 py-0.5 rounded border ${categoryColorClass}">${category}</span>
+                    <span class="text-[10px] font-mono text-slate-400">THN ${currentYear} (USIA ${currentAge})</span>
+                </div>
+                <p class="text-xs font-semibold text-slate-100 mt-1">${categoryBadge}</p>
+                <p class="text-[11px] text-slate-300 mt-0.5">${outcome}</p>
+                <p class="text-[10px] text-cyan-300 font-mono mt-1 font-semibold">${resultBadge}</p>
+            `;
+
+            logContainer.insertBefore(newLogItem, logContainer.firstChild);
+        }
+
+        // Clear Log Function
+        function clearEventLogs() {
+            const logContainer = document.getElementById('event-log-container');
+            logContainer.innerHTML = `
+                <div class="p-3 text-center text-xs font-mono text-slate-500">
+                    [LOG DIBERSIHKAN - SIAP MENCATAT PERISTIWA BARU]
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
