@@ -123,27 +123,51 @@
         .glow-text-gold {
             text-shadow: 0 0 15px rgba(245, 158, 11, 0.6);
         }
+        .glow-text-emerald {
+            text-shadow: 0 0 15px rgba(16, 185, 129, 0.6);
+        }
     </style>
 </head>
 <body class="bg-luxury-overlay min-h-screen flex flex-col justify-between relative selection:bg-cyan-500 selection:text-slate-950">
 
-    <!-- TOP HUD BAR (Stat Hapus) -->
-    <header class="w-full glass-panel sticky top-0 z-40 border-b border-white/10 px-6 py-3">
-        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+    <!-- TOP HUD BAR MEWAH (Termasuk Saldo Pemain & Garis Waktu) -->
+    <header class="w-full glass-panel sticky top-0 z-40 border-b border-white/10 px-4 sm:px-6 py-2.5">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3 sm:gap-4">
             
             <!-- Branding Label Kiri -->
             <div class="flex items-center gap-2.5">
                 <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse"></span>
-                <span class="font-bold font-tech text-white text-sm tracking-widest uppercase">KANVAS HIDUP</span>
+                <span class="font-bold font-tech text-white text-sm sm:text-base tracking-widest uppercase">KANVAS HIDUP</span>
             </div>
 
-            <!-- Year Indicator HUD Kanan -->
-            <div class="flex items-center gap-3 bg-slate-900/60 px-4 py-1.5 rounded-xl border border-cyan-500/30 shadow-inner">
-                <i class="fa-solid fa-calendar-days text-amber-400 text-sm"></i>
-                <div class="text-right">
-                    <div class="text-[9px] text-slate-400 font-mono uppercase tracking-wider">Garis Waktu</div>
-                    <div class="text-lg font-bold font-tech text-amber-300 glow-text-gold leading-none" id="hud-year">TAHUN 2026</div>
+            <!-- HUD Info Container Kanan: Saldo Pemain & Garis Waktu -->
+            <div class="flex items-center gap-3 sm:gap-4">
+
+                <!-- MODUL SALDO PEMAIN MEWAH -->
+                <div class="flex items-center gap-3 bg-gradient-to-r from-emerald-950/80 via-slate-900/90 to-emerald-950/80 px-3.5 sm:px-4 py-1.5 rounded-xl border border-emerald-500/40 shadow-[0_0_15px_rgba(16,185,129,0.15)] hover:border-emerald-400/70 transition-all group">
+                    <div class="w-8 h-8 rounded-lg bg-emerald-500/20 border border-emerald-400/40 flex items-center justify-center text-emerald-400 group-hover:scale-105 transition-transform shadow-inner">
+                        <i class="fa-solid fa-wallet text-sm glow-text-emerald"></i>
+                    </div>
+                    <div class="text-left">
+                        <div class="text-[9px] text-emerald-400/80 font-mono uppercase tracking-wider flex items-center gap-1">
+                            <span>Balance</span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                        </div>
+                        <div class="text-xs sm:text-sm font-bold font-tech text-emerald-300 glow-text-emerald leading-none" id="hud-balance">
+                            Rp 2.450.000.000
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Year Indicator HUD Kanan -->
+                <div class="flex items-center gap-3 bg-slate-900/60 px-3.5 sm:px-4 py-1.5 rounded-xl border border-amber-500/30 shadow-inner">
+                    <i class="fa-solid fa-calendar-days text-amber-400 text-sm"></i>
+                    <div class="text-right">
+                        <div class="text-[9px] text-slate-400 font-mono uppercase tracking-wider">Garis Waktu</div>
+                        <div class="text-xs sm:text-sm font-bold font-tech text-amber-300 glow-text-gold leading-none" id="hud-year">TAHUN 2026</div>
+                    </div>
+                </div>
+
             </div>
 
         </div>
@@ -355,7 +379,7 @@
                     <span class="text-[10px] font-mono text-slate-400 uppercase block mb-1">
                         <i class="fa-solid fa-vault text-emerald-400 mr-1"></i> Tingkat Kekayaan
                     </span>
-                    <span class="font-bold text-emerald-400 font-mono text-sm">Kelas Elit (Rp 2.450.000.000)</span>
+                    <span class="font-bold text-emerald-400 font-mono text-sm" id="dossier-wealth">Kelas Elit (Rp 2.450.000.000)</span>
                 </div>
 
                 <div class="p-3.5 rounded-xl bg-slate-900/60 border border-white/10 hover:border-cyan-500/30 transition-colors sm:col-span-3">
@@ -654,7 +678,7 @@
             <!-- Modal Footer Note -->
             <div class="pt-4 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400 font-mono">
                 <span><i class="fa-solid fa-shield-cat text-cyan-400 mr-1"></i> Kanvas Hidup Engine</span>
-                <span class="text-cyan-400">Pilihan Berdampak Pada Log</span>
+                <span class="text-cyan-400">Pilihan Berdampak Pada Log & Saldo</span>
             </div>
 
         </div>
@@ -679,6 +703,23 @@
     <script>
         let currentAge = 25;
         let currentYear = 2026;
+        let playerBalance = 2450000000; // Saldo awal Rp 2.450.000.000
+
+        function formatCurrency(amount) {
+            return 'Rp ' + amount.toLocaleString('id-ID');
+        }
+
+        function updateBalanceDisplay() {
+            const balanceEl = document.getElementById('hud-balance');
+            const dossierWealthEl = document.getElementById('dossier-wealth');
+            
+            if (balanceEl) {
+                balanceEl.innerText = formatCurrency(playerBalance);
+            }
+            if (dossierWealthEl) {
+                dossierWealthEl.innerText = `Kelas Elit (${formatCurrency(playerBalance)})`;
+            }
+        }
 
         function getAgePhaseData(age) {
             if (age < 20) {
@@ -787,8 +828,8 @@
                 title: "Lonjakan Industri Kripto & Web3",
                 description: "Pasar keuangan mengalami lonjakan tak terduga. Penasihat keuangan Anda menyarankan rebalancing portofolio ke aset berisiko tinggi.",
                 choices: [
-                    { text: "Alokasikan 20% Aset ke Kripto Elit", outcome: "Investasi Kripto berhasil memberikan pengembalian modal tinggi.", resultBadge: "+ Rp 350.000.000" },
-                    { text: "Pertahankan Aset Pada Saham Blue Chip Safe Haven", outcome: "Memilih stabilitas konservatif tanpa risiko volatil.", resultBadge: "Stabilitas Finansial Terjaga" }
+                    { text: "Alokasikan 20% Aset ke Kripto Elit", outcome: "Investasi Kripto berhasil memberikan pengembalian modal tinggi.", resultBadge: "+ Rp 350.000.000", balanceChange: 350000000 },
+                    { text: "Pertahankan Aset Pada Saham Blue Chip Safe Haven", outcome: "Memilih stabilitas konservatif tanpa risiko volatil.", resultBadge: "Stabilitas Finansial Terjaga", balanceChange: 0 }
                 ]
             },
             {
@@ -796,8 +837,8 @@
                 title: "Penawaran Akuisisi Startup Utama",
                 description: "Sebuah konglomerat multinasional mengajukan penawaran akuisisi untuk lini usaha teknologi yang Anda rintis.",
                 choices: [
-                    { text: "Terima Akuisisi Cash & Stock", outcome: "Akuisisi tuntas! Anda mengantongi dana segar dan posisi penasihat.", resultBadge: "Akuisisi bernilai Rp 1.2 Miliar" },
-                    { text: "Tolak & Lakukan Ekspansi Mandiri", outcome: "Memilih independensi bisnis dan meluncurkan ekspansi ke regional Asia.", resultBadge: "Ekspansi Regional Dimulai" }
+                    { text: "Terima Akuisisi Cash & Stock", outcome: "Akuisisi tuntas! Anda mengantongi dana segar dan posisi penasihat.", resultBadge: "+ Rp 1.200.000.000", balanceChange: 1200000000 },
+                    { text: "Tolak & Lakukan Ekspansi Mandiri", outcome: "Memilih independensi bisnis dan meluncurkan ekspansi ke regional Asia.", resultBadge: "Ekspansi Regional Dimulai", balanceChange: -150000000 }
                 ]
             },
             {
@@ -805,8 +846,8 @@
                 title: "Krisis Eksistensial & Panggilan Jiwa",
                 description: "Di tengah padatnya jadwal eksekutif, Anda merasakan kejenuhan mental yang mendalam dan membutuhkan penyeimbang spiritual.",
                 choices: [
-                    { text: "Ikuti Retret Meditasi Zen di Pegunungan 2 Minggu", outcome: "Menemukan keheningan batin dan pemikiran stoik yang lebih matang.", resultBadge: "Ketenangan Jiwa Maksimal" },
-                    { text: "Sewa Mentor Eksekutif & Psikolog Kinerja", outcome: "Mendapatkan wawasan mentalitas berkinerja tinggi dari profesional.", resultBadge: "Resiliensi Mental Meningkat" }
+                    { text: "Ikuti Retret Meditasi Zen di Pegunungan 2 Minggu", outcome: "Menemukan keheningan batin dan pemikiran stoik yang lebih matang.", resultBadge: "Ketenangan Jiwa Maksimal", balanceChange: -25000000 },
+                    { text: "Sewa Mentor Eksekutif & Psikolog Kinerja", outcome: "Mendapatkan wawasan mentalitas berkinerja tinggi dari profesional.", resultBadge: "Resiliensi Mental Meningkat", balanceChange: -40000000 }
                 ]
             },
             {
@@ -814,8 +855,8 @@
                 title: "Undangan Gala Dinner Elit & Diplomasi",
                 description: "Anda diundang ke forum malam gala pebisnis dan politisi papan atas nasional. Kesempatan emas memperluas lingkar pengaruh.",
                 choices: [
-                    { text: "Hadir & Bangun Relasi dengan Tokoh Kunci", outcome: "Mendapatkan kontak langsung dengan investor utama & birokrat senior.", resultBadge: "Lingkar Koneksi Terbuka" },
-                    { text: "Kirim Perwakilan & Fokus Pada Keluarga", outcome: "Menjaga keseimbangan waktu personal dan menghindari panggung politik.", resultBadge: "Harmoni Personal Terjaga" }
+                    { text: "Hadir & Bangun Relasi dengan Tokoh Kunci", outcome: "Mendapatkan kontak langsung dengan investor utama & birokrat senior.", resultBadge: "+ Rp 150.000.000 (Deviden Proyek)", balanceChange: 150000000 },
+                    { text: "Kirim Perwakilan & Fokus Pada Keluarga", outcome: "Menjaga keseimbangan waktu personal dan menghindari panggung politik.", resultBadge: "Harmoni Personal Terjaga", balanceChange: 0 }
                 ]
             },
             {
@@ -823,8 +864,8 @@
                 title: "Disrupsi AI & Otomasi Sektor Global",
                 description: "Tren teknologi kecerdasan buatan baru mengubah peta industri secara dramatis. Perusahaan Anda harus beradaptasi cepat.",
                 choices: [
-                    { text: "Rombak Total Alur Kerja dengan Integrasi AI", outcome: "Efisiensi operasional naik pesat dan memangkas biaya hingga 40%.", resultBadge: "Efisiensi AI Maksimal" },
-                    { text: "Tingkatkan Pelatihan SDM Secara Bertahap", outcome: "Menjaga loyalitas tim dengan program pemutakhiran skill bertahap.", resultBadge: "Stabilitas Tim Terjaga" }
+                    { text: "Rombak Total Alur Kerja dengan Integrasi AI", outcome: "Efisiensi operasional naik pesat dan memangkas biaya hingga 40%.", resultBadge: "+ Rp 500.000.000 (Efisiensi)", balanceChange: 500000000 },
+                    { text: "Tingkatkan Pelatihan SDM Secara Bertahap", outcome: "Menjaga loyalitas tim dengan program pemutakhiran skill bertahap.", resultBadge: "Stabilitas Tim Terjaga", balanceChange: -50000000 }
                 ]
             }
         ];
@@ -880,6 +921,13 @@
 
         function makeChoice(eventData, choice) {
             closeEventModal();
+
+            // Update Saldo jika pilihan memiliki pengaruh finansial
+            if (choice.balanceChange !== undefined) {
+                playerBalance += choice.balanceChange;
+                updateBalanceDisplay();
+            }
+
             appendEventLog(eventData.category, eventData.title, choice.outcome, choice.resultBadge);
         }
 
@@ -929,6 +977,11 @@
                 </div>
             `;
         }
+
+        // Inisialisasi tampilan saldo awal saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', () => {
+            updateBalanceDisplay();
+        });
     </script>
 </body>
 </html>
