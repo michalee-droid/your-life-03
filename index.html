@@ -101,56 +101,7 @@
             animation: orb-pulse 4s infinite ease-in-out;
         }
 
-        /* Smooth Accordion Unroll Animation for Dossier Expansion */
-        .expand-grid {
-            display: grid;
-            grid-template-rows: 0fr;
-            transition: grid-template-rows 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
-            opacity: 0;
-        }
-
-        .expand-grid.expanded {
-            grid-template-rows: 1fr;
-            opacity: 1;
-        }
-
-        .expand-content {
-            overflow: hidden;
-        }
-
-        /* Teleportation Module Portal Card */
-        .teleport-btn {
-            background: rgba(13, 22, 41, 0.85);
-            backdrop-filter: blur(14px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .teleport-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 242, 254, 0.2), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .teleport-btn:hover::before {
-            left: 100%;
-        }
-
-        .teleport-btn:hover {
-            transform: translateY(-3px) scale(1.02);
-            background: rgba(22, 36, 66, 0.95);
-            border-color: rgba(0, 242, 254, 0.5);
-            box-shadow: 0 12px 30px -8px rgba(0, 242, 254, 0.3);
-        }
-
-        /* Custom Scrollbar for Event Log */
+        /* Custom Scrollbar for Event Log & Modals */
         .custom-scrollbar::-webkit-scrollbar {
             width: 5px;
         }
@@ -262,8 +213,8 @@
                             <div class="w-32 h-32 sm:w-36 sm:h-36 rounded-full border border-dashed border-cyan-400/50 central-orb-ring absolute pointer-events-none"></div>
                             <div class="w-40 h-40 sm:w-44 sm:h-44 rounded-full border border-purple-500/30 central-orb-ring absolute pointer-events-none" style="animation-duration: 35s; animation-direction: reverse;"></div>
 
-                            <!-- Inner Core Sphere - Tombol Sidik Jari untuk Memperpanjang Frame Profil Kebawah -->
-                            <button onclick="toggleProfileDossier()" id="btn-fingerprint" title="Klik untuk Buka/Tutup Profil Lengkap" 
+                            <!-- Inner Core Sphere - Tombol Sidik Jari untuk Membuka Popup Profil -->
+                            <button onclick="toggleProfileDossier()" id="btn-fingerprint" title="Klik untuk Buka Layar Popup Profil Lengkap" 
                                     class="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gradient-to-br from-cyan-950 via-slate-900 to-purple-950 border border-cyan-400/60 central-core-glow flex flex-col items-center justify-center p-2 text-center shadow-xl hover:scale-105 hover:border-cyan-300 transition-all cursor-pointer group">
                                 <i class="fa-solid fa-fingerprint text-3xl text-cyan-300 group-hover:text-cyan-200 group-hover:scale-110 transition-all animate-pulse mb-1" id="fingerprint-icon"></i>
                                 <span class="text-[9px] font-mono text-cyan-400 tracking-wider font-bold" id="fingerprint-label-1">AKSES PROFIL</span>
@@ -271,105 +222,6 @@
                             </button>
                         </div>
 
-                    </div>
-
-                    <!-- FRAME MEMANJANG KE BAWAH: DOSIER PROFIL KARAKTER LENGKAP -->
-                    <div id="profile-dossier-expand" class="expand-grid relative z-10">
-                        <div class="expand-content">
-                            <div class="pt-6 pb-2 border-b border-white/10 my-2">
-                                
-                                <div class="flex items-center justify-between mb-4">
-                                    <div class="flex items-center gap-2.5">
-                                        <div class="w-8 h-8 rounded-lg bg-cyan-950 border border-cyan-500/40 flex items-center justify-center text-cyan-300 text-sm">
-                                            <i class="fa-solid fa-id-card"></i>
-                                        </div>
-                                        <div>
-                                            <h3 class="text-sm font-bold font-tech text-white uppercase tracking-wider">DOSIER PROFIL KARAKTER</h3>
-                                            <p class="text-[10px] text-slate-400 font-mono">IDENTITAS DAN ATRIBUT UTAMA EKSEKUTIF</p>
-                                        </div>
-                                    </div>
-                                    <button onclick="toggleProfileDossier()" class="text-xs text-slate-400 hover:text-cyan-300 font-mono flex items-center gap-1 bg-slate-900 px-2.5 py-1 rounded-lg border border-white/5">
-                                        <i class="fa-solid fa-chevron-up text-[10px]"></i> Sembunyikan
-                                    </button>
-                                </div>
-
-                                <!-- Grid Atribut Karakter Lengkap -->
-                                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 text-xs">
-                                    
-                                    <div class="p-3 rounded-xl bg-slate-900/80 border border-white/5 hover:border-cyan-500/30 transition-colors">
-                                        <span class="text-[10px] font-mono text-slate-400 uppercase block mb-0.5">
-                                            <i class="fa-solid fa-signature text-cyan-400 mr-1"></i> Nama Lengkap
-                                        </span>
-                                        <span class="font-bold font-tech text-white text-sm" id="dossier-fullname">Alexander Vance</span>
-                                    </div>
-
-                                    <div class="p-3 rounded-xl bg-slate-900/80 border border-white/5 hover:border-cyan-500/30 transition-colors">
-                                        <span class="text-[10px] font-mono text-slate-400 uppercase block mb-0.5">
-                                            <i class="fa-solid fa-hourglass-half text-amber-400 mr-1"></i> Umur
-                                        </span>
-                                        <span class="font-bold font-tech text-cyan-300 text-sm" id="dossier-age">25 Tahun</span>
-                                    </div>
-
-                                    <div class="p-3 rounded-xl bg-slate-900/80 border border-white/5 hover:border-cyan-500/30 transition-colors">
-                                        <span class="text-[10px] font-mono text-slate-400 uppercase block mb-0.5">
-                                            <i class="fa-solid fa-mars text-blue-400 mr-1"></i> Jenis Kelamin
-                                        </span>
-                                        <span class="font-bold text-slate-200">Laki-laki</span>
-                                    </div>
-
-                                    <div class="p-3 rounded-xl bg-slate-900/80 border border-white/5 hover:border-cyan-500/30 transition-colors">
-                                        <span class="text-[10px] font-mono text-slate-400 uppercase block mb-0.5">
-                                            <i class="fa-solid fa-ruler-vertical text-emerald-400 mr-1"></i> Tinggi & Berat
-                                        </span>
-                                        <span class="font-bold text-slate-200">178 cm / 72 kg</span>
-                                    </div>
-
-                                    <div class="p-3 rounded-xl bg-slate-900/80 border border-white/5 hover:border-cyan-500/30 transition-colors">
-                                        <span class="text-[10px] font-mono text-slate-400 uppercase block mb-0.5">
-                                            <i class="fa-solid fa-graduation-cap text-indigo-400 mr-1"></i> Pendidikan
-                                        </span>
-                                        <span class="font-bold text-indigo-300">Magister Manajemen Bisnis (MBA)</span>
-                                    </div>
-
-                                    <div class="p-3 rounded-xl bg-slate-900/80 border border-white/5 hover:border-cyan-500/30 transition-colors">
-                                        <span class="text-[10px] font-mono text-slate-400 uppercase block mb-0.5">
-                                            <i class="fa-solid fa-briefcase text-blue-400 mr-1"></i> Pekerjaan
-                                        </span>
-                                        <span class="font-bold text-blue-300">Managing Director / CEO</span>
-                                    </div>
-
-                                    <div class="p-3 rounded-xl bg-slate-900/80 border border-white/5 hover:border-cyan-500/30 transition-colors">
-                                        <span class="text-[10px] font-mono text-slate-400 uppercase block mb-0.5">
-                                            <i class="fa-solid fa-ring text-rose-400 mr-1"></i> Status Pernikahan
-                                        </span>
-                                        <span class="font-bold text-slate-200">Lajang (Belum Menikah)</span>
-                                    </div>
-
-                                    <div class="p-3 rounded-xl bg-slate-900/80 border border-white/5 hover:border-cyan-500/30 transition-colors sm:col-span-2">
-                                        <span class="text-[10px] font-mono text-slate-400 uppercase block mb-0.5">
-                                            <i class="fa-solid fa-vault text-emerald-400 mr-1"></i> Tingkat Kekayaan
-                                        </span>
-                                        <span class="font-bold text-emerald-400 font-mono text-sm">Kelas Elit (Rp 2.450.000.000)</span>
-                                    </div>
-
-                                    <div class="p-3 rounded-xl bg-slate-900/80 border border-white/5 hover:border-cyan-500/30 transition-colors sm:col-span-3">
-                                        <span class="text-[10px] font-mono text-slate-400 uppercase block mb-0.5">
-                                            <i class="fa-solid fa-users text-purple-400 mr-1"></i> Orang Tua
-                                        </span>
-                                        <span class="font-bold text-slate-200">Raymond Vance & Eleanor Vance</span>
-                                    </div>
-
-                                    <div class="p-3 rounded-xl bg-slate-900/80 border border-white/5 hover:border-cyan-500/30 transition-colors sm:col-span-3">
-                                        <span class="text-[10px] font-mono text-slate-400 uppercase block mb-0.5">
-                                            <i class="fa-solid fa-house text-teal-400 mr-1"></i> Alamat Rumah
-                                        </span>
-                                        <span class="font-bold text-slate-200">Penthouse District 8, Senopati, Jakarta Selatan</span>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
                     </div>
 
                     <!-- CONTROL BUTTONS INSIDE PUSAT KENDALI -->
@@ -383,210 +235,13 @@
                             <span>TAMBAH UMUR (+1 TAHUN)</span>
                         </button>
 
-                        <!-- 2. Buka / Sembunyikan Matriks Modul Toggle Button -->
+                        <!-- 2. Buka Matriks Modul Toggle Button -->
                         <button id="btn-toggle-modules" 
                                 onclick="toggleModuleDrawer()"
                                 class="flex-1 min-w-[220px] inline-flex items-center justify-center px-6 py-4 rounded-2xl bg-slate-900/90 hover:bg-slate-800 text-cyan-300 font-tech font-bold text-xs sm:text-sm tracking-wider uppercase border border-cyan-500/40 shadow-lg transition-all duration-300 cursor-pointer active:scale-95 group">
                             <i class="fa-solid fa-bars-staggered mr-2.5 text-cyan-400 group-hover:rotate-90 transition-transform duration-300" id="drawer-icon"></i>
                             <span id="drawer-toggle-text">BUKA MATRIKS MODUL (10 SEKTOR)</span>
                         </button>
-
-                    </div>
-
-                    <!-- MODULE MATRIX DRAWER (10 SEKTOR PERMAINAN) -->
-                    <div id="module-drawer-container" class="mt-6 pt-6 border-t border-white/10 hidden opacity-0 transition-all duration-500 ease-in-out">
-                        
-                        <div class="flex items-center justify-between mb-4">
-                            <h3 class="text-xs font-tech font-bold text-cyan-300 uppercase tracking-widest flex items-center gap-2">
-                                <i class="fa-solid fa-door-open text-cyan-400"></i> TELEPORTASI SEKTOR PERMAINAN (10 MODUL MPA)
-                            </h3>
-                            <span class="text-[10px] font-mono text-slate-400 bg-slate-900/90 px-2.5 py-1 rounded-lg border border-white/5">PILIH SEKTOR</span>
-                        </div>
-
-                        <!-- 10 Module Portals Grid inside Pusat Kendali -->
-                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3.5">
-                            
-                            <!-- 1. Modul Pendidikan -->
-                            <a href="pendidikan.html" class="teleport-btn p-3.5 rounded-2xl flex flex-col justify-between group">
-                                <div>
-                                    <div class="flex items-center justify-between mb-2">
-                                        <div class="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                            <i class="fa-solid fa-graduation-cap text-sm"></i>
-                                        </div>
-                                        <span class="text-[9px] font-mono text-indigo-300 bg-indigo-950/80 px-2 py-0.5 rounded border border-indigo-500/30">SEKTOR 01</span>
-                                    </div>
-                                    <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors">1. PENDIDIKAN</h4>
-                                    <p class="text-[10px] text-slate-400 mt-0.5">Gelar eksekutif, sertifikasi & keahlian.</p>
-                                </div>
-                                <div class="mt-2.5 pt-1.5 border-t border-white/5 flex items-center justify-between text-[10px] font-medium text-indigo-400 group-hover:text-cyan-300">
-                                    <span class="font-mono text-[9px]">TELEPORTASI</span>
-                                    <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
-                                </div>
-                            </a>
-
-                            <!-- 2. Modul Pekerjaan -->
-                            <a href="pekerjaan.html" class="teleport-btn p-3.5 rounded-2xl flex flex-col justify-between group">
-                                <div>
-                                    <div class="flex items-center justify-between mb-2">
-                                        <div class="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-400 border border-blue-500/30 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                            <i class="fa-solid fa-briefcase text-sm"></i>
-                                        </div>
-                                        <span class="text-[9px] font-mono text-blue-300 bg-blue-950/80 px-2 py-0.5 rounded border border-blue-500/30">SEKTOR 02</span>
-                                    </div>
-                                    <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors">2. PEKERJAAN</h4>
-                                    <p class="text-[10px] text-slate-400 mt-0.5">Karir korporat, posisi & kepemimpinan.</p>
-                                </div>
-                                <div class="mt-2.5 pt-1.5 border-t border-white/5 flex items-center justify-between text-[10px] font-medium text-blue-400 group-hover:text-cyan-300">
-                                    <span class="font-mono text-[9px]">TELEPORTASI</span>
-                                    <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
-                                </div>
-                            </a>
-
-                            <!-- 3. Modul Finansial & Aset -->
-                            <a href="finansial.html" class="teleport-btn p-3.5 rounded-2xl flex flex-col justify-between group">
-                                <div>
-                                    <div class="flex items-center justify-between mb-2">
-                                        <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                            <i class="fa-solid fa-chart-line text-sm"></i>
-                                        </div>
-                                        <span class="text-[9px] font-mono text-emerald-300 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-500/30">SEKTOR 03</span>
-                                    </div>
-                                    <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors">3. FINANSIAL & ASET</h4>
-                                    <p class="text-[10px] text-slate-400 mt-0.5">Portofolio saham, obligasi & real estat.</p>
-                                </div>
-                                <div class="mt-2.5 pt-1.5 border-t border-white/5 flex items-center justify-between text-[10px] font-medium text-emerald-400 group-hover:text-cyan-300">
-                                    <span class="font-mono text-[9px]">TELEPORTASI</span>
-                                    <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
-                                </div>
-                            </a>
-
-                            <!-- 4. Modul Aktivitas -->
-                            <a href="aktivitas.html" class="teleport-btn p-3.5 rounded-2xl flex flex-col justify-between group">
-                                <div>
-                                    <div class="flex items-center justify-between mb-2">
-                                        <div class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                            <i class="fa-solid fa-dumbbell text-sm"></i>
-                                        </div>
-                                        <span class="text-[9px] font-mono text-amber-300 bg-amber-950/80 px-2 py-0.5 rounded border border-amber-500/30">SEKTOR 04</span>
-                                    </div>
-                                    <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors">4. AKTIVITAS</h4>
-                                    <p class="text-[10px] text-slate-400 mt-0.5">Kebugaran fisik, hobi & rekreasi elit.</p>
-                                </div>
-                                <div class="mt-2.5 pt-1.5 border-t border-white/5 flex items-center justify-between text-[10px] font-medium text-amber-400 group-hover:text-cyan-300">
-                                    <span class="font-mono text-[9px]">TELEPORTASI</span>
-                                    <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
-                                </div>
-                            </a>
-
-                            <!-- 5. Modul Bisnis & Risiko -->
-                            <a href="bisnis.html" class="teleport-btn p-3.5 rounded-2xl flex flex-col justify-between group">
-                                <div>
-                                    <div class="flex items-center justify-between mb-2">
-                                        <div class="w-8 h-8 rounded-lg bg-purple-500/20 text-purple-400 border border-purple-500/30 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                            <i class="fa-solid fa-rocket text-sm"></i>
-                                        </div>
-                                        <span class="text-[9px] font-mono text-purple-300 bg-purple-950/80 px-2 py-0.5 rounded border border-purple-500/30">SEKTOR 05</span>
-                                    </div>
-                                    <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors">5. BISNIS & RISIKO</h4>
-                                    <p class="text-[10px] text-slate-400 mt-0.5">Pendirian startup, M&A & usaha berisiko.</p>
-                                </div>
-                                <div class="mt-2.5 pt-1.5 border-t border-white/5 flex items-center justify-between text-[10px] font-medium text-purple-400 group-hover:text-cyan-300">
-                                    <span class="font-mono text-[9px]">TELEPORTASI</span>
-                                    <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
-                                </div>
-                            </a>
-
-                            <!-- 6. Modul Soul System -->
-                            <a href="soul.html" class="teleport-btn p-3.5 rounded-2xl flex flex-col justify-between group">
-                                <div>
-                                    <div class="flex items-center justify-between mb-2">
-                                        <div class="w-8 h-8 rounded-lg bg-rose-500/20 text-rose-400 border border-rose-500/30 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                            <i class="fa-solid fa-yin-yang text-sm"></i>
-                                        </div>
-                                        <span class="text-[9px] font-mono text-rose-300 bg-rose-950/80 px-2 py-0.5 rounded border border-rose-500/30">SEKTOR 06</span>
-                                    </div>
-                                    <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors">6. SOUL SYSTEM</h4>
-                                    <p class="text-[10px] text-slate-400 mt-0.5">Meditasi, kesehatan jiwa & filsafat.</p>
-                                </div>
-                                <div class="mt-2.5 pt-1.5 border-t border-white/5 flex items-center justify-between text-[10px] font-medium text-rose-400 group-hover:text-cyan-300">
-                                    <span class="font-mono text-[9px]">TELEPORTASI</span>
-                                    <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
-                                </div>
-                            </a>
-
-                            <!-- 7. Modul Jejaring Digital -->
-                            <a href="jejaring.html" class="teleport-btn p-3.5 rounded-2xl flex flex-col justify-between group">
-                                <div>
-                                    <div class="flex items-center justify-between mb-2">
-                                        <div class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                            <i class="fa-solid fa-network-wired text-sm"></i>
-                                        </div>
-                                        <span class="text-[9px] font-mono text-cyan-300 bg-cyan-950/80 px-2 py-0.5 rounded border border-cyan-500/30">SEKTOR 07</span>
-                                    </div>
-                                    <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors">7. JEJARING DIGITAL</h4>
-                                    <p class="text-[10px] text-slate-400 mt-0.5">Personal branding, media & pengaruh.</p>
-                                </div>
-                                <div class="mt-2.5 pt-1.5 border-t border-white/5 flex items-center justify-between text-[10px] font-medium text-cyan-400 group-hover:text-cyan-300">
-                                    <span class="font-mono text-[9px]">TELEPORTASI</span>
-                                    <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
-                                </div>
-                            </a>
-
-                            <!-- 8. Modul Kondisi Dunia -->
-                            <a href="kondisi-dunia.html" class="teleport-btn p-3.5 rounded-2xl flex flex-col justify-between group">
-                                <div>
-                                    <div class="flex items-center justify-between mb-2">
-                                        <div class="w-8 h-8 rounded-lg bg-teal-500/20 text-teal-400 border border-teal-500/30 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                            <i class="fa-solid fa-earth-americas text-sm"></i>
-                                        </div>
-                                        <span class="text-[9px] font-mono text-teal-300 bg-teal-950/80 px-2 py-0.5 rounded border border-teal-500/30">SEKTOR 08</span>
-                                    </div>
-                                    <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors">8. KONDISI DUNIA</h4>
-                                    <p class="text-[10px] text-slate-400 mt-0.5">Intelijen geopolitik & tren global.</p>
-                                </div>
-                                <div class="mt-2.5 pt-1.5 border-t border-white/5 flex items-center justify-between text-[10px] font-medium text-teal-400 group-hover:text-cyan-300">
-                                    <span class="font-mono text-[9px]">TELEPORTASI</span>
-                                    <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
-                                </div>
-                            </a>
-
-                            <!-- 9. Shopping -->
-                            <a href="shopping.html" class="teleport-btn p-3.5 rounded-2xl flex flex-col justify-between group">
-                                <div>
-                                    <div class="flex items-center justify-between mb-2">
-                                        <div class="w-8 h-8 rounded-lg bg-amber-400/20 text-amber-300 border border-amber-400/30 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                            <i class="fa-solid fa-gem text-sm"></i>
-                                        </div>
-                                        <span class="text-[9px] font-mono text-amber-300 bg-amber-950/80 px-2 py-0.5 rounded border border-amber-500/30">SEKTOR 09</span>
-                                    </div>
-                                    <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors">9. SHOPPING MEWAH</h4>
-                                    <p class="text-[10px] text-slate-400 mt-0.5">Supercar, arloji & barang koleksi.</p>
-                                </div>
-                                <div class="mt-2.5 pt-1.5 border-t border-white/5 flex items-center justify-between text-[10px] font-medium text-amber-300 group-hover:text-cyan-300">
-                                    <span class="font-mono text-[9px]">TELEPORTASI</span>
-                                    <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
-                                </div>
-                            </a>
-
-                            <!-- 10. Interaksi -->
-                            <a href="interaksi.html" class="teleport-btn p-3.5 rounded-2xl flex flex-col justify-between group sm:col-span-2 md:col-span-3">
-                                <div>
-                                    <div class="flex items-center justify-between mb-2">
-                                        <div class="w-8 h-8 rounded-lg bg-fuchsia-500/20 text-fuchsia-400 border border-fuchsia-500/30 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                            <i class="fa-solid fa-comments text-sm"></i>
-                                        </div>
-                                        <span class="text-[9px] font-mono text-fuchsia-300 bg-fuchsia-950/80 px-2 py-0.5 rounded border border-fuchsia-500/30">SEKTOR 10</span>
-                                    </div>
-                                    <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors">10. INTERAKSI SOSIAL & ASMARA</h4>
-                                    <p class="text-[10px] text-slate-400 mt-0.5">Relasi romantis, jejaring elit & persahabatan.</p>
-                                </div>
-                                <div class="mt-2.5 pt-1.5 border-t border-white/5 flex items-center justify-between text-[10px] font-medium text-fuchsia-400 group-hover:text-cyan-300">
-                                    <span class="font-mono text-[9px]">TELEPORTASI SEKTOR</span>
-                                    <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
-                                </div>
-                            </a>
-
-                        </div>
 
                     </div>
 
@@ -648,6 +303,350 @@
 
     </main>
 
+    <!-- POPUP MODAL 1: DOSIER PROFIL KARAKTER -->
+    <div id="profile-modal" onclick="closeProfileModal()" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+        <div onclick="event.stopPropagation()" id="profile-modal-card" class="glass-panel w-full max-w-3xl rounded-3xl p-6 sm:p-8 border border-cyan-500/40 shadow-2xl relative transform scale-95 transition-transform duration-300 max-h-[90vh] overflow-y-auto custom-scrollbar">
+            
+            <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-cyan-950 border border-cyan-500/40 flex items-center justify-center text-cyan-300 text-lg shadow-inner">
+                        <i class="fa-solid fa-id-card"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-base sm:text-lg font-bold font-tech text-white uppercase tracking-wider">DOSIER PROFIL KARAKTER</h3>
+                        <p class="text-[11px] text-slate-400 font-mono">IDENTITAS DAN ATRIBUT UTAMA EKSEKUTIF</p>
+                    </div>
+                </div>
+                <button onclick="closeProfileModal()" class="w-9 h-9 rounded-xl bg-slate-900/90 border border-white/10 hover:border-cyan-400 text-slate-400 hover:text-white flex items-center justify-center transition-all cursor-pointer">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Grid Atribut Karakter Lengkap (Tanpa Gambar) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3.5 text-xs">
+                
+                <div class="p-3.5 rounded-xl bg-slate-900/80 border border-white/5 hover:border-cyan-500/30 transition-colors">
+                    <span class="text-[10px] font-mono text-slate-400 uppercase block mb-1">
+                        <i class="fa-solid fa-signature text-cyan-400 mr-1"></i> Nama Lengkap
+                    </span>
+                    <span class="font-bold font-tech text-white text-sm" id="dossier-fullname">Alexander Vance</span>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-slate-900/80 border border-white/5 hover:border-cyan-500/30 transition-colors">
+                    <span class="text-[10px] font-mono text-slate-400 uppercase block mb-1">
+                        <i class="fa-solid fa-hourglass-half text-amber-400 mr-1"></i> Umur
+                    </span>
+                    <span class="font-bold font-tech text-cyan-300 text-sm" id="dossier-age">25 Tahun</span>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-slate-900/80 border border-white/5 hover:border-cyan-500/30 transition-colors">
+                    <span class="text-[10px] font-mono text-slate-400 uppercase block mb-1">
+                        <i class="fa-solid fa-mars text-blue-400 mr-1"></i> Jenis Kelamin
+                    </span>
+                    <span class="font-bold text-slate-200">Laki-laki</span>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-slate-900/80 border border-white/5 hover:border-cyan-500/30 transition-colors">
+                    <span class="text-[10px] font-mono text-slate-400 uppercase block mb-1">
+                        <i class="fa-solid fa-ruler-vertical text-emerald-400 mr-1"></i> Tinggi & Berat
+                    </span>
+                    <span class="font-bold text-slate-200">178 cm / 72 kg</span>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-slate-900/80 border border-white/5 hover:border-cyan-500/30 transition-colors">
+                    <span class="text-[10px] font-mono text-slate-400 uppercase block mb-1">
+                        <i class="fa-solid fa-graduation-cap text-indigo-400 mr-1"></i> Pendidikan
+                    </span>
+                    <span class="font-bold text-indigo-300">Magister Manajemen Bisnis (MBA)</span>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-slate-900/80 border border-white/5 hover:border-cyan-500/30 transition-colors">
+                    <span class="text-[10px] font-mono text-slate-400 uppercase block mb-1">
+                        <i class="fa-solid fa-briefcase text-blue-400 mr-1"></i> Pekerjaan
+                    </span>
+                    <span class="font-bold text-blue-300">Managing Director / CEO</span>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-slate-900/80 border border-white/5 hover:border-cyan-500/30 transition-colors">
+                    <span class="text-[10px] font-mono text-slate-400 uppercase block mb-1">
+                        <i class="fa-solid fa-ring text-rose-400 mr-1"></i> Status Pernikahan
+                    </span>
+                    <span class="font-bold text-slate-200">Lajang (Belum Menikah)</span>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-slate-900/80 border border-white/5 hover:border-cyan-500/30 transition-colors sm:col-span-2">
+                    <span class="text-[10px] font-mono text-slate-400 uppercase block mb-1">
+                        <i class="fa-solid fa-vault text-emerald-400 mr-1"></i> Tingkat Kekayaan
+                    </span>
+                    <span class="font-bold text-emerald-400 font-mono text-sm">Kelas Elit (Rp 2.450.000.000)</span>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-slate-900/80 border border-white/5 hover:border-cyan-500/30 transition-colors sm:col-span-3">
+                    <span class="text-[10px] font-mono text-slate-400 uppercase block mb-1">
+                        <i class="fa-solid fa-users text-purple-400 mr-1"></i> Orang Tua
+                    </span>
+                    <span class="font-bold text-slate-200">Raymond Vance & Eleanor Vance</span>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-slate-900/80 border border-white/5 hover:border-cyan-500/30 transition-colors sm:col-span-3">
+                    <span class="text-[10px] font-mono text-slate-400 uppercase block mb-1">
+                        <i class="fa-solid fa-house text-teal-400 mr-1"></i> Alamat Rumah
+                    </span>
+                    <span class="font-bold text-slate-200">Penthouse District 8, Senopati, Jakarta Selatan</span>
+                </div>
+
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+                <span><i class="fa-solid fa-shield-halved text-cyan-400 mr-1"></i> TERVERIFIKASI SISTEM EKSEKUTIF</span>
+                <span class="text-cyan-400">AKSES PROFIL LENGKAP</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- POPUP MODAL 2: MATRIKS MODUL (10 SEKTOR PERMAINAN DENGAN GAMBAR BACKGROUND) -->
+    <div id="module-modal" onclick="closeModuleModal()" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+        <div onclick="event.stopPropagation()" id="module-modal-card" class="glass-panel w-full max-w-5xl rounded-3xl p-6 sm:p-8 border border-cyan-500/40 shadow-2xl relative transform scale-95 transition-transform duration-300 max-h-[90vh] overflow-y-auto custom-scrollbar">
+            
+            <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-cyan-950 border border-cyan-500/40 flex items-center justify-center text-cyan-300 text-lg shadow-inner">
+                        <i class="fa-solid fa-door-open"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-base sm:text-lg font-bold font-tech text-white uppercase tracking-wider">MATRIKS MODUL PERMAINAN</h3>
+                        <p class="text-[11px] text-slate-400 font-mono">10 SEKTOR TELEPORTASI UTAMA MPA</p>
+                    </div>
+                </div>
+                <button onclick="closeModuleModal()" class="w-9 h-9 rounded-xl bg-slate-900/90 border border-white/10 hover:border-cyan-400 text-slate-400 hover:text-white flex items-center justify-center transition-all cursor-pointer">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- 10 Module Portals Grid dengan Visual Gambar Latar Belakang Keren -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                
+                <!-- 1. Modul Pendidikan -->
+                <a href="pendidikan.html" class="relative group rounded-2xl overflow-hidden border border-indigo-500/30 hover:border-cyan-400 shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between p-4 min-h-[145px]">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&auto=format&fit=crop&q=80');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-slate-950/60 group-hover:via-slate-950/70 transition-all"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-400 border border-indigo-500/40 flex items-center justify-center backdrop-blur-md">
+                                <i class="fa-solid fa-graduation-cap text-sm"></i>
+                            </div>
+                            <span class="text-[9px] font-mono text-indigo-300 bg-indigo-950/90 px-2 py-0.5 rounded border border-indigo-500/40 backdrop-blur-md">SEKTOR 01</span>
+                        </div>
+                        <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors drop-shadow">1. PENDIDIKAN</h4>
+                        <p class="text-[10px] text-slate-300 mt-0.5 drop-shadow">Gelar eksekutif, sertifikasi & keahlian.</p>
+                    </div>
+                    <div class="relative z-10 mt-3 pt-2 border-t border-white/10 flex items-center justify-between text-[10px] font-medium text-indigo-400 group-hover:text-cyan-300">
+                        <span class="font-mono text-[9px]">TELEPORTASI</span>
+                        <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </a>
+
+                <!-- 2. Modul Pekerjaan -->
+                <a href="pekerjaan.html" class="relative group rounded-2xl overflow-hidden border border-blue-500/30 hover:border-cyan-400 shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between p-4 min-h-[145px]">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&auto=format&fit=crop&q=80');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-slate-950/60 group-hover:via-slate-950/70 transition-all"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-400 border border-blue-500/40 flex items-center justify-center backdrop-blur-md">
+                                <i class="fa-solid fa-briefcase text-sm"></i>
+                            </div>
+                            <span class="text-[9px] font-mono text-blue-300 bg-blue-950/90 px-2 py-0.5 rounded border border-blue-500/40 backdrop-blur-md">SEKTOR 02</span>
+                        </div>
+                        <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors drop-shadow">2. PEKERJAAN</h4>
+                        <p class="text-[10px] text-slate-300 mt-0.5 drop-shadow">Karir korporat, posisi & kepemimpinan.</p>
+                    </div>
+                    <div class="relative z-10 mt-3 pt-2 border-t border-white/10 flex items-center justify-between text-[10px] font-medium text-blue-400 group-hover:text-cyan-300">
+                        <span class="font-mono text-[9px]">TELEPORTASI</span>
+                        <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </a>
+
+                <!-- 3. Modul Finansial & Aset -->
+                <a href="finansial.html" class="relative group rounded-2xl overflow-hidden border border-emerald-500/30 hover:border-cyan-400 shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between p-4 min-h-[145px]">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&auto=format&fit=crop&q=80');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-slate-950/60 group-hover:via-slate-950/70 transition-all"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center backdrop-blur-md">
+                                <i class="fa-solid fa-chart-line text-sm"></i>
+                            </div>
+                            <span class="text-[9px] font-mono text-emerald-300 bg-emerald-950/90 px-2 py-0.5 rounded border border-emerald-500/40 backdrop-blur-md">SEKTOR 03</span>
+                        </div>
+                        <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors drop-shadow">3. FINANSIAL & ASET</h4>
+                        <p class="text-[10px] text-slate-300 mt-0.5 drop-shadow">Portofolio saham, obligasi & real estat.</p>
+                    </div>
+                    <div class="relative z-10 mt-3 pt-2 border-t border-white/10 flex items-center justify-between text-[10px] font-medium text-emerald-400 group-hover:text-cyan-300">
+                        <span class="font-mono text-[9px]">TELEPORTASI</span>
+                        <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </a>
+
+                <!-- 4. Modul Aktivitas -->
+                <a href="aktivitas.html" class="relative group rounded-2xl overflow-hidden border border-amber-500/30 hover:border-cyan-400 shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between p-4 min-h-[145px]">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&auto=format&fit=crop&q=80');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-slate-950/60 group-hover:via-slate-950/70 transition-all"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 border border-amber-500/40 flex items-center justify-center backdrop-blur-md">
+                                <i class="fa-solid fa-dumbbell text-sm"></i>
+                            </div>
+                            <span class="text-[9px] font-mono text-amber-300 bg-amber-950/90 px-2 py-0.5 rounded border border-amber-500/40 backdrop-blur-md">SEKTOR 04</span>
+                        </div>
+                        <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors drop-shadow">4. AKTIVITAS</h4>
+                        <p class="text-[10px] text-slate-300 mt-0.5 drop-shadow">Kebugaran fisik, hobi & rekreasi elit.</p>
+                    </div>
+                    <div class="relative z-10 mt-3 pt-2 border-t border-white/10 flex items-center justify-between text-[10px] font-medium text-amber-400 group-hover:text-cyan-300">
+                        <span class="font-mono text-[9px]">TELEPORTASI</span>
+                        <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </a>
+
+                <!-- 5. Modul Bisnis & Risiko -->
+                <a href="bisnis.html" class="relative group rounded-2xl overflow-hidden border border-purple-500/30 hover:border-cyan-400 shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between p-4 min-h-[145px]">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=600&auto=format&fit=crop&q=80');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-slate-950/60 group-hover:via-slate-950/70 transition-all"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="w-8 h-8 rounded-lg bg-purple-500/20 text-purple-400 border border-purple-500/40 flex items-center justify-center backdrop-blur-md">
+                                <i class="fa-solid fa-rocket text-sm"></i>
+                            </div>
+                            <span class="text-[9px] font-mono text-purple-300 bg-purple-950/90 px-2 py-0.5 rounded border border-purple-500/40 backdrop-blur-md">SEKTOR 05</span>
+                        </div>
+                        <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors drop-shadow">5. BISNIS & RISIKO</h4>
+                        <p class="text-[10px] text-slate-300 mt-0.5 drop-shadow">Pendirian startup, M&A & usaha berisiko.</p>
+                    </div>
+                    <div class="relative z-10 mt-3 pt-2 border-t border-white/10 flex items-center justify-between text-[10px] font-medium text-purple-400 group-hover:text-cyan-300">
+                        <span class="font-mono text-[9px]">TELEPORTASI</span>
+                        <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </a>
+
+                <!-- 6. Modul Soul System -->
+                <a href="soul.html" class="relative group rounded-2xl overflow-hidden border border-rose-500/30 hover:border-cyan-400 shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between p-4 min-h-[145px]">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&auto=format&fit=crop&q=80');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-slate-950/60 group-hover:via-slate-950/70 transition-all"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="w-8 h-8 rounded-lg bg-rose-500/20 text-rose-400 border border-rose-500/40 flex items-center justify-center backdrop-blur-md">
+                                <i class="fa-solid fa-yin-yang text-sm"></i>
+                            </div>
+                            <span class="text-[9px] font-mono text-rose-300 bg-rose-950/90 px-2 py-0.5 rounded border border-rose-500/40 backdrop-blur-md">SEKTOR 06</span>
+                        </div>
+                        <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors drop-shadow">6. SOUL SYSTEM</h4>
+                        <p class="text-[10px] text-slate-300 mt-0.5 drop-shadow">Meditasi, kesehatan jiwa & filsafat.</p>
+                    </div>
+                    <div class="relative z-10 mt-3 pt-2 border-t border-white/10 flex items-center justify-between text-[10px] font-medium text-rose-400 group-hover:text-cyan-300">
+                        <span class="font-mono text-[9px]">TELEPORTASI</span>
+                        <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </a>
+
+                <!-- 7. Modul Jejaring Digital -->
+                <a href="jejaring.html" class="relative group rounded-2xl overflow-hidden border border-cyan-500/30 hover:border-cyan-400 shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between p-4 min-h-[145px]">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&auto=format&fit=crop&q=80');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-slate-950/60 group-hover:via-slate-950/70 transition-all"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 border border-cyan-500/40 flex items-center justify-center backdrop-blur-md">
+                                <i class="fa-solid fa-network-wired text-sm"></i>
+                            </div>
+                            <span class="text-[9px] font-mono text-cyan-300 bg-cyan-950/90 px-2 py-0.5 rounded border border-cyan-500/40 backdrop-blur-md">SEKTOR 07</span>
+                        </div>
+                        <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors drop-shadow">7. JEJARING DIGITAL</h4>
+                        <p class="text-[10px] text-slate-300 mt-0.5 drop-shadow">Personal branding, media & pengaruh.</p>
+                    </div>
+                    <div class="relative z-10 mt-3 pt-2 border-t border-white/10 flex items-center justify-between text-[10px] font-medium text-cyan-400 group-hover:text-cyan-300">
+                        <span class="font-mono text-[9px]">TELEPORTASI</span>
+                        <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </a>
+
+                <!-- 8. Modul Kondisi Dunia -->
+                <a href="kondisi-dunia.html" class="relative group rounded-2xl overflow-hidden border border-teal-500/30 hover:border-cyan-400 shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between p-4 min-h-[145px]">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=600&auto=format&fit=crop&q=80');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-slate-950/60 group-hover:via-slate-950/70 transition-all"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="w-8 h-8 rounded-lg bg-teal-500/20 text-teal-400 border border-teal-500/40 flex items-center justify-center backdrop-blur-md">
+                                <i class="fa-solid fa-earth-americas text-sm"></i>
+                            </div>
+                            <span class="text-[9px] font-mono text-teal-300 bg-teal-950/90 px-2 py-0.5 rounded border border-teal-500/40 backdrop-blur-md">SEKTOR 08</span>
+                        </div>
+                        <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors drop-shadow">8. KONDISI DUNIA</h4>
+                        <p class="text-[10px] text-slate-300 mt-0.5 drop-shadow">Intelijen geopolitik & tren global.</p>
+                    </div>
+                    <div class="relative z-10 mt-3 pt-2 border-t border-white/10 flex items-center justify-between text-[10px] font-medium text-teal-400 group-hover:text-cyan-300">
+                        <span class="font-mono text-[9px]">TELEPORTASI</span>
+                        <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </a>
+
+                <!-- 9. Shopping -->
+                <a href="shopping.html" class="relative group rounded-2xl overflow-hidden border border-amber-400/30 hover:border-cyan-400 shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between p-4 min-h-[145px]">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&auto=format&fit=crop&q=80');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-slate-950/60 group-hover:via-slate-950/70 transition-all"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="w-8 h-8 rounded-lg bg-amber-400/20 text-amber-300 border border-amber-400/40 flex items-center justify-center backdrop-blur-md">
+                                <i class="fa-solid fa-gem text-sm"></i>
+                            </div>
+                            <span class="text-[9px] font-mono text-amber-300 bg-amber-950/90 px-2 py-0.5 rounded border border-amber-500/40 backdrop-blur-md">SEKTOR 09</span>
+                        </div>
+                        <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors drop-shadow">9. SHOPPING MEWAH</h4>
+                        <p class="text-[10px] text-slate-300 mt-0.5 drop-shadow">Supercar, arloji & barang koleksi.</p>
+                    </div>
+                    <div class="relative z-10 mt-3 pt-2 border-t border-white/10 flex items-center justify-between text-[10px] font-medium text-amber-300 group-hover:text-cyan-300">
+                        <span class="font-mono text-[9px]">TELEPORTASI</span>
+                        <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </a>
+
+                <!-- 10. Interaksi -->
+                <a href="interaksi.html" class="relative group rounded-2xl overflow-hidden border border-fuchsia-500/30 hover:border-cyan-400 shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between p-4 min-h-[145px] sm:col-span-2 md:col-span-3">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&auto=format&fit=crop&q=80');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-slate-950/60 group-hover:via-slate-950/70 transition-all"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="w-8 h-8 rounded-lg bg-fuchsia-500/20 text-fuchsia-400 border border-fuchsia-500/40 flex items-center justify-center backdrop-blur-md">
+                                <i class="fa-solid fa-comments text-sm"></i>
+                            </div>
+                            <span class="text-[9px] font-mono text-fuchsia-300 bg-fuchsia-950/90 px-2 py-0.5 rounded border border-fuchsia-500/40 backdrop-blur-md">SEKTOR 10</span>
+                        </div>
+                        <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors drop-shadow">10. INTERAKSI SOSIAL & ASMARA</h4>
+                        <p class="text-[10px] text-slate-300 mt-0.5 drop-shadow">Relasi romantis, jejaring elit & persahabatan.</p>
+                    </div>
+                    <div class="relative z-10 mt-3 pt-2 border-t border-white/10 flex items-center justify-between text-[10px] font-medium text-fuchsia-400 group-hover:text-cyan-300">
+                        <span class="font-mono text-[9px]">TELEPORTASI SEKTOR</span>
+                        <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </a>
+
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+                <span><i class="fa-solid fa-network-wired text-cyan-400 mr-1"></i> MATRIKS MPA SIMULATION ENGINE</span>
+                <span class="text-cyan-400">PILIH SEKTOR UNTUK TELEPORTASI</span>
+            </div>
+
+        </div>
+    </div>
+
     <!-- Event Decision Modal Pop-Up -->
     <div id="event-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
         <div class="glass-panel w-full max-w-xl rounded-3xl p-6 md:p-8 border border-cyan-500/40 shadow-2xl relative transform scale-95 transition-transform duration-300" id="event-modal-card">
@@ -703,8 +702,6 @@
     <script>
         let currentAge = 25;
         let currentYear = 2026;
-        let isDrawerOpen = false;
-        let isProfileExpanded = false;
 
         // Age Phase Descriptions Database
         function getAgePhaseData(age) {
@@ -752,53 +749,64 @@
             if (dossierAgeEl) dossierAgeEl.innerText = `${currentAge} Tahun`;
         }
 
-        // Toggle Downward Expanding Profile Dossier Frame
+        // Open/Close Profile Dossier Modal Popup
         function toggleProfileDossier() {
-            const dossierExpand = document.getElementById('profile-dossier-expand');
-            const icon = document.getElementById('fingerprint-icon');
-            const label1 = document.getElementById('fingerprint-label-1');
-            const label2 = document.getElementById('fingerprint-label-2');
+            const modal = document.getElementById('profile-modal');
+            const modalCard = document.getElementById('profile-modal-card');
 
-            isProfileExpanded = !isProfileExpanded;
-
-            if (isProfileExpanded) {
-                dossierExpand.classList.add('expanded');
-                label1.innerText = "TUTUP PROFIL";
-                label2.innerText = "SEMBUNYIKAN";
-                icon.classList.remove('fa-fingerprint');
-                icon.classList.add('fa-chevron-up');
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    modal.classList.remove('opacity-0');
+                    modalCard.classList.remove('scale-95');
+                    modalCard.classList.add('scale-100');
+                }, 20);
             } else {
-                dossierExpand.classList.remove('expanded');
-                label1.innerText = "AKSES PROFIL";
-                label2.innerText = "SIDIK JARI";
-                icon.classList.remove('fa-chevron-up');
-                icon.classList.add('fa-fingerprint');
+                closeProfileModal();
             }
         }
 
-        // Toggle Module Drawer inside Pusat Kendali
+        function closeProfileModal() {
+            const modal = document.getElementById('profile-modal');
+            const modalCard = document.getElementById('profile-modal-card');
+
+            modal.classList.add('opacity-0');
+            modalCard.classList.remove('scale-100');
+            modalCard.classList.add('scale-95');
+
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // Open/Close Module Matrix Modal Popup
         function toggleModuleDrawer() {
-            const drawerContainer = document.getElementById('module-drawer-container');
-            const drawerText = document.getElementById('drawer-toggle-text');
-            const drawerIcon = document.getElementById('drawer-icon');
+            const modal = document.getElementById('module-modal');
+            const modalCard = document.getElementById('module-modal-card');
 
-            isDrawerOpen = !isDrawerOpen;
-
-            if (isDrawerOpen) {
-                drawerContainer.classList.remove('hidden');
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
                 setTimeout(() => {
-                    drawerContainer.classList.remove('opacity-0');
+                    modal.classList.remove('opacity-0');
+                    modalCard.classList.remove('scale-95');
+                    modalCard.classList.add('scale-100');
                 }, 20);
-                drawerText.innerText = "SEMBUNYIKAN MATRIKS MODUL";
-                drawerIcon.classList.add('rotate-90');
             } else {
-                drawerContainer.classList.add('opacity-0');
-                setTimeout(() => {
-                    drawerContainer.classList.add('hidden');
-                }, 500);
-                drawerText.innerText = "BUKA MATRIKS MODUL (10 SEKTOR)";
-                drawerIcon.classList.remove('rotate-90');
+                closeModuleModal();
             }
+        }
+
+        function closeModuleModal() {
+            const modal = document.getElementById('module-modal');
+            const modalCard = document.getElementById('module-modal-card');
+
+            modal.classList.add('opacity-0');
+            modalCard.classList.remove('scale-100');
+            modalCard.classList.add('scale-95');
+
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
         }
 
         // Categorized Adult Life Events Database
