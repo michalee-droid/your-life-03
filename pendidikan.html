@@ -14,7 +14,7 @@
     <!-- Google Fonts: Inter & Orbitron -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@500;600;700;800;900&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -24,6 +24,7 @@
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                         tech: ['Orbitron', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
                     },
                     colors: {
                         cyber: {
@@ -185,7 +186,7 @@
         <!-- DASHBOARD STATUS PENDIDIKAN & STATS UTAMA -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
-            <!-- Left Column: Utama & Frame Akses Otomatis Berdasarkan Umur -->
+            <!-- Left Column: Utama -->
             <div class="lg:col-span-8 flex flex-col space-y-6">
                 
                 <!-- HERO CARD: FASE PENDIDIKAN DENGAN DESKRIPSI DINAMIS & PROFIL LANGSUNG TAMPIL -->
@@ -197,12 +198,12 @@
                     <div class="flex flex-col md:flex-row items-center justify-between gap-8 relative z-10 border-b border-white/10 pb-8">
                         
                         <div class="space-y-3 text-center md:text-left flex-1">
-                            <!-- Judul Fase Pendidikan Saat Ini (Menggantikan SIKLUS PENDIDIKAN SEUMUR HIDUP) -->
+                            <!-- Judul Fase Pendidikan Saat Ini -->
                             <h1 class="text-2xl sm:text-3xl font-black font-tech tracking-tight text-white uppercase glow-text-purple" id="char-edu-title">
                                 FASE PENDIDIKAN: PENDIDIKAN DASAR (PAUD & SD)
                             </h1>
 
-                            <!-- Deskripsi Dinamis Pekerjaan & Gelar -->
+                            <!-- Deskripsi Dinamis Gelar & Fase -->
                             <p class="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-xl font-light" id="char-edu-desc">
                                 Memuat informasi fase...
                             </p>
@@ -222,22 +223,14 @@
 
                     </div>
 
-                    <!-- PROFIL KARAKTER LANGSUNG TAMPIL (TANPA POPUP MODAL) -->
+                    <!-- PROFIL KARAKTER LANGSUNG TAMPIL -->
                     <div class="mt-6 border-b border-white/10 pb-6 relative z-10">
                         <div class="flex items-center gap-2 mb-3">
                             <i class="fa-solid fa-id-card text-purple-400"></i>
                             <h3 class="text-xs font-bold font-tech text-white uppercase tracking-wider">DOSIER PROFIL KARAKTER SAAT INI</h3>
                         </div>
                         
-                        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 text-xs">
-                            <div class="p-2.5 rounded-xl bg-slate-900/60 border border-white/10">
-                                <span class="text-[9px] font-mono text-slate-400 uppercase block">Nama</span>
-                                <span class="font-bold font-tech text-white text-xs truncate block" id="profile-name">Alexander Vance</span>
-                            </div>
-                            <div class="p-2.5 rounded-xl bg-slate-900/60 border border-white/10">
-                                <span class="text-[9px] font-mono text-slate-400 uppercase block">Pekerjaan</span>
-                                <span class="font-bold text-cyan-300 text-xs truncate block" id="profile-job">Pelajar SD</span>
-                            </div>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
                             <div class="p-2.5 rounded-xl bg-slate-900/60 border border-white/10">
                                 <span class="text-[9px] font-mono text-slate-400 uppercase block">Gelar Akademik</span>
                                 <span class="font-bold text-purple-300 text-xs truncate block" id="profile-degree">Belum Ada Gelar</span>
@@ -258,7 +251,7 @@
                     </div>
 
                     <!-- METRICS BARIS DUA: TRAIT AKADEMIS & METRICS MATRIKS -->
-                    <div class="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3 relative z-10">
+                    <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3 relative z-10">
                         
                         <div class="p-3 rounded-xl bg-slate-900/60 border border-white/10">
                             <span class="text-[10px] font-mono text-slate-400 block mb-1 uppercase">
@@ -276,13 +269,6 @@
 
                         <div class="p-3 rounded-xl bg-slate-900/60 border border-white/10">
                             <span class="text-[10px] font-mono text-slate-400 block mb-1 uppercase">
-                                <i class="fa-solid fa-users text-cyan-400 mr-1"></i> Database Alumni
-                            </span>
-                            <span class="text-sm font-bold font-tech text-cyan-300" id="stat-contacts">14 Kontak Elit</span>
-                        </div>
-
-                        <div class="p-3 rounded-xl bg-slate-900/60 border border-white/10">
-                            <span class="text-[10px] font-mono text-slate-400 block mb-1 uppercase">
                                 <i class="fa-solid fa-triangle-exclamation text-rose-400 mr-1"></i> Risk Score Audit
                             </span>
                             <span class="text-sm font-bold font-tech text-rose-400" id="stat-risk">12% (Rendah)</span>
@@ -290,7 +276,7 @@
 
                     </div>
 
-                    <!-- CONTROL BUTTONS: KEMBALI KE HALAMAN UTAMA, TOMBOL UJIAN & AUDIT AKADEMIK KONDISIONAL -->
+                    <!-- CONTROL BUTTONS: KEMBALI KE HALAMAN UTAMA, TOMBOL UJIAN & AUDIT AKADEMIK -->
                     <div class="mt-6 flex flex-wrap items-center justify-between gap-4 relative z-10">
                         
                         <!-- TOMBOL KEMBALI KE HALAMAN UTAMA -->
@@ -305,7 +291,7 @@
                             <span>Ujian Evaluasi Stat Karakter</span>
                         </button>
 
-                        <!-- TOMBOL AUDIT AKADEMIK (TERBUKA HANYA PADA FASE TINGGI/SANGAT MEMERLUKANNYA) -->
+                        <!-- TOMBOL AUDIT AKADEMIK KONDISIONAL -->
                         <div id="audit-btn-container" class="flex-1 min-w-[180px]">
                             <!-- Render via JS berdasarkan Umur/Fase -->
                         </div>
@@ -314,24 +300,6 @@
 
                 </section>
 
-                <!-- TOOLBAR PROGRES UMUR & TRANSISI FASE OTOMATIS -->
-                <div class="glass-panel rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4 border border-purple-500/30">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-purple-950/80 border border-purple-500/40 flex items-center justify-center text-purple-300 text-lg">
-                            <i class="fa-solid fa-forward-step"></i>
-                        </div>
-                        <div>
-                            <h4 class="text-xs font-bold font-tech text-white uppercase">SISTEM PROSES PENDIDIKAN OTOMATIS</h4>
-                            <p class="text-[11px] text-slate-400">Bertambahnya umur akan melanjutkannya ke fase berikutnya secara fleksibel tanpa dikategorikan terpisah.</p>
-                        </div>
-                    </div>
-
-                    <button onclick="advanceAge(1)" class="px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-tech text-xs font-bold uppercase tracking-wider shadow-lg transition-all cursor-pointer flex items-center gap-2">
-                        <span>Tambah Umur (+1 Tahun)</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-                </div>
-
                 <!-- SINGLE FRAME DENGAN PILIHAN AKSI SESUAI UMUR SAAT INI -->
                 <div id="current-phase-frame" class="space-y-4">
                     <!-- Konten Aksi Diisi Otomatis Menurut Umur Karakter -->
@@ -339,7 +307,7 @@
 
             </div>
 
-            <!-- Right Column: Log Peristiwa Aktivitas Pendidikan (Tersinkronisasi dengan Halaman Utama) -->
+            <!-- Right Column: Log Peristiwa Aktivitas Pendidikan -->
             <div class="lg:col-span-4 flex flex-col space-y-6">
                 
                 <div class="glass-panel rounded-3xl p-6 border border-purple-500/30 shadow-xl flex flex-col h-[580px]">
@@ -372,26 +340,29 @@
 
     </main>
 
-    <!-- POPUP ACTION RESULT MODAL -->
-    <div id="action-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
-        <div class="glass-panel w-full max-w-lg rounded-3xl p-6 border border-purple-500/40 shadow-2xl relative transform scale-95 transition-transform duration-300" id="action-modal-card">
+    <!-- POPUP ACTION RESULT / LAPORAN EVALUASI MODAL -->
+    <div id="action-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md hidden opacity-0 transition-opacity duration-300 overflow-y-auto">
+        <div class="glass-panel w-full max-w-2xl rounded-3xl p-6 sm:p-8 border border-purple-500/40 shadow-2xl relative transform scale-95 transition-transform duration-300 my-8" id="action-modal-card">
             
-            <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center justify-between mb-4 border-b border-white/10 pb-3">
                 <span id="action-category-badge" class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-purple-950 text-purple-300 border border-purple-500/40 uppercase">
                     [PENDIDIKAN]
                 </span>
                 <span class="text-xs font-mono text-slate-400" id="action-year-badge">TAHUN 2026</span>
             </div>
 
-            <h3 id="action-title" class="text-xl font-bold font-tech text-white mb-2">
-                Hasil Aksi Akademik
-            </h3>
+            <!-- Modal Content Injector -->
+            <div id="modal-body-container">
+                <h3 id="action-title" class="text-xl font-bold font-tech text-white mb-2">
+                    Hasil Aksi Akademik
+                </h3>
 
-            <p id="action-desc" class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6 font-light">
-                Deskripsi hasil aksi yang dilakukan...
-            </p>
+                <p id="action-desc" class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6 font-light">
+                    Deskripsi hasil aksi yang dilakukan...
+                </p>
+            </div>
 
-            <button onclick="closeActionModal()" class="w-full py-3 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-tech font-bold text-xs uppercase tracking-wider shadow-lg cursor-pointer">
+            <button onclick="closeActionModal()" class="w-full mt-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-tech font-bold text-xs uppercase tracking-wider shadow-lg cursor-pointer">
                 Tutup & Lanjutkan Simulasi
             </button>
 
@@ -421,18 +392,16 @@
         let playerIQ = 135;
         let learningMultiplier = 2.0;
         let resilienceScore = 88;
-        let alumniContacts = 14;
         let riskScore = 12;
         let hasStudentLoan = false;
-        let activeDegree = "Belum Ada Gelar";
-        let activeJob = "Pelajar SD";
+        let activeDegree = "Siswa Sekolah Dasar";
         let passiveRoyalty = 0;
 
         function formatCurrency(amount) {
             return 'Rp ' + amount.toLocaleString('id-ID');
         }
 
-        // --- SISTEM LOG TERPUSAT (LOKAL STORAGE UNTUK SINKRONISASI BERANDA & MODUL) ---
+        // --- SISTEM LOG TERPUSAT ---
         function getSharedLogs() {
             const logs = localStorage.getItem('kanvas_logs');
             if (logs) {
@@ -504,12 +473,10 @@
             document.getElementById('hud-balance').innerText = formatCurrency(playerBalance);
             document.getElementById('stat-multiplier').innerText = `${learningMultiplier.toFixed(1)}x (Prodigy)`;
             document.getElementById('stat-resilience').innerText = `${resilienceScore} / 100`;
-            document.getElementById('stat-contacts').innerText = `${alumniContacts} Kontak Elit`;
             document.getElementById('stat-risk').innerText = `${riskScore}% (${riskScore > 40 ? 'Tinggi' : 'Rendah'})`;
             document.getElementById('orb-iq-display').innerText = `IQ ${playerIQ}`;
 
-            // Profil Inline (Langsung Tampil di Halaman)
-            document.getElementById('profile-job').innerText = activeJob;
+            // Profil Inline (Tanpa Nama & Pekerjaan)
             document.getElementById('profile-degree').innerText = activeDegree;
             document.getElementById('profile-royalty').innerText = `${formatCurrency(passiveRoyalty)} / Bln`;
             document.getElementById('profile-loan').innerText = hasStudentLoan ? "Aktif (Beban 25%)" : "Bebas Utang";
@@ -533,21 +500,19 @@
                 `;
             }
 
-            // Render Frame Aksi Berdasarkan Umur
             renderCurrentPhaseFrame();
         }
 
-        // --- MANAJEMEN FASE PENDIDIKAN DENGAN SISTEM PROSES OTOMATIS BERDASARKAN UMUR ---
+        // --- MANAJEMEN FASE PENDIDIKAN BERDASARKAN UMUR ---
         function renderCurrentPhaseFrame() {
             const frame = document.getElementById('current-phase-frame');
             const titleEl = document.getElementById('char-edu-title');
             const descEl = document.getElementById('char-edu-desc');
 
             if (playerAge >= 4 && playerAge <= 12) {
-                activeJob = "Pelajar SD";
                 activeDegree = "Siswa Sekolah Dasar";
                 titleEl.innerText = "FASE PENDIDIKAN: PENDIDIKAN DASAR (PAUD/TK & SD)";
-                descEl.innerText = `Pekerjaan Saat Ini: ${activeJob} | Gelar: ${activeDegree}. Berfokus pada fondasi neurosains, pembentukan baseline IQ, serta resiliensi stres sejak dini.`;
+                descEl.innerText = `Gelar: ${activeDegree}. Berfokus pada fondasi neurosains, pembentukan baseline IQ, serta resiliensi stres sejak dini.`;
 
                 frame.innerHTML = `
                     <div class="glass-panel rounded-3xl p-6 border border-purple-500/30 space-y-6">
@@ -602,10 +567,9 @@
                     </div>
                 `;
             } else if (playerAge >= 13 && playerAge <= 18) {
-                activeJob = "Siswa Menengah (SMA/SMK)";
                 activeDegree = "Siswa Menengah";
                 titleEl.innerText = "FASE PENDIDIKAN: PENDIDIKAN MENENGAH (SMP & SMA/SMK)";
-                descEl.innerText = `Pekerjaan Saat Ini: ${activeJob} | Gelar: ${activeDegree}. Berfokus pada penjurusan akademik/vokasi, pengumpulan kontak jejaring alumni, serta persiapan simulator UTBK.`;
+                descEl.innerText = `Gelar: ${activeDegree}. Berfokus pada penjurusan akademik/vokasi serta persiapan simulator UTBK.`;
 
                 frame.innerHTML = `
                     <div class="glass-panel rounded-3xl p-6 border border-purple-500/30 space-y-6">
@@ -617,7 +581,7 @@
                             <span class="px-3 py-1 rounded-full text-[10px] font-mono bg-purple-950 text-purple-300 border border-purple-500/40">USIA 13–18 TAHUN</span>
                         </div>
 
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="glass-card rounded-2xl p-4 flex flex-col justify-between space-y-3 border border-white/10 hover:border-purple-500/40 transition-all">
                                 <div>
                                     <div class="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center mb-2">
@@ -628,19 +592,6 @@
                                 </div>
                                 <button onclick="executeAction('pilih_jalur_menengah')" class="w-full py-2 px-3 rounded-xl bg-blue-600/30 hover:bg-blue-600/50 border border-blue-500/40 text-blue-200 text-xs font-semibold transition-all cursor-pointer">
                                     Pilih Jalur Penjurusan
-                                </button>
-                            </div>
-
-                            <div class="glass-card rounded-2xl p-4 flex flex-col justify-between space-y-3 border border-white/10 hover:border-purple-500/40 transition-all">
-                                <div>
-                                    <div class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center mb-2">
-                                        <i class="fa-solid fa-users-viewfinder text-sm"></i>
-                                    </div>
-                                    <h4 class="font-bold text-xs text-white uppercase font-tech">Jaringan Kontak Alumni</h4>
-                                    <p class="text-[11px] text-slate-300 mt-1">Gantikan kegiatan organisasi dengan rekrutmen alumni untuk Database Kontak.</p>
-                                </div>
-                                <button onclick="executeAction('tambah_kontak_alumni')" class="w-full py-2 px-3 rounded-xl bg-cyan-600/30 hover:bg-cyan-600/50 border border-cyan-500/40 text-cyan-200 text-xs font-semibold transition-all cursor-pointer">
-                                    Rekrut Kontak (+2 Alumni)
                                 </button>
                             </div>
 
@@ -660,12 +611,11 @@
                     </div>
                 `;
             } else if (playerAge >= 19 && playerAge <= 24) {
-                if (activeDegree === "Belum Ada Gelar" || activeDegree === "Siswa Menengah") {
+                if (activeDegree === "Belum Ada Gelar" || activeDegree === "Siswa Menengah" || activeDegree === "Siswa Sekolah Dasar") {
                     activeDegree = "Sarjana Tekno-Bisnis (S.T. / S.B.)";
-                    activeJob = "Mahasiswa / Peneliti Muda";
                 }
                 titleEl.innerText = "FASE PENDIDIKAN: PENDIDIKAN TINGGI & RISET (S1–S3)";
-                descEl.innerText = `Pekerjaan Saat Ini: ${activeJob} | Gelar: ${activeDegree}. Fokus pada sidang akademik, proyek riset inovasi, penerbitan hak paten, dan risiko joki/skandal.`;
+                descEl.innerText = `Gelar: ${activeDegree}. Fokus pada sidang akademik, proyek riset inovasi, penerbitan hak paten, dan risiko joki/skandal.`;
 
                 frame.innerHTML = `
                     <div class="glass-panel rounded-3xl p-6 border border-purple-500/30 space-y-6">
@@ -691,7 +641,7 @@
                                 </button>
                             </div>
 
-                            <div class="glass-card rounded-2xl p-4 flex flex-col justify-between space-y-3 border border-white/10 hover:border-purple-500/40 transition-all">
+                            <div class="glass-card rounded-2xl p-4 flex flex-col justify-between space-y-3 border border-white/10 hover:border-emerald-500/40 transition-all">
                                 <div>
                                     <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center mb-2">
                                         <i class="fa-solid fa-award text-sm"></i>
@@ -722,10 +672,9 @@
             } else {
                 if (activeDegree === "Belum Ada Gelar" || activeDegree === "Siswa Menengah" || activeDegree === "Sarjana Tekno-Bisnis (S.T. / S.B.)") {
                     activeDegree = "Magister Manajemen Bisnis (MBA)";
-                    activeJob = "Eksekutif / Profesional Senior";
                 }
                 titleEl.innerText = "FASE PENDIDIKAN: PENDIDIKAN DEWASA & EKSEKUTIF";
-                descEl.innerText = `Pekerjaan Saat Ini: ${activeJob} | Gelar: ${activeDegree}. Pembelajaran seumur hidup, Executive Education, penanganan Skill Obsolescence, dan audit risiko reputasi.`;
+                descEl.innerText = `Gelar: ${activeDegree}. Pembelajaran seumur hidup, Executive Education, penanganan Skill Obsolescence, dan audit risiko reputasi.`;
 
                 frame.innerHTML = `
                     <div class="glass-panel rounded-3xl p-6 border border-purple-500/30 space-y-6">
@@ -769,14 +718,6 @@
             }
         }
 
-        function advanceAge(years = 1) {
-            playerAge += years;
-            currentYear += years;
-            
-            appendEventLog("PERTUMBUHAN", `Umur Bertambah ke ${playerAge} Tahun`, `Memasuki siklus tahun ${currentYear}. Fase pendidikan diperbarui secara otomatis.`);
-            updateHUD();
-        }
-
         // --- EKSEKUSI AKSI AKADEMIK ---
         function executeAction(type) {
             let title = "";
@@ -800,10 +741,6 @@
                 title = "Penjurusan SMA IPA Favorit";
                 desc = "Berfokus penuh pada konversi nilai ujian akademis untuk menembus Perguruan Tinggi Terkemuka.";
                 playerIQ += 3;
-            } else if (type === 'tambah_kontak_alumni') {
-                title = "Rekrutmen Kontak OSIS & Alumni";
-                desc = "Berhasil menambah 2 rekan alumni baru ke Database Kontak.";
-                alumniContacts += 2;
             } else if (type === 'simulasi_utbk') {
                 title = "Ujian UTBK & Manajemen Burnout";
                 desc = "Mengalokasikan Bimbel mahal dan istirahat optimal. Skor UTBK mencapai persentil 99.8%!";
@@ -825,7 +762,6 @@
                 title = "Pendaftaran Executive MBA Selesai";
                 desc = "Investasi pada Executive MBA membuka kualifikasi promosi langsung ke jabatan C-Level!";
                 activeDegree = "Executive MBA";
-                activeJob = "Direktur / C-Level Executive";
                 playerBalance -= 250000000;
             } else if (type === 'joki_akademik') {
                 title = "Jalur Ilegal Joki Akademik";
@@ -838,31 +774,113 @@
             openActionModal(category, title, desc);
         }
 
-        // --- TOMBOL UJIAN EVALUASI STAT KARAKTER ---
+        // --- TOMBOL UJIAN EVALUASI STAT KARAKTER (TAMPILAN LAPORAN RESMI) ---
         function runOverallExam() {
             let totalScore = playerIQ + (learningMultiplier * 15) + (resilienceScore * 0.5) - (riskScore * 0.8);
             let grade = "C";
-            let status = "Cukup";
+            let statusBadge = "";
+            let badgeBg = "";
+            let narrativeNote = "";
+            let strategicWarning = "";
 
             if (totalScore >= 180) {
-                grade = "A+ (Summa Cum Laude)";
-                status = "Sempurna! Seluruh stat berada dalam kondisi unggul tanpa hambatan.";
+                grade = "SUMMA CUM LAUDE (A+)";
+                statusBadge = "VERIFIED / DISTINCTION";
+                badgeBg = "border-emerald-500/50 bg-emerald-950/80 text-emerald-300";
+                narrativeNote = "Subjek menunjukkan baseline kecerdasan dan resiliensi di atas rata-rata populasi. Daya tahan mental mampu menopang beban kerja akselerasi tanpa hambatan.";
+                strategicWarning = "Pertahankan tingkat pemulihan mental secara teratur. Pikiran yang fokus memang berguna, tetapi pikiran yang segar adalah jalannya.";
             } else if (totalScore >= 150) {
-                grade = "A (Magna Cum Laude)";
-                status = "Sangat Baik! Kombinasi IQ dan resiliensi Anda sangat solid.";
+                grade = "MAGNA CUM LAUDE (A)";
+                statusBadge = "APPROVED / HIGH PERFORMANCE";
+                badgeBg = "border-cyan-500/50 bg-cyan-950/80 text-cyan-300";
+                narrativeNote = "Perkembangan akademis sangat solid. Kombinasi kecerdasan dan pengelolaan stres berada dalam ambang batas optimal.";
+                strategicWarning = "Perhatikan akumulasi Risk Score jika berencana mengambil langkah akademis yang lebih berisiko.";
             } else if (totalScore >= 120) {
-                grade = "B (Lulus Memuaskan)";
-                status = "Memuaskan, namun disarankan meningkatkan resiliensi atau menurunkan Risk Score.";
+                grade = "SATISFACTORY (B)";
+                statusBadge = "APPROVED / STANDARDIZED";
+                badgeBg = "border-amber-500/50 bg-amber-950/80 text-amber-300";
+                narrativeNote = "Perkembangan stabil, namun resiliensi atau kecepatan belajar memerlukan pengkondisian lebih lanjut agar mencapai performa puncak.";
+                strategicWarning = "Tingkatkan pelatihan resiliensi stres untuk mencegah kepenuhan beban di fase mendatang.";
             } else {
-                grade = "D (Evaluasi Ulang)";
-                status = "Risiko akademik atau tingkat tekanan menghambat potensi maksimal Anda.";
+                grade = "ACADEMIC AUDIT NEEDED (D)";
+                statusBadge = "WARNING / HIGH RISK";
+                badgeBg = "border-rose-500/50 bg-rose-950/80 text-rose-300";
+                narrativeNote = "Terdeteksi ketidakseimbangan signifikan antara tekanan beban kerja dan kapasitas ketahanan mental subjek.";
+                strategicWarning = "Intervensi preventif diperlukan segera untuk meminimalisir potensi Burnout/Fatal Error.";
             }
 
-            let title = `Hasil Ujian Stat: Predikat ${grade}`;
-            let desc = `Evaluasi Total Skor Akademik: ${Math.round(totalScore)} Poin. ${status} [IQ: ${playerIQ} | Resiliensi: ${resilienceScore} | Risk: ${riskScore}%]`;
+            const docNumber = `DOC-${currentYear}/ED-${playerAge}/IQ-${playerIQ}`;
 
-            appendEventLog("UJIAN KOMPREHENSIF", title, desc);
-            openActionModal("UJIAN STAT", title, desc);
+            const htmlReport = `
+                <div class="font-mono text-xs text-slate-200 space-y-5 bg-slate-950/90 p-5 rounded-2xl border border-purple-500/30">
+                    
+                    <!-- HEADER LAPORAN -->
+                    <div class="border-b border-purple-500/30 pb-4 text-center space-y-1">
+                        <div class="text-[10px] text-purple-400 font-bold uppercase tracking-widest">KANVAS HIDUP ENGINE — ACADEMIC EVALUATION BOARD</div>
+                        <h2 class="text-sm sm:text-base font-bold font-tech text-white uppercase tracking-wider">TRANSKRIP EVALUASI NEUROSAINS & STAT</h2>
+                        <div class="flex flex-wrap items-center justify-between gap-2 text-[10px] text-slate-400 pt-2 font-mono">
+                            <span>NO. DOK: <span class="text-purple-300 font-bold">${docNumber}</span></span>
+                            <span class="px-2 py-0.5 rounded border text-[9px] font-bold ${badgeBg}">${statusBadge}</span>
+                        </div>
+                    </div>
+
+                    <!-- METRIKS STAT VISUAL BAR -->
+                    <div class="space-y-3 font-mono">
+                        <div>
+                            <div class="flex justify-between text-[11px] mb-1">
+                                <span class="text-slate-400">[IQ METRIC]</span>
+                                <span class="text-cyan-300 font-bold">${playerIQ} / 200 (Prodigy Level)</span>
+                            </div>
+                            <div class="w-full bg-slate-900 rounded-full h-2 overflow-hidden border border-white/10">
+                                <div class="bg-gradient-to-r from-purple-500 to-cyan-400 h-2 rounded-full" style="width: ${Math.min(100, (playerIQ/200)*100)}%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-[11px] mb-1">
+                                <span class="text-slate-400">[RESILIENSI STRES]</span>
+                                <span class="text-emerald-300 font-bold">${resilienceScore} / 100 (Mental Armor)</span>
+                            </div>
+                            <div class="w-full bg-slate-900 rounded-full h-2 overflow-hidden border border-white/10">
+                                <div class="bg-gradient-to-r from-emerald-600 to-emerald-400 h-2 rounded-full" style="width: ${resilienceScore}%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-[11px] mb-1">
+                                <span class="text-slate-400">[RISK SCORE AUDIT]</span>
+                                <span class="text-rose-400 font-bold">${riskScore}% (Tingkat Risiko)</span>
+                            </div>
+                            <div class="w-full bg-slate-900 rounded-full h-2 overflow-hidden border border-white/10">
+                                <div class="bg-gradient-to-r from-rose-600 to-rose-400 h-2 rounded-full" style="width: ${riskScore}%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CATATAN ANALISIS -->
+                    <div class="border-t border-purple-500/20 pt-3 space-y-1">
+                        <div class="text-[10px] text-purple-400 font-bold uppercase">1. ANALISIS EVALUATOR SISTEM</div>
+                        <p class="text-[11px] text-slate-300 leading-relaxed font-sans">${narrativeNote}</p>
+                    </div>
+
+                    <!-- INTERVENSI PREVENTIF -->
+                    <div class="border-t border-purple-500/20 pt-3 space-y-1">
+                        <div class="text-[10px] text-amber-400 font-bold uppercase">2. REKOMENDASI STRATEGIS (PREVENTIF)</div>
+                        <p class="text-[11px] text-amber-200/90 leading-relaxed font-sans">${strategicWarning}</p>
+                    </div>
+
+                    <!-- FOOTER VERIFIKASI -->
+                    <div class="border-t border-purple-500/30 pt-3 text-center text-[9px] text-slate-500">
+                        [ VERIFIED BY KANVAS HIDUP ENGINE AUTOMATED SYSTEM • TAHUN ${currentYear} ]
+                    </div>
+                </div>
+            `;
+
+            let logTitle = `Evaluasi Stat: Predikat ${grade}`;
+            let logDesc = `Total Skor Akademik: ${Math.round(totalScore)} Poin. [IQ: ${playerIQ} | Resiliensi: ${resilienceScore} | Risk: ${riskScore}%]`;
+
+            appendEventLog("UJIAN EVALUASI", logTitle, logDesc);
+            openCustomModal("LAPORAN EVALUASI RESMI", htmlReport);
         }
 
         // --- CEK AUDIT AKADEMIK INDEPENDEN ---
@@ -891,9 +909,27 @@
         function openActionModal(category, title, desc) {
             document.getElementById('action-category-badge').innerText = `[${category}]`;
             document.getElementById('action-year-badge').innerText = `TAHUN ${currentYear}`;
-            document.getElementById('action-title').innerText = title;
-            document.getElementById('action-desc').innerText = desc;
+            
+            const container = document.getElementById('modal-body-container');
+            container.innerHTML = `
+                <h3 class="text-xl font-bold font-tech text-white mb-2">${title}</h3>
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6 font-light">${desc}</p>
+            `;
 
+            showModal();
+        }
+
+        function openCustomModal(category, htmlContent) {
+            document.getElementById('action-category-badge').innerText = `[${category}]`;
+            document.getElementById('action-year-badge').innerText = `TAHUN ${currentYear}`;
+            
+            const container = document.getElementById('modal-body-container');
+            container.innerHTML = htmlContent;
+
+            showModal();
+        }
+
+        function showModal() {
             const modal = document.getElementById('action-modal');
             const modalCard = document.getElementById('action-modal-card');
 
