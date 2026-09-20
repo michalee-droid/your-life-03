@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sektor Pekerjaan & Karir - Kanvas Hidup</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts: Inter & Orbitron -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        tech: ['Orbitron', 'sans-serif'],
+                    },
+                    colors: {
+                        cyber: {
+                            bg: '#040711',
+                            card: 'rgba(11, 17, 32, 0.6)',
+                            border: 'rgba(255, 255, 255, 0.12)',
+                            cyan: '#00F2FE',
+                            purple: '#8B5CF6',
+                            gold: '#F59E0B',
+                            emerald: '#10B981',
+                            rose: '#F43F5E'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #040711;
+            color: #E2E8F0;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .bg-luxury-overlay {
+            background-image: 
+                radial-gradient(circle at 50% 20%, rgba(0, 242, 254, 0.15) 0%, transparent 60%),
+                radial-gradient(circle at 85% 70%, rgba(139, 92, 246, 0.12) 0%, transparent 55%),
+                radial-gradient(circle at 15% 85%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+                linear-gradient(to bottom, rgba(4, 7, 17, 0.65), rgba(4, 7, 17, 0.85)),
+                url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .glass-panel {
+            background: rgba(11, 18, 33, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .glass-card {
+            background: rgba(15, 23, 42, 0.50);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 5px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(10, 15, 30, 0.3);
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(0, 242, 254, 0.4);
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 242, 254, 0.7);
+        }
+
+        .glow-text-cyan { text-shadow: 0 0 15px rgba(0, 242, 254, 0.6); }
+        .glow-text-gold { text-shadow: 0 0 15px rgba(245, 158, 11, 0.6); }
+        .glow-text-emerald { text-shadow: 0 0 15px rgba(16, 185, 129, 0.6); }
+        .glow-text-rose { text-shadow: 0 0 15px rgba(244, 63, 94, 0.6); }
+    </style>
+</head>
+<body class="bg-luxury-overlay min-h-screen flex flex-col justify-between relative selection:bg-cyan-500 selection:text-slate-950">
+
+    <!-- TOP HUD BAR MEWAH -->
+    <header class="w-full glass-panel sticky top-0 z-40 border-b border-white/10 px-4 sm:px-6 py-2.5">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3 sm:gap-4">
+            
+            <!-- Branding Label Kiri -->
+            <div class="flex items-center gap-3">
+                <a href="index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+                    <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse"></span>
+                    <span class="font-bold font-tech text-white text-sm sm:text-base tracking-widest uppercase">KANVAS HIDUP</span>
+                </a>
+                <span class="text-slate-600">/</span>
+                <span class="text-xs font-mono text-cyan-400 bg-cyan-950/80 px-2.5 py-1 rounded-md border border-cyan-500/30 uppercase tracking-wider">SEKTOR 02: PEKERJAAN</span>
+            </div>
+
+            <!-- HUD Info Container Kanan -->
+            <div class="flex items-center gap-3 sm:gap-4">
+
+                <!-- MODUL SALDO PEMAIN -->
+                <div class="flex items-center gap-3 bg-gradient-to-r from-emerald-950/80 via-slate-900/90 to-emerald-950/80 px-3.5 sm:px-4 py-1.5 rounded-xl border border-emerald-500/40 shadow-[0_0_15px_rgba(16,185,129,0.15)]">
+                    <div class="w-8 h-8 rounded-lg bg-emerald-500/20 border border-emerald-400/40 flex items-center justify-center text-emerald-400">
+                        <i class="fa-solid fa-wallet text-sm glow-text-emerald"></i>
+                    </div>
+                    <div class="text-left">
+                        <div class="text-[9px] text-emerald-400/80 font-mono uppercase tracking-wider">Balance</div>
+                        <div class="text-xs sm:text-sm font-bold font-tech text-emerald-300 glow-text-emerald leading-none" id="hud-balance">
+                            Rp 2.450.000.000
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Year Indicator -->
+                <div class="flex items-center gap-3 bg-slate-900/60 px-3.5 sm:px-4 py-1.5 rounded-xl border border-amber-500/30 shadow-inner">
+                    <i class="fa-solid fa-calendar-days text-amber-400 text-sm"></i>
+                    <div class="text-right">
+                        <div class="text-[9px] text-slate-400 font-mono uppercase tracking-wider">Tahun</div>
+                        <div class="text-xs sm:text-sm font-bold font-tech text-amber-300 glow-text-gold leading-none" id="hud-year">TAHUN 2026</div>
+                    </div>
+                </div>
+
+                <!-- Navigasi Drawer Toggle Button -->
+                <button onclick="toggleModuleDrawer()" class="w-9 h-9 rounded-xl bg-slate-900/80 border border-cyan-500/40 text-cyan-300 hover:bg-cyan-950 flex items-center justify-center transition-all cursor-pointer">
+                    <i class="fa-solid fa-bars-staggered text-sm"></i>
+                </button>
+
+            </div>
+
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-6 flex-1 w-full space-y-8">
+
+        <!-- HEADER BANNER SEKTOR PEKERJAAN -->
+        <section class="glass-panel rounded-3xl p-6 sm:p-8 relative overflow-hidden border border-blue-500/40 shadow-2xl">
+            <div class="absolute -top-24 -right-24 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative z-10">
+                <div class="space-y-2">
+                    <div class="inline-flex items-center gap-2 px-3 py-0.5 rounded-full bg-blue-950/80 border border-blue-500/40 text-blue-300 text-xs font-mono">
+                        <i class="fa-solid fa-scale-balanced text-cyan-400"></i> REALITAS HUKUM PASAR KERJA
+                    </div>
+                    <h1 class="text-2xl sm:text-3xl font-black font-tech text-white uppercase tracking-wider glow-text-cyan">
+                        PUSAT KARIR & NILAI OBJEKTIF
+                    </h1>
+                    <p class="text-slate-300 text-xs sm:text-sm max-w-2xl leading-relaxed font-light">
+                        Pasar tidak peduli pada keringat atau niat baik Anda. Nilai ekonomis murni ditentukan oleh <strong class="text-cyan-300">Tingkat Kesulitan Digantikan (Replaceability Index)</strong>. Kelola portofolio skill langka, jaga visibilitas output, dan cegah kesalahan fatal dengan pikiran segar.
+                    </p>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <button onclick="triggerAgeAdvance()" class="px-5 py-3 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-tech font-bold text-xs uppercase tracking-wider shadow-lg transition-all cursor-pointer border border-cyan-300/30 active:scale-95">
+                        <i class="fa-solid fa-hourglass-start mr-2"></i> Simulasi +1 Tahun
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- MAIN DASHBOARD GRID -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- LEFT COLUMN: KARIR SAAT INI & AKSI STRATEGIS (8 COLS) -->
+            <div class="lg:col-span-8 space-y-6">
+                
+                <!-- CARD PEKERJAAN AKTIF SAAT INI -->
+                <div class="glass-panel rounded-3xl p-6 border border-cyan-500/40 shadow-xl relative overflow-hidden">
+                    <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-2xl bg-blue-500/20 border border-blue-400/40 flex items-center justify-center text-blue-400 text-xl shadow-inner">
+                                <i class="fa-solid fa-user-tie"></i>
+                            </div>
+                            <div>
+                                <span class="text-[10px] font-mono text-cyan-400 tracking-widest uppercase block">POSISI AKTIF SAAT INI</span>
+                                <h2 class="text-xl font-bold font-tech text-white uppercase" id="job-title">Managing Director / CEO</h2>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-xs font-mono bg-emerald-950/80 text-emerald-300 border border-emerald-500/40" id="job-status-badge">
+                            TERKONTRAK ELIT
+                        </span>
+                    </div>
+
+                    <!-- METRIK KARIR UTAMA -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                        <div class="p-4 rounded-2xl bg-slate-900/60 border border-white/10">
+                            <span class="text-[10px] font-mono text-slate-400 uppercase block mb-1">
+                                <i class="fa-solid fa-money-bill-wave text-emerald-400 mr-1"></i> Gaji Tahunan
+                            </span>
+                            <div class="text-base font-bold font-tech text-emerald-300 glow-text-emerald" id="job-salary">
+                                Rp 850.000.000 / Thn
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-slate-900/60 border border-white/10">
+                            <span class="text-[10px] font-mono text-slate-400 uppercase block mb-1">
+                                <i class="fa-solid fa-shield-halved text-cyan-400 mr-1"></i> Replaceability Index
+                            </span>
+                            <div class="text-base font-bold font-tech text-cyan-300 glow-text-cyan" id="job-replaceability-value">
+                                85% (Sangat Langka)
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-slate-900/60 border border-white/10">
+                            <span class="text-[10px] font-mono text-slate-400 uppercase block mb-1">
+                                <i class="fa-solid fa-eye text-purple-400 mr-1"></i> Visibilitas Dampak
+                            </span>
+                            <div class="text-base font-bold font-tech text-purple-300" id="job-visibility-value">
+                                High Executive (75%)
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MODUL AKSI HARI INI / INTERVENSI KARIR -->
+                    <h3 class="text-xs font-bold font-tech text-slate-300 uppercase tracking-wider mb-3">
+                        <i class="fa-solid fa-gamepad text-cyan-400 mr-1.5"></i> INTERVENSI STRATEGIS KARIR
+                    </h3>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        
+                        <!-- 1. Work Harder (Warning Option) -->
+                        <button onclick="performCareerAction('work_hard')" class="p-3.5 rounded-2xl bg-slate-900/70 border border-white/10 hover:border-amber-500/60 hover:bg-amber-950/20 text-left transition-all group cursor-pointer">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-xs font-bold font-tech text-amber-300 group-hover:text-amber-200">
+                                    <i class="fa-solid fa-fire text-amber-400 mr-1.5"></i> Lembur & "Work Harder"
+                                </span>
+                                <span class="text-[9px] font-mono text-rose-400 bg-rose-950/60 px-1.5 py-0.5 rounded">+15% Burnout</span>
+                            </div>
+                            <p class="text-[10px] text-slate-400 leading-normal">
+                                Membuang energi tanpa menaikkan nilai. Output naik sedikit, tapi risiko kesalahan fatal meningkat tajam.
+                            </p>
+                        </button>
+
+                        <!-- 2. Upskill Kelangkaan Skill -->
+                        <button onclick="performCareerAction('upskill')" class="p-3.5 rounded-2xl bg-slate-900/70 border border-white/10 hover:border-cyan-400 hover:bg-cyan-950/20 text-left transition-all group cursor-pointer">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-xs font-bold font-tech text-cyan-300 group-hover:text-cyan-200">
+                                    <i class="fa-solid fa-brain text-cyan-400 mr-1.5"></i> Asah Skill Kelangkaan
+                                </span>
+                                <span class="text-[9px] font-mono text-cyan-400 bg-cyan-950/60 px-1.5 py-0.5 rounded">+Replaceability</span>
+                            </div>
+                            <p class="text-[10px] text-slate-400 leading-normal">
+                                Menguatkan *barrier to entry*. Meminimalkan risiko penggantian Anda di pasar kerja.
+                            </p>
+                        </button>
+
+                        <!-- 3. Navigasi Politik & Visibilitas -->
+                        <button onclick="performCareerAction('networking')" class="p-3.5 rounded-2xl bg-slate-900/70 border border-white/10 hover:border-purple-400 hover:bg-purple-950/20 text-left transition-all group cursor-pointer">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-xs font-bold font-tech text-purple-300 group-hover:text-purple-200">
+                                    <i class="fa-solid fa-network-wired text-purple-400 mr-1.5"></i> Kelola Visibilitas & Relasi
+                                </span>
+                                <span class="text-[9px] font-mono text-purple-400 bg-purple-950/60 px-1.5 py-0.5 rounded">+Promosi</span>
+                            </div>
+                            <p class="text-[10px] text-slate-400 leading-normal">
+                                Pastikan hasil kerja keras Anda mengalir ke pengambil keputusan, bukan diklaim orang lain.
+                            </p>
+                        </button>
+
+                        <!-- 4. Istirahat Strategis (Pikiran Segar) -->
+                        <button onclick="performCareerAction('rest')" class="p-3.5 rounded-2xl bg-slate-900/70 border border-white/10 hover:border-emerald-400 hover:bg-emerald-950/20 text-left transition-all group cursor-pointer">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-xs font-bold font-tech text-emerald-300 group-hover:text-emerald-200">
+                                    <i class="fa-solid fa-mug-hot text-emerald-400 mr-1.5"></i> Istirahat Strategis
+                                </span>
+                                <span class="text-[9px] font-mono text-emerald-400 bg-emerald-950/60 px-1.5 py-0.5 rounded">-25% Burnout</span>
+                            </div>
+                            <p class="text-[10px] text-slate-400 leading-normal">
+                                Menjaga pikiran tetap segar. Mencegah satu kesalahan fatal yang bisa merusak 100 prestasi.
+                            </p>
+                        </button>
+
+                    </div>
+                </div>
+
+                <!-- BURSA KERJA & JALUR KARIR (REPLACEABILITY TIERS) -->
+                <div class="glass-panel rounded-3xl p-6 border border-cyan-500/30 shadow-xl">
+                    <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
+                        <div>
+                            <h3 class="text-base font-bold font-tech text-white uppercase tracking-wider">
+                                BURSA PEKERJAAN & PASAR TALENTA
+                            </h3>
+                            <p class="text-[11px] text-slate-400 font-mono">PILIH PEKERJAAN BERDASARKAN SYARAT KELANGKAAN & BARRIER TO ENTRY</p>
+                        </div>
+                        <span class="text-xs font-mono text-cyan-400"><i class="fa-solid fa-briefcase mr-1"></i> 3 TIER TERSEDIA</span>
+                    </div>
+
+                    <!-- JOB LIST TIERS -->
+                    <div class="space-y-4" id="job-market-list">
+                        
+                        <!-- Tier 1: High Replaceability -->
+                        <div class="p-4 rounded-2xl bg-slate-900/60 border border-rose-500/30 hover:border-rose-400 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <div class="space-y-1">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-[9px] font-mono px-2 py-0.5 rounded bg-rose-950/80 text-rose-300 border border-rose-500/40">TIER 1: MUDAH DIGANTIKAN</span>
+                                    <span class="text-[10px] text-slate-400 font-mono">Syarat: Tidak Ada</span>
+                                </div>
+                                <h4 class="font-bold font-tech text-sm text-slate-100">Staf Administrasi & Data Entry</h4>
+                                <p class="text-[11px] text-slate-400">Gaji: Rp 4.500.000 / Bulan (Rp 54 JT/Thn) • Replaceability Index: 10% (Sangat Rawan)</p>
+                            </div>
+                            <button onclick="applyJob('Staf Administrasi', 54000000, 10)" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-rose-900/60 text-rose-300 border border-rose-500/40 font-mono text-xs cursor-pointer transition-all shrink-0">
+                                Melamar Pekerjaan
+                            </button>
+                        </div>
+
+                        <!-- Tier 2: Mid Replaceability -->
+                        <div class="p-4 rounded-2xl bg-slate-900/60 border border-amber-500/30 hover:border-amber-400 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <div class="space-y-1">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-[9px] font-mono px-2 py-0.5 rounded bg-amber-950/80 text-amber-300 border border-amber-500/40">TIER 2: KEHALIAN SPESIALIS</span>
+                                    <span class="text-[10px] text-slate-400 font-mono">Syarat: Replaceability > 50%</span>
+                                </div>
+                                <h4 class="font-bold font-tech text-sm text-slate-100">Senior Financial Analyst & Risk Lead</h4>
+                                <p class="text-[11px] text-slate-400">Gaji: Rp 28.000.000 / Bulan (Rp 336 JT/Thn) • Replaceability Index: 55% (Menengah)</p>
+                            </div>
+                            <button onclick="applyJob('Senior Financial Analyst', 336000000, 55)" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-amber-900/60 text-amber-300 border border-amber-500/40 font-mono text-xs cursor-pointer transition-all shrink-0">
+                                Melamar Pekerjaan
+                            </button>
+                        </div>
+
+                        <!-- Tier 3: Low Replaceability / Elit -->
+                        <div class="p-4 rounded-2xl bg-slate-900/60 border border-emerald-500/30 hover:border-emerald-400 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <div class="space-y-1">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-[9px] font-mono px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-300 border border-emerald-500/40">TIER 3: SANGAT LANGKA (ELIT)</span>
+                                    <span class="text-[10px] text-slate-400 font-mono">Syarat: Replaceability > 75%</span>
+                                </div>
+                                <h4 class="font-bold font-tech text-sm text-slate-100">Managing Director / Chief Executive Officer</h4>
+                                <p class="text-[11px] text-slate-400">Gaji: Rp 70.800.000 / Bulan (Rp 850 JT/Thn) • Replaceability Index: 85% (Tinggi)</p>
+                            </div>
+                            <button onclick="applyJob('Managing Director / CEO', 850000000, 85)" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-emerald-900/60 text-emerald-300 border border-emerald-500/40 font-mono text-xs cursor-pointer transition-all shrink-0">
+                                Posisi Aktif
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- RIGHT COLUMN: INDIKATOR REALITAS & EVENT LOG (4 COLS) -->
+            <div class="lg:col-span-4 space-y-6">
+                
+                <!-- MONITOR INDIKATOR OBJEKTIF -->
+                <div class="glass-panel rounded-3xl p-6 border border-cyan-500/30 shadow-xl">
+                    <h3 class="text-xs font-bold font-tech text-white uppercase tracking-wider mb-4 pb-3 border-b border-white/10">
+                        <i class="fa-solid fa-chart-pie text-cyan-400 mr-1.5"></i> INDIKATOR PERFORMANSA REALITAS
+                    </h3>
+
+                    <!-- BAR 1: BURNOUT LEVEL -->
+                    <div class="space-y-2 mb-4">
+                        <div class="flex justify-between text-xs font-mono">
+                            <span class="text-slate-300"><i class="fa-solid fa-heart-pulse text-rose-400 mr-1"></i> Tingkat Burnout</span>
+                            <span class="text-rose-400 font-bold" id="burnout-percent">25%</span>
+                        </div>
+                        <div class="w-full bg-slate-900 rounded-full h-2.5 overflow-hidden border border-white/10">
+                            <div class="bg-gradient-to-r from-emerald-400 via-amber-400 to-rose-500 h-2.5 rounded-full transition-all duration-500" id="burnout-bar" style="width: 25%"></div>
+                        </div>
+                        <p class="text-[9px] text-slate-400 font-mono">Pikiran segar meminimalkan risiko kesalahan fatal.</p>
+                    </div>
+
+                    <!-- BAR 2: REPLACEABILITY INDEX -->
+                    <div class="space-y-2 mb-4">
+                        <div class="flex justify-between text-xs font-mono">
+                            <span class="text-slate-300"><i class="fa-solid fa-gem text-cyan-400 mr-1"></i> Kelangkaan Skill</span>
+                            <span class="text-cyan-400 font-bold" id="replaceability-percent">85%</span>
+                        </div>
+                        <div class="w-full bg-slate-900 rounded-full h-2.5 overflow-hidden border border-white/10">
+                            <div class="bg-cyan-400 h-2.5 rounded-full transition-all duration-500 shadow-[0_0_10px_rgba(0,242,254,0.5)]" id="replaceability-bar" style="width: 85%"></div>
+                        </div>
+                        <p class="text-[9px] text-slate-400 font-mono">Makin tinggi, makin sulit perusahaan menggantikan Anda.</p>
+                    </div>
+
+                    <!-- BAR 3: VISIBILITAS KANTOR -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-xs font-mono">
+                            <span class="text-slate-300"><i class="fa-solid fa-bullhorn text-purple-400 mr-1"></i> Visibilitas Hasil</span>
+                            <span class="text-purple-400 font-bold" id="visibility-percent">75%</span>
+                        </div>
+                        <div class="w-full bg-slate-900 rounded-full h-2.5 overflow-hidden border border-white/10">
+                            <div class="bg-purple-500 h-2.5 rounded-full transition-all duration-500" id="visibility-bar" style="width: 75%"></div>
+                        </div>
+                        <p class="text-[9px] text-slate-400 font-mono">Kerja keras tanpa visibilitas = Eksploitasi.</p>
+                    </div>
+
+                </div>
+
+                <!-- LOG PERISTIWA KARIR -->
+                <div class="glass-panel rounded-3xl p-6 border border-cyan-500/30 shadow-xl flex flex-col h-[420px]">
+                    <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-4">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-blue-400 animate-pulse"></span>
+                            <h3 class="text-xs font-bold font-tech text-white uppercase tracking-wider">LOG PERISTIWA KARIR</h3>
+                        </div>
+                        <button onclick="clearEventLogs()" class="text-[10px] font-mono text-slate-400 hover:text-cyan-300">
+                            <i class="fa-solid fa-rotate-left"></i> CLEAR
+                        </button>
+                    </div>
+
+                    <div class="flex-1 overflow-y-auto custom-scrollbar space-y-3 pr-1" id="career-log-container">
+                        <div class="p-3 rounded-xl bg-slate-900/60 border border-blue-500/30">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-[9px] font-mono text-blue-400 border border-blue-500/30 px-2 py-0.5 rounded bg-blue-950/70">KARIR AKTIF</span>
+                                <span class="text-[10px] font-mono text-slate-400">THN 2026</span>
+                            </div>
+                            <p class="text-xs font-semibold text-slate-100">Menjabat Managing Director</p>
+                            <p class="text-[11px] text-slate-300 mt-0.5">Mengarahkan strategi eksekutif perusahaan dengan Replaceability Index 85%.</p>
+                        </div>
+                    </div>
+
+                    <div class="pt-3 border-t border-white/10 text-[10px] font-mono text-slate-400 flex items-center justify-between">
+                        <span><i class="fa-solid fa-terminal text-blue-400 mr-1"></i> REALITAS KERJA</span>
+                        <span class="text-emerald-400">MONITORING</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- MODAL 1: PROFIL KARAKTER DOSSIER -->
+    <div id="profile-modal" onclick="closeProfileModal()" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+        <div onclick="event.stopPropagation()" id="profile-modal-card" class="glass-panel w-full max-w-3xl rounded-3xl p-6 sm:p-8 border border-cyan-500/40 shadow-2xl relative transform scale-95 transition-transform duration-300 max-h-[90vh] overflow-y-auto custom-scrollbar">
+            
+            <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-cyan-950/80 border border-cyan-500/40 flex items-center justify-center text-cyan-300 text-lg">
+                        <i class="fa-solid fa-id-card"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-base sm:text-lg font-bold font-tech text-white uppercase tracking-wider">DOSIER KARAKTER</h3>
+                        <p class="text-[11px] text-slate-400 font-mono">IDENTITAS DAN ATRIBUT EKSEKUTIF</p>
+                    </div>
+                </div>
+                <button onclick="closeProfileModal()" class="w-9 h-9 rounded-xl bg-slate-900/70 border border-white/10 hover:border-cyan-400 text-slate-400 hover:text-white flex items-center justify-center transition-all">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3.5 text-xs">
+                <div class="p-3.5 rounded-xl bg-slate-900/60 border border-white/10">
+                    <span class="text-[10px] font-mono text-slate-400 uppercase block mb-1"><i class="fa-solid fa-signature text-cyan-400 mr-1"></i> Nama Lengkap</span>
+                    <span class="font-bold font-tech text-white text-sm">Alexander Vance</span>
+                </div>
+                <div class="p-3.5 rounded-xl bg-slate-900/60 border border-white/10">
+                    <span class="text-[10px] font-mono text-slate-400 uppercase block mb-1"><i class="fa-solid fa-hourglass-half text-amber-400 mr-1"></i> Usia</span>
+                    <span class="font-bold font-tech text-cyan-300 text-sm" id="dossier-age">25 Tahun</span>
+                </div>
+                <div class="p-3.5 rounded-xl bg-slate-900/60 border border-white/10">
+                    <span class="text-[10px] font-mono text-slate-400 uppercase block mb-1"><i class="fa-solid fa-briefcase text-blue-400 mr-1"></i> Pekerjaan</span>
+                    <span class="font-bold text-blue-300" id="dossier-job">Managing Director / CEO</span>
+                </div>
+                <div class="p-3.5 rounded-xl bg-slate-900/60 border border-white/10 sm:col-span-3">
+                    <span class="text-[10px] font-mono text-slate-400 uppercase block mb-1"><i class="fa-solid fa-vault text-emerald-400 mr-1"></i> Total Kekayaan Aset</span>
+                    <span class="font-bold text-emerald-400 font-mono text-sm" id="dossier-wealth">Rp 2.450.000.000</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: NAVIGASI MATRIKS MODUL (10 SEKTOR) -->
+    <div id="module-modal" onclick="closeModuleModal()" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+        <div onclick="event.stopPropagation()" id="module-modal-card" class="glass-panel w-full max-w-5xl rounded-3xl p-6 sm:p-8 border border-cyan-500/40 shadow-2xl relative transform scale-95 transition-transform duration-300 max-h-[90vh] overflow-y-auto custom-scrollbar">
+            
+            <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-cyan-950/80 border border-cyan-500/40 flex items-center justify-center text-cyan-300 text-lg">
+                        <i class="fa-solid fa-door-open"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-base sm:text-lg font-bold font-tech text-white uppercase tracking-wider">PUSAT NAVIGASI SEKTOR</h3>
+                        <p class="text-[11px] text-slate-400 font-mono">TELEPORTASI KE SEKTOR SIMULASI LAIN</p>
+                    </div>
+                </div>
+                <button onclick="closeModuleModal()" class="w-9 h-9 rounded-xl bg-slate-900/70 border border-white/10 hover:border-cyan-400 text-slate-400 hover:text-white flex items-center justify-center transition-all">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- 10 Modules Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <a href="pendidikan.html" class="p-4 rounded-2xl bg-slate-900/80 border border-indigo-500/30 hover:border-cyan-400 transition-all flex flex-col justify-between h-28">
+                    <div class="flex justify-between items-center"><i class="fa-solid fa-graduation-cap text-indigo-400 text-lg"></i><span class="text-[9px] font-mono text-indigo-300">SEKTOR 01</span></div>
+                    <div><h4 class="font-bold text-xs font-tech text-white">PENDIDIKAN</h4><p class="text-[10px] text-slate-400">Gelar & Keahlian</p></div>
+                </a>
+                <a href="pekerjaan.html" class="p-4 rounded-2xl bg-blue-950/80 border border-blue-400 transition-all flex flex-col justify-between h-28">
+                    <div class="flex justify-between items-center"><i class="fa-solid fa-briefcase text-blue-400 text-lg"></i><span class="text-[9px] font-mono text-blue-300">SEKTOR 02 (AKTIF)</span></div>
+                    <div><h4 class="font-bold text-xs font-tech text-cyan-300">PEKERJAAN</h4><p class="text-[10px] text-slate-300">Replaceability & Karir</p></div>
+                </a>
+                <a href="finansial.html" class="p-4 rounded-2xl bg-slate-900/80 border border-emerald-500/30 hover:border-cyan-400 transition-all flex flex-col justify-between h-28">
+                    <div class="flex justify-between items-center"><i class="fa-solid fa-chart-line text-emerald-400 text-lg"></i><span class="text-[9px] font-mono text-emerald-300">SEKTOR 03</span></div>
+                    <div><h4 class="font-bold text-xs font-tech text-white">FINANSIAL & ASET</h4><p class="text-[10px] text-slate-400">Portofolio & Investasi</p></div>
+                </a>
+                <a href="aktivitas.html" class="p-4 rounded-2xl bg-slate-900/80 border border-amber-500/30 hover:border-cyan-400 transition-all flex flex-col justify-between h-28">
+                    <div class="flex justify-between items-center"><i class="fa-solid fa-dumbbell text-amber-400 text-lg"></i><span class="text-[9px] font-mono text-amber-300">SEKTOR 04</span></div>
+                    <div><h4 class="font-bold text-xs font-tech text-white">AKTIVITAS</h4><p class="text-[10px] text-slate-400">Fisik & Hobi</p></div>
+                </a>
+                <a href="bisnis.html" class="p-4 rounded-2xl bg-slate-900/80 border border-purple-500/30 hover:border-cyan-400 transition-all flex flex-col justify-between h-28">
+                    <div class="flex justify-between items-center"><i class="fa-solid fa-rocket text-purple-400 text-lg"></i><span class="text-[9px] font-mono text-purple-300">SEKTOR 05</span></div>
+                    <div><h4 class="font-bold text-xs font-tech text-white">BISNIS & RISIKO</h4><p class="text-[10px] text-slate-400">Startup & M&A</p></div>
+                </a>
+                <a href="soul.html" class="p-4 rounded-2xl bg-slate-900/80 border border-rose-500/30 hover:border-cyan-400 transition-all flex flex-col justify-between h-28">
+                    <div class="flex justify-between items-center"><i class="fa-solid fa-yin-yang text-rose-400 text-lg"></i><span class="text-[9px] font-mono text-rose-300">SEKTOR 06</span></div>
+                    <div><h4 class="font-bold text-xs font-tech text-white">JIWA</h4><p class="text-[10px] text-slate-400">Ketenangan Mental</p></div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- EVENT DECISION MODAL POP-UP -->
+    <div id="event-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+        <div class="glass-panel w-full max-w-xl rounded-3xl p-6 md:p-8 border border-cyan-500/40 shadow-2xl relative transform scale-95 transition-transform duration-300" id="event-modal-card">
+            
+            <div class="flex items-center justify-between mb-4">
+                <span id="modal-category-badge" class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-blue-950/80 text-blue-300 border border-blue-500/40 uppercase tracking-widest">
+                    [REALITAS PEKERJAAN]
+                </span>
+                <span id="modal-year-badge" class="text-xs font-mono text-slate-400">TAHUN 2027</span>
+            </div>
+
+            <h3 id="modal-title" class="text-xl sm:text-2xl font-bold font-tech text-white mb-3">
+                Krisis Efisiensi & Klaim Hasil Kerja
+            </h3>
+
+            <p id="modal-description" class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6 font-light">
+                Atasan Anda mencoba mengklaim hasil inovasi otomatisasi tim Anda sebagai gagasan pribadinya di depan Dewan Direksi. Bagaimana reaksi strategis Anda?
+            </p>
+
+            <div id="modal-choices-container" class="space-y-3 mb-6"></div>
+
+            <div class="pt-4 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+                <span><i class="fa-solid fa-shield-halved text-cyan-400 mr-1"></i> Kanvas Hidup Engine</span>
+                <span class="text-cyan-400">Dampak Pada Visibilitas & Posisi</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="w-full glass-panel border-t border-white/10 py-3 px-4 z-20 mt-8">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4 text-xs text-slate-400 font-mono">
+            <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                <span>KANVAS HIDUP ENGINE</span>
+            </div>
+            <div>
+                <span>SEKTOR 02: PEKERJAAN & KARIR REALISTIS</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT ENGINE LOGIC -->
+    <script>
+        // State Karir & Game
+        let currentAge = 25;
+        let currentYear = 2026;
+        let playerBalance = 2450000000;
+
+        let careerState = {
+            title: "Managing Director / CEO",
+            salary: 850000000,
+            replaceability: 85, // 0-100%
+            burnout: 25,        // 0-100%
+            visibility: 75     // 0-100%
+        };
+
+        function formatCurrency(amount) {
+            return 'Rp ' + amount.toLocaleString('id-ID');
+        }
+
+        function updateUI() {
+            // Update HUD
+            document.getElementById('hud-balance').innerText = formatCurrency(playerBalance);
+            document.getElementById('hud-year').innerText = `TAHUN ${currentYear}`;
+            
+            // Update Current Job Panel
+            document.getElementById('job-title').innerText = careerState.title;
+            document.getElementById('job-salary').innerText = `${formatCurrency(careerState.salary)} / Thn`;
+            document.getElementById('job-replaceability-value').innerText = `${careerState.replaceability}% (${getReplaceabilityLabel(careerState.replaceability)})`;
+            document.getElementById('job-visibility-value').innerText = `${careerState.visibility}%`;
+
+            // Update Progress Bars
+            document.getElementById('burnout-percent').innerText = `${careerState.burnout}%`;
+            document.getElementById('burnout-bar').style.width = `${careerState.burnout}%`;
+
+            document.getElementById('replaceability-percent').innerText = `${careerState.replaceability}%`;
+            document.getElementById('replaceability-bar').style.width = `${careerState.replaceability}%`;
+
+            document.getElementById('visibility-percent').innerText = `${careerState.visibility}%`;
+            document.getElementById('visibility-bar').style.width = `${careerState.visibility}%`;
+
+            // Update Dossier Modal
+            const dossierAge = document.getElementById('dossier-age');
+            const dossierJob = document.getElementById('dossier-job');
+            const dossierWealth = document.getElementById('dossier-wealth');
+            
+            if (dossierAge) dossierAge.innerText = `${currentAge} Tahun`;
+            if (dossierJob) dossierJob.innerText = careerState.title;
+            if (dossierWealth) dossierWealth.innerText = formatCurrency(playerBalance);
+        }
+
+        function getReplaceabilityLabel(val) {
+            if (val >= 80) return "Sangat Langka";
+            if (val >= 50) return "Menengah";
+            return "Mudah Digantikan";
+        }
+
+        // AKSI HARI INI / INTERVENSI KARIR
+        function performCareerAction(actionType) {
+            let logMsg = "";
+            let logBadge = "";
+
+            if (actionType === 'work_hard') {
+                careerState.burnout = Math.min(100, careerState.burnout + 15);
+                careerState.visibility = Math.min(100, careerState.visibility + 5);
+                logMsg = "Memilih lembur berlebihan (Work Harder). Produksi naik sedikit namun stres melonjak.";
+                logBadge = "+15% BURNOUT";
+
+                if (careerState.burnout >= 85) {
+                    triggerBurnoutCrisis();
+                    return;
+                }
+            } else if (actionType === 'upskill') {
+                if (playerBalance >= 20000000) {
+                    playerBalance -= 20000000;
+                    careerState.replaceability = Math.min(100, careerState.replaceability + 5);
+                    logMsg = "Menginvestasikan Rp 20 Juta untuk program sertifikasi eksekutif langka.";
+                    logBadge = "+5% REPLACEABILITY INDEX";
+                } else {
+                    alert("Saldo tidak cukup untuk investasi skill langka!");
+                    return;
+                }
+            } else if (actionType === 'networking') {
+                careerState.visibility = Math.min(100, careerState.visibility + 12);
+                logMsg = "Membangun presentasi dampak langsung ke Dewan Komaris & Jejaring Direksi.";
+                logBadge = "+12% VISIBILITAS KANTOR";
+            } else if (actionType === 'rest') {
+                careerState.burnout = Math.max(0, careerState.burnout - 25);
+                logMsg = "Mengambil Istirahat Strategis 3 hari. Pikiran kembali segar dan fokus terpasang penuh.";
+                logBadge = "-25% BURNOUT (PIKIRAN SEGAR)";
+            }
+
+            updateUI();
+            appendCareerLog("AKSI STRATEGIS", actionType.toUpperCase(), logMsg, logBadge);
+        }
+
+        // FITUR KESALAHAN FATAL (BURNOUT CRISIS)
+        function triggerBurnoutCrisis() {
+            openEventModal({
+                category: "KRISIS FATAL (BURNOUT)",
+                title: "Keputusan Ceroboh Akibat Kelelahan Mental",
+                description: "Karena bekerja membabi buta tanpa jeda (*burnout* 85%+), Anda membuat kesalahan fatal saat menandatangani dokumen audit penting. Satu kesalahan ini menghapus reputasi kerja keras Anda.",
+                choices: [
+                    { 
+                        text: "Bayar Denda Ganti Rugi Perusahaan (Rp 150 Juta)", 
+                        outcome: "Anda menanggung rugi secara finansial untuk menyelamatkan posisi karir.", 
+                        resultBadge: "- Rp 150.000.000", 
+                        balanceChange: -150000000,
+                        burnoutReset: 40 
+                    },
+                    { 
+                        text: "Terima Demosi / Turun Jabatan", 
+                        outcome: "Perusahaan menurunkan posisi Anda karena dianggap tidak lagi objektif.", 
+                        resultBadge: "Turun Jabatan Ke Senior Analyst", 
+                        newJob: { title: "Senior Financial Analyst", salary: 336000000, replaceability: 55 },
+                        burnoutReset: 30 
+                    }
+                ]
+            });
+        }
+
+        function applyJob(title, salary, replaceabilityReq) {
+            if (careerState.replaceability < replaceabilityReq) {
+                alert(`Gagal Melamar: Replaceability Index Anda (${careerState.replaceability}%) belum memenuhi kualifikasi kelangkaan posisi ini (${replaceabilityReq}%). Tingkatkan skill langka Anda terlebih dahulu!`);
+                return;
+            }
+
+            careerState.title = title;
+            careerState.salary = salary;
+            careerState.replaceability = replaceabilityReq;
+            
+            updateUI();
+            appendCareerLog("BURSA KERJA", "PINDAH PEKERJAAN", `Berhasil beralih ke posisi ${title} dengan gaji ${formatCurrency(salary)}/tahun.`, "KONTRAK BARU DITANDATANGANI");
+        }
+
+        // SIMULASI TAHUNAN (+1 TAHUN)
+        function triggerAgeAdvance() {
+            currentAge++;
+            currentYear++;
+
+            // Terima Gaji Bersih (Dikurangi Biaya Hidup Simulasi)
+            let netIncome = Math.round(careerState.salary * 0.7);
+            playerBalance += netIncome;
+
+            updateUI();
+            appendCareerLog("FINANSIAL KARIR", `TAHUN ${currentYear}`, `Menerima gaji tahunan bersih setelah pajak & pengeluaran: +${formatCurrency(netIncome)}.`, "PENDAPATAN DITERIMA");
+
+            // Event Karir Random
+            triggerRandomCareerEvent();
+        }
+
+        const careerEvents = [
+            {
+                category: "POLITIK KANTOR",
+                title: "Kredit Hasil Kerja Dicuri Atasan",
+                description: "Atasan Anda mengakui otomatisasi sistem buatan Anda sebagai hasil pemikirannya saat rapat direksi. Apa langkah Anda?",
+                choices: [
+                    { 
+                        text: "Sajikan Data Teknis Langsung ke Direktur Utama (Buka Visibilitas)", 
+                        outcome: "Direktur Utama menyadari kapasitas asli Anda. Atasan dipindah dan Anda mendapat apresiasi.", 
+                        resultBadge: "+15% Visibilitas & +Rp 100 JT Bonus", 
+                        balanceChange: 100000000,
+                        visibilityBoost: 15
+                    },
+                    { 
+                        text: "Diam & Terima Keadaan", 
+                        outcome: "Kerja keras Anda dieksploitasi tanpa kenaikan nilai tawar sedikit pun.", 
+                        resultBadge: "Tidak Ada Perubahan Nilai", 
+                        balanceChange: 0 
+                    }
+                ]
+            },
+            {
+                category: "PENAWARAN HEADHUNTER",
+                title: "Tawaran Pembajakan dari Perusahaan Kompetitor",
+                description: "Kompetitor utama menyadari kelangkaan skill Anda dan menawarkan posisi eksekutif dengan peningkatkan gaji 35%.",
+                choices: [
+                    { 
+                        text: "Terima Penawaran & Pindah Perusahaan", 
+                        outcome: "Meningkatkan nilai tawar ekonomis Anda secara instan di pasar terbuka.", 
+                        resultBadge: "+35% Kenaikan Gaji Tahunan", 
+                        salaryBoost: 1.35
+                    },
+                    { 
+                        text: "Gunakan Tawaran Ini Sebagai Daya Tawar di Perusahaan Saat Ini", 
+                        outcome: "Perusahaan lama menyetujui *counter-offer* untuk menahan Anda.", 
+                        resultBadge: "+20% Kenaikan Gaji + Bonus Retensi", 
+                        salaryBoost: 1.20,
+                        balanceChange: 75000000
+                    }
+                ]
+            }
+        ];
+
+        function triggerRandomCareerEvent() {
+            const idx = Math.floor(Math.random() * careerEvents.length);
+            openEventModal(careerEvents[idx]);
+        }
+
+        function openEventModal(eventData) {
+            const modal = document.getElementById('event-modal');
+            const modalCard = document.getElementById('event-modal-card');
+            
+            document.getElementById('modal-category-badge').innerText = `[${eventData.category}]`;
+            document.getElementById('modal-year-badge').innerText = `TAHUN ${currentYear} (USIA ${currentAge})`;
+            document.getElementById('modal-title').innerText = eventData.title;
+            document.getElementById('modal-description').innerText = eventData.description;
+
+            const choicesContainer = document.getElementById('modal-choices-container');
+            choicesContainer.innerHTML = '';
+
+            eventData.choices.forEach((choice, idx) => {
+                const choiceBtn = document.createElement('button');
+                choiceBtn.className = "w-full p-3.5 rounded-xl bg-slate-900/70 border border-white/10 hover:border-cyan-400 hover:bg-slate-800/80 transition-all text-left flex flex-col justify-between group cursor-pointer active:scale-98";
+                choiceBtn.onclick = () => makeChoice(eventData, choice);
+
+                choiceBtn.innerHTML = `
+                    <div class="flex items-center justify-between w-full">
+                        <span class="text-xs font-semibold text-slate-100 group-hover:text-cyan-300 transition-colors">
+                            <i class="fa-solid fa-chevron-right text-[10px] text-cyan-400 mr-2"></i> ${choice.text}
+                        </span>
+                        <span class="text-[10px] font-mono text-slate-500">PILIHAN ${idx + 1}</span>
+                    </div>
+                `;
+                choicesContainer.appendChild(choiceBtn);
+            });
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalCard.classList.remove('scale-95');
+                modalCard.classList.add('scale-100');
+            }, 20);
+        }
+
+        function makeChoice(eventData, choice) {
+            closeEventModal();
+
+            if (choice.balanceChange) playerBalance += choice.balanceChange;
+            if (choice.salaryBoost) careerState.salary = Math.round(careerState.salary * choice.salaryBoost);
+            if (choice.visibilityBoost) careerState.visibility = Math.min(100, careerState.visibility + choice.visibilityBoost);
+            if (choice.burnoutReset) careerState.burnout = choice.burnoutReset;
+            if (choice.newJob) {
+                careerState.title = choice.newJob.title;
+                careerState.salary = choice.newJob.salary;
+                careerState.replaceability = choice.newJob.replaceability;
+            }
+
+            updateUI();
+            appendCareerLog(eventData.category, eventData.title, choice.outcome, choice.resultBadge);
+        }
+
+        function closeEventModal() {
+            const modal = document.getElementById('event-modal');
+            const modalCard = document.getElementById('event-modal-card');
+
+            modal.classList.add('opacity-0');
+            modalCard.classList.remove('scale-100');
+            modalCard.classList.add('scale-95');
+
+            setTimeout(() => { modal.classList.add('hidden'); }, 300);
+        }
+
+        function appendCareerLog(category, title, outcome, badge) {
+            const container = document.getElementById('career-log-container');
+            const newItem = document.createElement('div');
+            newItem.className = "p-3 rounded-xl bg-slate-900/60 border border-blue-500/30 transition-all";
+
+            newItem.innerHTML = `
+                <div class="flex items-center justify-between mb-1">
+                    <span class="text-[9px] font-mono px-2 py-0.5 rounded border border-blue-500/30 bg-blue-950/70 text-blue-300">${category}</span>
+                    <span class="text-[10px] font-mono text-slate-400">THN ${currentYear}</span>
+                </div>
+                <p class="text-xs font-semibold text-slate-100 mt-1">${title}</p>
+                <p class="text-[11px] text-slate-300 mt-0.5">${outcome}</p>
+                <p class="text-[10px] text-cyan-300 font-mono mt-1 font-semibold">${badge}</p>
+            `;
+
+            container.insertBefore(newItem, container.firstChild);
+        }
+
+        function clearEventLogs() {
+            document.getElementById('career-log-container').innerHTML = `
+                <div class="p-3 text-center text-xs font-mono text-slate-500">[LOG DIBERSIHKAN]</div>
+            `;
+        }
+
+        function toggleModuleDrawer() {
+            const modal = document.getElementById('module-modal');
+            const modalCard = document.getElementById('module-modal-card');
+
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    modal.classList.remove('opacity-0');
+                    modalCard.classList.remove('scale-95');
+                    modalCard.classList.add('scale-100');
+                }, 20);
+            } else {
+                closeModuleModal();
+            }
+        }
+
+        function closeModuleModal() {
+            const modal = document.getElementById('module-modal');
+            const modalCard = document.getElementById('module-modal-card');
+            modal.classList.add('opacity-0');
+            modalCard.classList.remove('scale-100');
+            modalCard.classList.add('scale-95');
+            setTimeout(() => { modal.classList.add('hidden'); }, 300);
+        }
+
+        function closeProfileModal() {
+            const modal = document.getElementById('profile-modal');
+            const modalCard = document.getElementById('profile-modal-card');
+            modal.classList.add('opacity-0');
+            modalCard.classList.remove('scale-100');
+            modalCard.classList.add('scale-95');
+            setTimeout(() => { modal.classList.add('hidden'); }, 300);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateUI();
+        });
+    </script>
+</body>
+</html>
