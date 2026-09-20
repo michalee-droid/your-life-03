@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kondisi Dunia - Geopolitical Intelligence Terminal | Kanvas Hidup</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts: Inter & Orbitron -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        tech: ['Orbitron', 'sans-serif'],
+                    },
+                    colors: {
+                        cyber: {
+                            bg: '#040711',
+                            card: 'rgba(11, 17, 32, 0.6)',
+                            border: 'rgba(255, 255, 255, 0.12)',
+                            cyan: '#00F2FE',
+                            purple: '#8B5CF6',
+                            gold: '#F59E0B',
+                            emerald: '#10B981',
+                            rose: '#F43F5E',
+                            teal: '#14B8A6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #040711;
+            color: #E2E8F0;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Atmospheric Background dengan Opacity Transparan */
+        .bg-luxury-overlay {
+            background-image: 
+                radial-gradient(circle at 50% 20%, rgba(20, 184, 166, 0.15) 0%, transparent 60%),
+                radial-gradient(circle at 85% 70%, rgba(139, 92, 246, 0.12) 0%, transparent 55%),
+                radial-gradient(circle at 15% 85%, rgba(0, 242, 254, 0.1) 0%, transparent 50%),
+                linear-gradient(to bottom, rgba(4, 7, 17, 0.60), rgba(4, 7, 17, 0.85)),
+                url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Glassmorphism Panels Transparan */
+        .glass-panel {
+            background: rgba(11, 18, 33, 0.62);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .glass-card {
+            background: rgba(15, 23, 42, 0.50);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Radar & Orbital Scanning Animations */
+        @keyframes orb-rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes radar-sweep {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes orb-pulse {
+            0%, 100% {
+                box-shadow: 0 0 35px rgba(20, 184, 166, 0.4), inset 0 0 25px rgba(0, 242, 254, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 65px rgba(20, 184, 166, 0.85), inset 0 0 45px rgba(0, 242, 254, 0.65);
+            }
+        }
+
+        .central-orb-ring {
+            animation: orb-rotate 22s linear infinite;
+        }
+
+        .radar-sweep-line {
+            animation: radar-sweep 4s linear infinite;
+            transform-origin: center;
+        }
+
+        .central-core-glow {
+            animation: orb-pulse 4s infinite ease-in-out;
+        }
+
+        /* Custom Scrollbar */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 5px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(10, 15, 30, 0.3);
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(20, 184, 166, 0.4);
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 242, 254, 0.7);
+        }
+
+        .glow-text-cyan {
+            text-shadow: 0 0 15px rgba(0, 242, 254, 0.6);
+        }
+        .glow-text-teal {
+            text-shadow: 0 0 15px rgba(20, 184, 166, 0.6);
+        }
+        .glow-text-gold {
+            text-shadow: 0 0 15px rgba(245, 158, 11, 0.6);
+        }
+        .glow-text-emerald {
+            text-shadow: 0 0 15px rgba(16, 185, 129, 0.6);
+        }
+        .glow-text-rose {
+            text-shadow: 0 0 15px rgba(244, 63, 94, 0.6);
+        }
+    </style>
+</head>
+<body class="bg-luxury-overlay min-h-screen flex flex-col justify-between relative selection:bg-teal-500 selection:text-slate-950">
+
+    <!-- TOP HUD BAR MEWAH -->
+    <header class="w-full glass-panel sticky top-0 z-40 border-b border-white/10 px-4 sm:px-6 py-2.5">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3 sm:gap-4">
+            
+            <!-- Branding Label Kiri -->
+            <div class="flex items-center gap-3">
+                <a href="index.html" class="flex items-center gap-2 group cursor-pointer" title="Kembali ke Pusat Kendali Utama">
+                    <div class="w-8 h-8 rounded-lg bg-teal-500/20 border border-teal-400/40 flex items-center justify-center text-teal-300 group-hover:bg-teal-400/30 transition-all shadow-inner">
+                        <i class="fa-solid fa-earth-americas text-sm group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
+                            <span class="font-bold font-tech text-white text-xs sm:text-sm tracking-widest uppercase">KANVAS HIDUP</span>
+                        </div>
+                        <div class="text-[9px] font-mono text-teal-300/80 tracking-wider uppercase">SEKTOR 08 • KONDISI DUNIA</div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- HUD Info Container Kanan: Saldo Pemain, Garis Waktu, Index Stabilitas -->
+            <div class="flex flex-wrap items-center gap-2.5 sm:gap-4">
+
+                <!-- MODUL STABILITAS GLOBAL -->
+                <div class="hidden md:flex items-center gap-3 bg-slate-900/80 px-3.5 py-1.5 rounded-xl border border-teal-500/30 shadow-inner">
+                    <i class="fa-solid fa-shield-halved text-teal-400 text-xs"></i>
+                    <div>
+                        <div class="text-[9px] text-slate-400 font-mono uppercase tracking-wider">Stabilitas Global</div>
+                        <div class="text-xs sm:text-sm font-bold font-tech text-teal-300 glow-text-teal leading-none" id="hud-stability">
+                            78 / 100 (STABIL)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MODUL SALDO PEMAIN MEWAH -->
+                <div class="flex items-center gap-3 bg-gradient-to-r from-emerald-950/80 via-slate-900/90 to-emerald-950/80 px-3.5 sm:px-4 py-1.5 rounded-xl border border-emerald-500/40 shadow-[0_0_15px_rgba(16,185,129,0.15)] hover:border-emerald-400/70 transition-all group">
+                    <div class="w-8 h-8 rounded-lg bg-emerald-500/20 border border-emerald-400/40 flex items-center justify-center text-emerald-400 group-hover:scale-105 transition-transform shadow-inner">
+                        <i class="fa-solid fa-wallet text-sm glow-text-emerald"></i>
+                    </div>
+                    <div class="text-left">
+                        <div class="text-[9px] text-emerald-400/80 font-mono uppercase tracking-wider flex items-center gap-1">
+                            <span>Balance</span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                        </div>
+                        <div class="text-xs sm:text-sm font-bold font-tech text-emerald-300 glow-text-emerald leading-none" id="hud-balance">
+                            Rp 2.450.000.000
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Year Indicator HUD -->
+                <div class="flex items-center gap-3 bg-slate-900/60 px-3.5 sm:px-4 py-1.5 rounded-xl border border-amber-500/30 shadow-inner">
+                    <i class="fa-solid fa-calendar-days text-amber-400 text-sm"></i>
+                    <div class="text-right">
+                        <div class="text-[9px] text-slate-400 font-mono uppercase tracking-wider">Tahun</div>
+                        <div class="text-xs sm:text-sm font-bold font-tech text-amber-300 glow-text-gold leading-none" id="hud-year">TAHUN 2026</div>
+                    </div>
+                </div>
+
+                <!-- Toggle Navigation Modal Trigger -->
+                <button onclick="toggleModuleDrawer()" title="Buka Navigasi Sektor" class="w-9 h-9 rounded-xl bg-slate-900/80 border border-cyan-500/40 hover:border-cyan-300 text-cyan-300 flex items-center justify-center transition-all cursor-pointer active:scale-95 shadow-lg">
+                    <i class="fa-solid fa-bars-staggered text-sm"></i>
+                </button>
+
+            </div>
+
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-6 flex-1 w-full space-y-8">
+
+        <!-- GRID UTAMA HALAMAN -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Left Main Column (Pusat Intelijen Geopolitik & Regional) -->
+            <div class="lg:col-span-8 flex flex-col space-y-8">
+                
+                <!-- PUSAT KENDALI GEOPOLITIK PANEL -->
+                <section class="glass-panel rounded-3xl p-6 sm:p-8 relative overflow-hidden border border-teal-500/40 shadow-2xl transition-all duration-500">
+                    
+                    <!-- Ambient Core Glowing Lights -->
+                    <div class="absolute -top-24 -left-24 w-96 h-96 bg-teal-500/15 rounded-full blur-3xl pointer-events-none"></div>
+                    <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-purple-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+                    <!-- GEOPOLITICAL COMMAND HEADER & RADAR ORB -->
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-8 relative z-10 border-b border-white/10 pb-8">
+                        
+                        <!-- Geopolitical Summary & Threat Level -->
+                        <div class="space-y-3 text-center md:text-left flex-1">
+                            
+                            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-teal-950/80 border border-teal-500/40 text-teal-300 text-xs font-mono">
+                                <span class="w-2 h-2 rounded-full bg-teal-400 animate-ping"></span>
+                                <span id="threat-level-badge">LEVEL ANCAMAN: MODERAT (DEFCON 4)</span>
+                            </div>
+
+                            <!-- JUDUL UTAMA SEKTOR -->
+                            <h1 class="text-3xl sm:text-4xl font-black font-tech tracking-tight text-white uppercase glow-text-teal">
+                                PUSAT INTELIJEN MAKRO GLOBAL
+                            </h1>
+
+                            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-lg font-light" id="geopolitics-desc">
+                                Pemantauan lanskap geopolitik, kestabilan moneter, pasokan energi strategis, dan perang supremasi teknologi secara real-time. Ambil keputusan makro untuk melindungi aset dan mengeksploitasi peluang investasi global.
+                            </p>
+                        </div>
+
+                        <!-- Animated Radar Orb Hub with Interactive Pulse Button -->
+                        <div class="relative flex items-center justify-center shrink-0">
+                            <!-- Outer Rotating Neon Rings -->
+                            <div class="w-32 h-32 sm:w-36 sm:h-36 rounded-full border border-dashed border-teal-400/50 central-orb-ring absolute pointer-events-none"></div>
+                            <div class="w-40 h-40 sm:w-44 sm:h-44 rounded-full border border-purple-500/30 central-orb-ring absolute pointer-events-none" style="animation-duration: 35s; animation-direction: reverse;"></div>
+
+                            <!-- Holographic SVG Radar Circle -->
+                            <svg class="w-32 h-32 sm:w-36 sm:h-36 absolute pointer-events-none opacity-40" viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="45" fill="none" stroke="#00F2FE" stroke-width="0.5" stroke-dasharray="2 2" />
+                                <circle cx="50" cy="50" r="30" fill="none" stroke="#14B8A6" stroke-width="0.5" />
+                                <circle cx="50" cy="50" r="15" fill="none" stroke="#8B5CF6" stroke-width="0.5" />
+                                <line x1="50" y1="5" x2="50" y2="95" stroke="#14B8A6" stroke-width="0.3" />
+                                <line x1="5" y1="50" x2="95" y2="50" stroke="#14B8A6" stroke-width="0.3" />
+                                <line x1="50" y1="50" x2="50" y2="5" stroke="#00F2FE" stroke-width="1.5" class="radar-sweep-line" />
+                            </svg>
+
+                            <!-- Inner Core Sphere -->
+                            <button onclick="scanGlobalIntel()" title="Klik untuk Pemindaian Intelijen Geopolitik Terkini" 
+                                    class="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gradient-to-br from-teal-950/90 via-slate-900/90 to-purple-950/90 border border-teal-400/60 central-core-glow flex flex-col items-center justify-center p-2 text-center shadow-xl hover:scale-105 hover:border-teal-300 transition-all cursor-pointer group z-10">
+                                <i class="fa-solid fa-radar text-3xl text-teal-300 group-hover:text-cyan-200 group-hover:rotate-45 transition-all animate-pulse mb-1"></i>
+                                <span class="text-[9px] font-mono text-teal-300 tracking-wider font-bold">PINDAI GLOBAL</span>
+                                <span class="text-[8px] text-slate-400 font-mono">INTEL REALTIME</span>
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <!-- MACRO INDICATORS & GAUGES GRID -->
+                    <div class="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3.5 relative z-10">
+                        
+                        <!-- Gauge 1: Economic Growth -->
+                        <div class="p-3.5 rounded-2xl bg-slate-900/70 border border-white/10 hover:border-emerald-400/40 transition-all">
+                            <div class="flex items-center justify-between text-[10px] font-mono text-slate-400 mb-1">
+                                <span>PERTUMBUHAN MAKRO</span>
+                                <i class="fa-solid fa-chart-line text-emerald-400"></i>
+                            </div>
+                            <div class="text-sm sm:text-base font-bold font-tech text-emerald-300 glow-text-emerald" id="gauge-growth">+3.4% / Thn</div>
+                            <div class="w-full bg-slate-800 h-1.5 rounded-full mt-2 overflow-hidden">
+                                <div class="bg-emerald-400 h-full rounded-full transition-all duration-500" id="bar-growth" style="width: 68%;"></div>
+                            </div>
+                            <span class="text-[9px] text-slate-400 font-mono mt-1 block">Pasar Berkembang Positif</span>
+                        </div>
+
+                        <!-- Gauge 2: Geopolitical Stress -->
+                        <div class="p-3.5 rounded-2xl bg-slate-900/70 border border-white/10 hover:border-amber-400/40 transition-all">
+                            <div class="flex items-center justify-between text-[10px] font-mono text-slate-400 mb-1">
+                                <span>TEKANAN GEOPOLITIK</span>
+                                <i class="fa-solid fa-triangle-exclamation text-amber-400"></i>
+                            </div>
+                            <div class="text-sm sm:text-base font-bold font-tech text-amber-300 glow-text-gold" id="gauge-stress">64 / 100</div>
+                            <div class="w-full bg-slate-800 h-1.5 rounded-full mt-2 overflow-hidden">
+                                <div class="bg-amber-400 h-full rounded-full transition-all duration-500" id="bar-stress" style="width: 64%;"></div>
+                            </div>
+                            <span class="text-[9px] text-slate-400 font-mono mt-1 block">Tensi Laut Cina Selatan</span>
+                        </div>
+
+                        <!-- Gauge 3: Tech Disruption Velocity -->
+                        <div class="p-3.5 rounded-2xl bg-slate-900/70 border border-white/10 hover:border-purple-400/40 transition-all">
+                            <div class="flex items-center justify-between text-[10px] font-mono text-slate-400 mb-1">
+                                <span>DISRUPSI TEKNOLOGI</span>
+                                <i class="fa-solid fa-microchip text-purple-400"></i>
+                            </div>
+                            <div class="text-sm sm:text-base font-bold font-tech text-purple-300 glow-text-cyan" id="gauge-tech">88 / 100</div>
+                            <div class="w-full bg-slate-800 h-1.5 rounded-full mt-2 overflow-hidden">
+                                <div class="bg-purple-400 h-full rounded-full transition-all duration-500" id="bar-tech" style="width: 88%;"></div>
+                            </div>
+                            <span class="text-[9px] text-slate-400 font-mono mt-1 block">Lompatan AI & Kuantum</span>
+                        </div>
+
+                        <!-- Gauge 4: Energy Market Index -->
+                        <div class="p-3.5 rounded-2xl bg-slate-900/70 border border-white/10 hover:border-cyan-400/40 transition-all">
+                            <div class="flex items-center justify-between text-[10px] font-mono text-slate-400 mb-1">
+                                <span>INDEKS ENERGI</span>
+                                <i class="fa-solid fa-bolt text-cyan-400"></i>
+                            </div>
+                            <div class="text-sm sm:text-base font-bold font-tech text-cyan-300 glow-text-cyan" id="gauge-energy">$84 / bbl</div>
+                            <div class="w-full bg-slate-800 h-1.5 rounded-full mt-2 overflow-hidden">
+                                <div class="bg-cyan-400 h-full rounded-full transition-all duration-500" id="bar-energy" style="width: 72%;"></div>
+                            </div>
+                            <span class="text-[9px] text-slate-400 font-mono mt-1 block">Transisi Hijau Akseleratif</span>
+                        </div>
+
+                    </div>
+
+                    <!-- CONTROL BUTTONS INSIDE PUSAT KENDALI GEOPOLITIK -->
+                    <div class="mt-6 flex flex-wrap items-center justify-between gap-4 relative z-10">
+                        
+                        <!-- 1. Advance Geopolitical Timeline (+1 Tahun) -->
+                        <button id="btn-advance-sim" 
+                                onclick="triggerAgeAdvance()"
+                                class="flex-1 min-w-[220px] inline-flex items-center justify-center px-6 py-4 rounded-2xl bg-gradient-to-r from-teal-500/90 via-cyan-600/90 to-purple-600/90 hover:from-teal-400 hover:to-purple-500 text-white font-tech font-bold text-xs sm:text-sm tracking-wider uppercase shadow-xl hover:brightness-110 transition-all duration-300 cursor-pointer active:scale-95 border border-teal-300/30">
+                            <i class="fa-solid fa-hourglass-start mr-2.5 text-teal-200"></i>
+                            <span>+1 Tahun (Simulasi Makro)</span>
+                        </button>
+
+                        <!-- 2. Buka Profil Dossier Pop-Up -->
+                        <button id="btn-open-dossier" 
+                                onclick="toggleProfileDossier()"
+                                class="flex-1 min-w-[220px] inline-flex items-center justify-center px-6 py-4 rounded-2xl bg-slate-900/70 hover:bg-slate-800/80 text-teal-300 font-tech font-bold text-xs sm:text-sm tracking-wider uppercase border border-teal-500/40 shadow-lg transition-all duration-300 cursor-pointer active:scale-95 group">
+                            <i class="fa-solid fa-id-card mr-2.5 text-teal-400 group-hover:scale-110 transition-transform duration-300"></i>
+                            <span>Dossier Eksekutif</span>
+                        </button>
+
+                    </div>
+
+                </section>
+
+                <!-- SEKTOR 2: MONITOR REGIONAL INTELIJEN GLOBAL -->
+                <section class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2.5">
+                            <span class="w-2.5 h-2.5 rounded-full bg-teal-400 animate-pulse"></span>
+                            <h2 class="text-base sm:text-lg font-bold font-tech text-white uppercase tracking-wider">MONITOR REGIONAL & THEATER KONFLIK</h2>
+                        </div>
+                        <span class="text-[10px] font-mono text-slate-400">5 REGIONAL KUNCI</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        
+                        <!-- Region 1: Asia-Pasifik -->
+                        <div class="glass-panel rounded-2xl p-5 border border-teal-500/30 hover:border-teal-400 transition-all relative overflow-hidden group">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center gap-2.5">
+                                    <div class="w-9 h-9 rounded-xl bg-teal-500/20 text-teal-300 border border-teal-500/40 flex items-center justify-center">
+                                        <i class="fa-solid fa-microchip text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold font-tech text-sm text-white group-hover:text-teal-300 transition-colors">ASIA-PASIFIK</h3>
+                                        <p class="text-[10px] text-slate-400 font-mono">Pusat Manufaktur & Haluan Semikonduktor</p>
+                                    </div>
+                                </div>
+                                <span class="px-2.5 py-0.5 rounded-full bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 text-[10px] font-mono">PERTUMBUHAN HIGH-TECH</span>
+                            </div>
+                            <div class="space-y-2 text-xs text-slate-300">
+                                <div class="flex justify-between py-1 border-b border-white/5">
+                                    <span class="text-slate-400">Status Stabilitas:</span>
+                                    <span class="font-bold text-amber-300">Waspada Tensi Selat Taiwan</span>
+                                </div>
+                                <div class="flex justify-between py-1 border-b border-white/5">
+                                    <span class="text-slate-400">Sektor Unggulan:</span>
+                                    <span class="font-bold text-teal-300">Semikonduktor & EV Batteries</span>
+                                </div>
+                                <div class="flex justify-between py-1">
+                                    <span class="text-slate-400">Peluang Investasi:</span>
+                                    <span class="font-bold text-emerald-400">Yield +14.2% / Tahun</span>
+                                </div>
+                            </div>
+                            <button onclick="openRegionModal('asia-pacific')" class="mt-4 w-full py-2.5 rounded-xl bg-slate-900/80 hover:bg-teal-950/80 text-teal-300 border border-teal-500/40 text-xs font-tech font-bold uppercase transition-all flex items-center justify-center gap-2 group-hover:border-teal-300">
+                                <span>Analisis & Intervensi Strategis</span>
+                                <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </button>
+                        </div>
+
+                        <!-- Region 2: Amerika Utara -->
+                        <div class="glass-panel rounded-2xl p-5 border border-cyan-500/30 hover:border-cyan-400 transition-all relative overflow-hidden group">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center gap-2.5">
+                                    <div class="w-9 h-9 rounded-xl bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 flex items-center justify-center">
+                                        <i class="fa-solid fa-dollar-sign text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold font-tech text-sm text-white group-hover:text-cyan-300 transition-colors">AMERIKA UTARA</h3>
+                                        <p class="text-[10px] text-slate-400 font-mono">Pusat Finansial & Dominasi AI</p>
+                                    </div>
+                                </div>
+                                <span class="px-2.5 py-0.5 rounded-full bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 text-[10px] font-mono">DOMINASI MONETER</span>
+                            </div>
+                            <div class="space-y-2 text-xs text-slate-300">
+                                <div class="flex justify-between py-1 border-b border-white/5">
+                                    <span class="text-slate-400">Status Stabilitas:</span>
+                                    <span class="font-bold text-emerald-300">Sangat Stabil (Safe Haven)</span>
+                                </div>
+                                <div class="flex justify-between py-1 border-b border-white/5">
+                                    <span class="text-slate-400">Sektor Unggulan:</span>
+                                    <span class="font-bold text-cyan-300">Kecerdasan Buatan & Venture Capital</span>
+                                </div>
+                                <div class="flex justify-between py-1">
+                                    <span class="text-slate-400">Peluang Investasi:</span>
+                                    <span class="font-bold text-emerald-400">Yield +18.5% / Tahun</span>
+                                </div>
+                            </div>
+                            <button onclick="openRegionModal('north-america')" class="mt-4 w-full py-2.5 rounded-xl bg-slate-900/80 hover:bg-cyan-950/80 text-cyan-300 border border-cyan-500/40 text-xs font-tech font-bold uppercase transition-all flex items-center justify-center gap-2 group-hover:border-cyan-300">
+                                <span>Analisis & Intervensi Strategis</span>
+                                <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </button>
+                        </div>
+
+                        <!-- Region 3: Eropa -->
+                        <div class="glass-panel rounded-2xl p-5 border border-indigo-500/30 hover:border-indigo-400 transition-all relative overflow-hidden group">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center gap-2.5">
+                                    <div class="w-9 h-9 rounded-xl bg-indigo-500/20 text-indigo-300 border border-indigo-500/40 flex items-center justify-center">
+                                        <i class="fa-solid fa-building-columns text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold font-tech text-sm text-white group-hover:text-indigo-300 transition-colors">EROPA UNI</h3>
+                                        <p class="text-[10px] text-slate-400 font-mono">Regulasi Karbon & Industri Presisi</p>
+                                    </div>
+                                </div>
+                                <span class="px-2.5 py-0.5 rounded-full bg-indigo-950/80 border border-indigo-500/40 text-indigo-300 text-[10px] font-mono">REGULASI KETAT</span>
+                            </div>
+                            <div class="space-y-2 text-xs text-slate-300">
+                                <div class="flex justify-between py-1 border-b border-white/5">
+                                    <span class="text-slate-400">Status Stabilitas:</span>
+                                    <span class="font-bold text-amber-300">Krisis Energi & Inflasi Moderat</span>
+                                </div>
+                                <div class="flex justify-between py-1 border-b border-white/5">
+                                    <span class="text-slate-400">Sektor Unggulan:</span>
+                                    <span class="font-bold text-indigo-300">Teknologi Hijau & Otomotif Mewah</span>
+                                </div>
+                                <div class="flex justify-between py-1">
+                                    <span class="text-slate-400">Peluang Investasi:</span>
+                                    <span class="font-bold text-emerald-400">Yield +8.7% / Tahun</span>
+                                </div>
+                            </div>
+                            <button onclick="openRegionModal('europe')" class="mt-4 w-full py-2.5 rounded-xl bg-slate-900/80 hover:bg-indigo-950/80 text-indigo-300 border border-indigo-500/40 text-xs font-tech font-bold uppercase transition-all flex items-center justify-center gap-2 group-hover:border-indigo-300">
+                                <span>Analisis & Intervensi Strategis</span>
+                                <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </button>
+                        </div>
+
+                        <!-- Region 4: Timur Tengah -->
+                        <div class="glass-panel rounded-2xl p-5 border border-amber-500/30 hover:border-amber-400 transition-all relative overflow-hidden group">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center gap-2.5">
+                                    <div class="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-300 border border-amber-500/40 flex items-center justify-center">
+                                        <i class="fa-solid fa-oil-well text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold font-tech text-sm text-white group-hover:text-amber-300 transition-colors">TIMUR TENGAH</h3>
+                                        <p class="text-[10px] text-slate-400 font-mono">Pusat Petrodolar & Megaproyek Megacity</p>
+                                    </div>
+                                </div>
+                                <span class="px-2.5 py-0.5 rounded-full bg-amber-950/80 border border-amber-500/40 text-amber-300 text-[10px] font-mono">DANA SOVEREIGN</span>
+                            </div>
+                            <div class="space-y-2 text-xs text-slate-300">
+                                <div class="flex justify-between py-1 border-b border-white/5">
+                                    <span class="text-slate-400">Status Stabilitas:</span>
+                                    <span class="font-bold text-rose-400">Ketegangan Geopolitik Tinggi</span>
+                                </div>
+                                <div class="flex justify-between py-1 border-b border-white/5">
+                                    <span class="text-slate-400">Sektor Unggulan:</span>
+                                    <span class="font-bold text-amber-300">Energi Fosil & Sovereign Wealth Fund</span>
+                                </div>
+                                <div class="flex justify-between py-1">
+                                    <span class="text-slate-400">Peluang Investasi:</span>
+                                    <span class="font-bold text-emerald-400">Yield +21.0% / Tahun</span>
+                                </div>
+                            </div>
+                            <button onclick="openRegionModal('middle-east')" class="mt-4 w-full py-2.5 rounded-xl bg-slate-900/80 hover:bg-amber-950/80 text-amber-300 border border-amber-500/40 text-xs font-tech font-bold uppercase transition-all flex items-center justify-center gap-2 group-hover:border-amber-300">
+                                <span>Analisis & Intervensi Strategis</span>
+                                <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </button>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- SEKTOR 3: TERMINAL AKSI MAKRO EKSEKUTIF -->
+                <section class="glass-panel rounded-3xl p-6 border border-purple-500/30 shadow-xl space-y-4">
+                    <div class="flex items-center justify-between pb-3 border-b border-white/10">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-lg bg-purple-500/20 text-purple-300 border border-purple-500/40 flex items-center justify-center">
+                                <i class="fa-solid fa-terminal text-sm"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-bold font-tech text-white uppercase tracking-wider">TERMINAL AKSI MAKRO EKSEKUTIF</h3>
+                                <p class="text-[10px] text-slate-400 font-mono">EKSEKUSI MANUVER CAPITAL & HEDGING</p>
+                            </div>
+                        </div>
+                        <span class="text-[10px] font-mono text-purple-400">OTOT FINANSIAL GLOBAL</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+                        
+                        <!-- Action 1: Offshore Capital Shield -->
+                        <div class="p-4 rounded-2xl bg-slate-900/70 border border-white/10 hover:border-purple-400 transition-all flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <i class="fa-solid fa-vault text-purple-400 text-lg"></i>
+                                    <span class="text-[9px] font-mono text-purple-300 bg-purple-950/80 px-2 py-0.5 rounded border border-purple-500/40">OFFSHORE</span>
+                                </div>
+                                <h4 class="font-bold font-tech text-xs text-white">LINDUNGI MODAL OFFSHORE</h4>
+                                <p class="text-[10px] text-slate-400 mt-1 leading-relaxed">Alokasikan likuiditas ke safe haven Swiss/Cayman untuk proteksi krisis hiperinflasi.</p>
+                            </div>
+                            <button onclick="executeMacroAction('offshore')" class="mt-4 w-full py-2 rounded-xl bg-purple-950/80 hover:bg-purple-800/80 text-purple-200 border border-purple-500/50 text-[11px] font-tech font-bold uppercase transition-all">
+                                Biaya: Rp 100 Juta
+                            </button>
+                        </div>
+
+                        <!-- Action 2: Currency & Gold Hedging -->
+                        <div class="p-4 rounded-2xl bg-slate-900/70 border border-white/10 hover:border-emerald-400 transition-all flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <i class="fa-solid fa-coins text-emerald-400 text-lg"></i>
+                                    <span class="text-[9px] font-mono text-emerald-300 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-500/40">HEDGING</span>
+                                </div>
+                                <h4 class="font-bold font-tech text-xs text-white">HEDGING EMAS & FOREX</h4>
+                                <p class="text-[10px] text-slate-400 mt-1 leading-relaxed">Beli kontrak futures bullion & valuta asing kuat untuk membendung depresiasi mata uang.</p>
+                            </div>
+                            <button onclick="executeMacroAction('hedging')" class="mt-4 w-full py-2 rounded-xl bg-emerald-950/80 hover:bg-emerald-800/80 text-emerald-200 border border-emerald-500/50 text-[11px] font-tech font-bold uppercase transition-all">
+                                Biaya: Rp 200 Juta
+                            </button>
+                        </div>
+
+                        <!-- Action 3: Global Lobbying -->
+                        <div class="p-4 rounded-2xl bg-slate-900/70 border border-white/10 hover:border-cyan-400 transition-all flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <i class="fa-solid fa-handshake-simple text-cyan-400 text-lg"></i>
+                                    <span class="text-[9px] font-mono text-cyan-300 bg-cyan-950/80 px-2 py-0.5 rounded border border-cyan-500/40">DIPLOMASI</span>
+                                </div>
+                                <h4 class="font-bold font-tech text-xs text-white">LOBBYING GEOPOLITIK</h4>
+                                <p class="text-[10px] text-slate-400 mt-1 leading-relaxed">Sewa firma PR & diplomat senior untuk mengamankan konsesi perdagangan eksekutif.</p>
+                            </div>
+                            <button onclick="executeMacroAction('lobbying')" class="mt-4 w-full py-2 rounded-xl bg-cyan-950/80 hover:bg-cyan-800/80 text-cyan-200 border border-cyan-500/50 text-[11px] font-tech font-bold uppercase transition-all">
+                                Biaya: Rp 350 Juta
+                            </button>
+                        </div>
+
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- Right Column (Log Intelijen Peristiwa & Filter Feed) -->
+            <div class="lg:col-span-4 flex flex-col space-y-6">
+                
+                <div class="glass-panel rounded-3xl p-6 border border-teal-500/30 shadow-xl flex flex-col h-[640px]">
+                    
+                    <!-- Log Header -->
+                    <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-3">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-teal-400 animate-pulse"></span>
+                            <h3 class="text-xs font-bold font-tech text-white uppercase tracking-wider">LOG INTELIJEN MAKRO</h3>
+                        </div>
+                        <button onclick="clearEventLogs()" class="text-[10px] font-mono text-slate-400 hover:text-teal-300 transition-colors flex items-center gap-1">
+                            <i class="fa-solid fa-rotate-left"></i> CLEAR
+                        </button>
+                    </div>
+
+                    <!-- Category Filter Tabs -->
+                    <div class="flex items-center gap-1.5 pb-3 border-b border-white/5 text-[10px] font-mono overflow-x-auto custom-scrollbar">
+                        <button onclick="filterLogs('all')" id="filter-all" class="px-2.5 py-1 rounded-lg bg-teal-500/20 text-teal-300 border border-teal-500/40 font-bold">SEMUA</button>
+                        <button onclick="filterLogs('geopolitics')" id="filter-geopolitics" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-white/10">GEOPOLITIK</button>
+                        <button onclick="filterLogs('financial')" id="filter-financial" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-white/10">PASAR</button>
+                        <button onclick="filterLogs('crisis')" id="filter-crisis" class="px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-white/10">KRISIS</button>
+                    </div>
+
+                    <!-- Stream Scrollable Container -->
+                    <div class="flex-1 overflow-y-auto custom-scrollbar space-y-3 pr-1 pt-3" id="event-log-container">
+                        
+                        <!-- Initial Log Entries -->
+                        <div class="p-3 rounded-xl bg-slate-900/60 border border-teal-500/30 log-item log-geopolitics">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-[9px] font-mono text-teal-400 border border-teal-500/30 px-2 py-0.5 rounded bg-teal-950/70">GEOPOLITIK</span>
+                                <span class="text-[10px] font-mono text-slate-400">THN 2026 (USIA 25)</span>
+                            </div>
+                            <p class="text-xs font-semibold text-slate-100">Pusat Intelijen Dunia Aktif</p>
+                            <p class="text-[11px] text-slate-300 mt-0.5">Sistem radar makro terhubung dengan bursa saham global dan jaringan satelit intelijen.</p>
+                        </div>
+
+                        <div class="p-3 rounded-xl bg-slate-900/60 border border-emerald-500/30 log-item log-financial">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-[9px] font-mono text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded bg-emerald-950/70">PASAR MAKRO</span>
+                                <span class="text-[10px] font-mono text-slate-400">THN 2026 (USIA 25)</span>
+                            </div>
+                            <p class="text-xs font-semibold text-slate-100">Koreksi Pasar Saham Asia</p>
+                            <p class="text-[11px] text-slate-300 mt-0.5">Indeks harga saham gabungan kawasan menguat +2.1% dipicu lonjakan permintaan cip AI.</p>
+                        </div>
+
+                        <div class="p-3 rounded-xl bg-slate-900/60 border border-amber-500/30 log-item log-crisis">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-[9px] font-mono text-amber-400 border border-amber-500/30 px-2 py-0.5 rounded bg-amber-950/70">KRISIS ENERGI</span>
+                                <span class="text-[10px] font-mono text-slate-400">THN 2026 (USIA 25)</span>
+                            </div>
+                            <p class="text-xs font-semibold text-slate-100">Ketegangan Terusan Suez</p>
+                            <p class="text-[11px] text-slate-300 mt-0.5">Biaya logistik kargo minyak dunia naik +12% akibat rute pengalihan maritim.</p>
+                        </div>
+
+                    </div>
+
+                    <!-- Log Footer Status -->
+                    <div class="pt-3 border-t border-white/10 text-[10px] font-mono text-slate-400 flex items-center justify-between">
+                        <span><i class="fa-solid fa-satellite-dish text-teal-400 mr-1"></i> FEED INTEL: ONLINE</span>
+                        <span class="text-teal-400">STREAMING INTELIJEN</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- POPUP MODAL 1: DOSIER PROFIL KARAKTER -->
+    <div id="profile-modal" onclick="closeProfileModal()" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+        <div onclick="event.stopPropagation()" id="profile-modal-card" class="glass-panel w-full max-w-3xl rounded-3xl p-6 sm:p-8 border border-teal-500/40 shadow-2xl relative transform scale-95 transition-transform duration-300 max-h-[90vh] overflow-y-auto custom-scrollbar">
+            
+            <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-teal-950/80 border border-teal-500/40 flex items-center justify-center text-teal-300 text-lg shadow-inner">
+                        <i class="fa-solid fa-id-card"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-base sm:text-lg font-bold font-tech text-white uppercase tracking-wider">DOSSIER PROFIL KARAKTER</h3>
+                        <p class="text-[11px] text-slate-400 font-mono">IZIN AKSES OTORITAS INTELIJEN TINGKAT ATAS</p>
+                    </div>
+                </div>
+                <button onclick="closeProfileModal()" class="w-9 h-9 rounded-xl bg-slate-900/70 border border-white/10 hover:border-teal-400 text-slate-400 hover:text-white flex items-center justify-center transition-all cursor-pointer">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Grid Atribut Karakter -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3.5 text-xs">
+                
+                <div class="p-3.5 rounded-xl bg-slate-900/60 border border-white/10 hover:border-teal-500/30 transition-colors">
+                    <span class="text-[10px] font-mono text-slate-400 uppercase block mb-1">
+                        <i class="fa-solid fa-signature text-teal-400 mr-1"></i> Nama Lengkap
+                    </span>
+                    <span class="font-bold font-tech text-white text-sm" id="dossier-fullname">Alexander Vance</span>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-slate-900/60 border border-white/10 hover:border-teal-500/30 transition-colors">
+                    <span class="text-[10px] font-mono text-slate-400 uppercase block mb-1">
+                        <i class="fa-solid fa-hourglass-half text-amber-400 mr-1"></i> Umur
+                    </span>
+                    <span class="font-bold font-tech text-teal-300 text-sm" id="dossier-age">25 Tahun</span>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-slate-900/60 border border-white/10 hover:border-teal-500/30 transition-colors">
+                    <span class="text-[10px] font-mono text-slate-400 uppercase block mb-1">
+                        <i class="fa-solid fa-mars text-blue-400 mr-1"></i> Jenis Kelamin
+                    </span>
+                    <span class="font-bold text-slate-200">Laki-laki</span>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-slate-900/60 border border-white/10 hover:border-teal-500/30 transition-colors">
+                    <span class="text-[10px] font-mono text-slate-400 uppercase block mb-1">
+                        <i class="fa-solid fa-shield-cat text-purple-400 mr-1"></i> Clearance Level
+                    </span>
+                    <span class="font-bold text-purple-300">Level 5 (Top Secret)</span>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-slate-900/60 border border-white/10 hover:border-teal-500/30 transition-colors">
+                    <span class="text-[10px] font-mono text-slate-400 uppercase block mb-1">
+                        <i class="fa-solid fa-graduation-cap text-indigo-400 mr-1"></i> Pendidikan
+                    </span>
+                    <span class="font-bold text-indigo-300">MBA International Finance</span>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-slate-900/60 border border-white/10 hover:border-teal-500/30 transition-colors">
+                    <span class="text-[10px] font-mono text-slate-400 uppercase block mb-1">
+                        <i class="fa-solid fa-briefcase text-blue-400 mr-1"></i> Pekerjaan
+                    </span>
+                    <span class="font-bold text-blue-300">Managing Director / CEO</span>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-slate-900/60 border border-white/10 hover:border-teal-500/30 transition-colors sm:col-span-3">
+                    <span class="text-[10px] font-mono text-slate-400 uppercase block mb-1">
+                        <i class="fa-solid fa-vault text-emerald-400 mr-1"></i> Total Likuiditas Finansial
+                    </span>
+                    <span class="font-bold text-emerald-400 font-mono text-sm" id="dossier-wealth">Kelas Elit (Rp 2.450.000.000)</span>
+                </div>
+
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+                <span><i class="fa-solid fa-shield-halved text-teal-400 mr-1"></i> DOSSIER TERVERIFIKASI</span>
+                <span class="text-teal-400">AKSES OTORITAS UTAMA</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- POPUP MODAL 2: MATRIKS MODUL (NAVIGASI 10 SEKTOR PERMAINAN) -->
+    <div id="module-modal" onclick="closeModuleModal()" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+        <div onclick="event.stopPropagation()" id="module-modal-card" class="glass-panel w-full max-w-5xl rounded-3xl p-6 sm:p-8 border border-teal-500/40 shadow-2xl relative transform scale-95 transition-transform duration-300 max-h-[90vh] overflow-y-auto custom-scrollbar">
+            
+            <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-teal-950/80 border border-teal-500/40 flex items-center justify-center text-teal-300 text-lg shadow-inner">
+                        <i class="fa-solid fa-door-open"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-base sm:text-lg font-bold font-tech text-white uppercase tracking-wider">PUSAT NAVIGASI SEKTOR</h3>
+                        <p class="text-[11px] text-slate-400 font-mono">TELEPORTASI KE 10 KANAL PERMAINAN</p>
+                    </div>
+                </div>
+                <button onclick="closeModuleModal()" class="w-9 h-9 rounded-xl bg-slate-900/70 border border-white/10 hover:border-teal-400 text-slate-400 hover:text-white flex items-center justify-center transition-all cursor-pointer">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- 10 Module Portals Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                
+                <!-- 0. Pusat Kendali (Home) -->
+                <a href="index.html" class="relative group rounded-2xl overflow-hidden border border-cyan-500/30 hover:border-cyan-400 shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between p-4 min-h-[145px]">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1514565131-fce0801e5785?w=600&auto=format&fit=crop&q=80');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/40 group-hover:via-slate-950/60 transition-all"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 border border-cyan-500/40 flex items-center justify-center backdrop-blur-md">
+                                <i class="fa-solid fa-house text-sm"></i>
+                            </div>
+                            <span class="text-[9px] font-mono text-cyan-300 bg-cyan-950/80 px-2 py-0.5 rounded border border-cyan-500/40 backdrop-blur-md">PUSAT UTAMA</span>
+                        </div>
+                        <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors drop-shadow">PUSAT KENDALI</h4>
+                        <p class="text-[10px] text-slate-300 mt-0.5 drop-shadow">Dashboard utama, umur & log eksekutif.</p>
+                    </div>
+                    <div class="relative z-10 mt-3 pt-2 border-t border-white/10 flex items-center justify-between text-[10px] font-medium text-cyan-400 group-hover:text-cyan-300">
+                        <span class="font-mono text-[9px]">TELEPORTASI</span>
+                        <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </a>
+
+                <!-- 1. Modul Pendidikan -->
+                <a href="pendidikan.html" class="relative group rounded-2xl overflow-hidden border border-indigo-500/30 hover:border-teal-400 shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between p-4 min-h-[145px]">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&auto=format&fit=crop&q=80');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/40 group-hover:via-slate-950/60 transition-all"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-400 border border-indigo-500/40 flex items-center justify-center backdrop-blur-md">
+                                <i class="fa-solid fa-graduation-cap text-sm"></i>
+                            </div>
+                            <span class="text-[9px] font-mono text-indigo-300 bg-indigo-950/80 px-2 py-0.5 rounded border border-indigo-500/40 backdrop-blur-md">SEKTOR 01</span>
+                        </div>
+                        <h4 class="font-bold font-tech text-xs text-white group-hover:text-teal-300 transition-colors drop-shadow">PENDIDIKAN</h4>
+                        <p class="text-[10px] text-slate-300 mt-0.5 drop-shadow">Gelar eksekutif, sertifikasi & keahlian.</p>
+                    </div>
+                    <div class="relative z-10 mt-3 pt-2 border-t border-white/10 flex items-center justify-between text-[10px] font-medium text-indigo-400 group-hover:text-teal-300">
+                        <span class="font-mono text-[9px]">TELEPORTASI</span>
+                        <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </a>
+
+                <!-- 2. Modul Pekerjaan -->
+                <a href="pekerjaan.html" class="relative group rounded-2xl overflow-hidden border border-blue-500/30 hover:border-teal-400 shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between p-4 min-h-[145px]">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&auto=format&fit=crop&q=80');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/40 group-hover:via-slate-950/60 transition-all"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-400 border border-blue-500/40 flex items-center justify-center backdrop-blur-md">
+                                <i class="fa-solid fa-briefcase text-sm"></i>
+                            </div>
+                            <span class="text-[9px] font-mono text-blue-300 bg-blue-950/80 px-2 py-0.5 rounded border border-blue-500/40 backdrop-blur-md">SEKTOR 02</span>
+                        </div>
+                        <h4 class="font-bold font-tech text-xs text-white group-hover:text-teal-300 transition-colors drop-shadow">PEKERJAAN</h4>
+                        <p class="text-[10px] text-slate-300 mt-0.5 drop-shadow">Karir korporat, posisi & kepemimpinan.</p>
+                    </div>
+                    <div class="relative z-10 mt-3 pt-2 border-t border-white/10 flex items-center justify-between text-[10px] font-medium text-blue-400 group-hover:text-teal-300">
+                        <span class="font-mono text-[9px]">TELEPORTASI</span>
+                        <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </a>
+
+                <!-- 3. Modul Finansial & Aset -->
+                <a href="finansial.html" class="relative group rounded-2xl overflow-hidden border border-emerald-500/30 hover:border-teal-400 shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between p-4 min-h-[145px]">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&auto=format&fit=crop&q=80');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/40 group-hover:via-slate-950/60 transition-all"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center backdrop-blur-md">
+                                <i class="fa-solid fa-chart-line text-sm"></i>
+                            </div>
+                            <span class="text-[9px] font-mono text-emerald-300 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-500/40 backdrop-blur-md">SEKTOR 03</span>
+                        </div>
+                        <h4 class="font-bold font-tech text-xs text-white group-hover:text-teal-300 transition-colors drop-shadow">FINANSIAL & ASET</h4>
+                        <p class="text-[10px] text-slate-300 mt-0.5 drop-shadow">Portofolio saham, obligasi & real estat.</p>
+                    </div>
+                    <div class="relative z-10 mt-3 pt-2 border-t border-white/10 flex items-center justify-between text-[10px] font-medium text-emerald-400 group-hover:text-teal-300">
+                        <span class="font-mono text-[9px]">TELEPORTASI</span>
+                        <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </a>
+
+                <!-- 8. Modul Kondisi Dunia (Current Active) -->
+                <a href="kondisi-dunia.html" class="relative group rounded-2xl overflow-hidden border border-teal-400 ring-2 ring-teal-400/50 shadow-2xl transition-all duration-300 flex flex-col justify-between p-4 min-h-[145px]">
+                    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=600&auto=format&fit=crop&q=80');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-teal-950/90 via-slate-950/80 to-slate-950/50"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="w-8 h-8 rounded-lg bg-teal-500/30 text-teal-300 border border-teal-400 flex items-center justify-center backdrop-blur-md">
+                                <i class="fa-solid fa-earth-americas text-sm"></i>
+                            </div>
+                            <span class="text-[9px] font-mono text-teal-200 bg-teal-900/90 px-2 py-0.5 rounded border border-teal-400 backdrop-blur-md">AKTIF SAAT INI</span>
+                        </div>
+                        <h4 class="font-bold font-tech text-xs text-teal-200 glow-text-teal">KONDISI DUNIA</h4>
+                        <p class="text-[10px] text-slate-300 mt-0.5 drop-shadow">Intelijen geopolitik & tren global.</p>
+                    </div>
+                    <div class="relative z-10 mt-3 pt-2 border-t border-teal-400/30 flex items-center justify-between text-[10px] font-medium text-teal-300">
+                        <span class="font-mono text-[9px]">SEKTOR AKTIF</span>
+                        <i class="fa-solid fa-circle text-[8px] text-teal-400 animate-pulse"></i>
+                    </div>
+                </a>
+
+                <!-- 9. Shopping -->
+                <a href="shopping.html" class="relative group rounded-2xl overflow-hidden border border-amber-400/30 hover:border-teal-400 shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between p-4 min-h-[145px]">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&auto=format&fit=crop&q=80');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/40 group-hover:via-slate-950/60 transition-all"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="w-8 h-8 rounded-lg bg-amber-400/20 text-amber-300 border border-amber-400/40 flex items-center justify-center backdrop-blur-md">
+                                <i class="fa-solid fa-gem text-sm"></i>
+                            </div>
+                            <span class="text-[9px] font-mono text-amber-300 bg-amber-950/80 px-2 py-0.5 rounded border border-amber-500/40 backdrop-blur-md">SEKTOR 09</span>
+                        </div>
+                        <h4 class="font-bold font-tech text-xs text-white group-hover:text-teal-300 transition-colors drop-shadow">SHOPPING</h4>
+                        <p class="text-[10px] text-slate-300 mt-0.5 drop-shadow">Supercar, arloji & barang koleksi.</p>
+                    </div>
+                    <div class="relative z-10 mt-3 pt-2 border-t border-white/10 flex items-center justify-between text-[10px] font-medium text-amber-300 group-hover:text-teal-300">
+                        <span class="font-mono text-[9px]">TELEPORTASI</span>
+                        <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </a>
+
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+                <span><i class="fa-solid fa-network-wired text-teal-400 mr-1"></i> MATRIKS KANAL TERVERIFIKASI</span>
+                <span class="text-teal-400">PILIH SEKTOR UNTUK TELEPORTASI</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- POPUP MODAL 3: DEEP DIVE REGIONAL ANALYSIS -->
+    <div id="region-modal" onclick="closeRegionModal()" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+        <div onclick="event.stopPropagation()" id="region-modal-card" class="glass-panel w-full max-w-2xl rounded-3xl p-6 sm:p-8 border border-teal-500/40 shadow-2xl relative transform scale-95 transition-transform duration-300">
+            
+            <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-teal-950/80 border border-teal-500/40 flex items-center justify-center text-teal-300 text-lg shadow-inner">
+                        <i class="fa-solid fa-globe text-lg" id="region-modal-icon"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-base sm:text-lg font-bold font-tech text-white uppercase tracking-wider" id="region-modal-title">
+                            ANALISIS REGIONAL ASIA-PASIFIK
+                        </h3>
+                        <p class="text-[11px] text-slate-400 font-mono" id="region-modal-subtitle">PEMANDU INVESTASI MAKRO & VULNERABILITAS</p>
+                    </div>
+                </div>
+                <button onclick="closeRegionModal()" class="w-9 h-9 rounded-xl bg-slate-900/70 border border-white/10 hover:border-teal-400 text-slate-400 hover:text-white flex items-center justify-center transition-all cursor-pointer">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Detailed Region Metrics -->
+            <div class="space-y-4 text-xs sm:text-sm text-slate-300 mb-6 font-light">
+                <p id="region-modal-desc" class="leading-relaxed">
+                    Kawasan Asia-Pasifik memegang kunci pasokan chip semikonduktor dunia. Penanaman modal pada sektor baterai kendaraan listrik dan infrastruktur pelabuhan pintar menawarkan pengembalian tinggi dengan risiko geopolitik di Selat Taiwan.
+                </p>
+
+                <div class="grid grid-cols-2 gap-3 text-xs font-mono">
+                    <div class="p-3 rounded-xl bg-slate-900/70 border border-white/10">
+                        <span class="text-slate-400 block text-[10px]">REKOMENDASI ALOKASI</span>
+                        <span class="text-emerald-400 font-bold" id="region-modal-rec">Obligasi High-Yield & Tech ETF</span>
+                    </div>
+                    <div class="p-3 rounded-xl bg-slate-900/70 border border-white/10">
+                        <span class="text-slate-400 block text-[10px]">POTENSI RETURN</span>
+                        <span class="text-teal-300 font-bold" id="region-modal-yield">+16.5% / Tahun</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interventions Options -->
+            <div class="space-y-3" id="region-actions-container">
+                <!-- Injected via JavaScript -->
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+                <span><i class="fa-solid fa-shield-halved text-teal-400 mr-1"></i> INTERVENSI MAKRO REGIONAL</span>
+                <span class="text-teal-400">EKSEKUSI BERDAMPAK SEKETIKA</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- POPUP MODAL 4: EVENT DECISION MODAL (MACRO SIMULATOR) -->
+    <div id="event-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+        <div class="glass-panel w-full max-w-xl rounded-3xl p-6 md:p-8 border border-teal-500/40 shadow-2xl relative transform scale-95 transition-transform duration-300" id="event-modal-card">
+            
+            <!-- Modal Header Badge -->
+            <div class="flex items-center justify-between mb-4">
+                <span id="modal-category-badge" class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-teal-950/80 text-teal-300 border border-teal-500/40 uppercase tracking-widest">
+                    [PERISTIWA MAKRO GLOBAL]
+                </span>
+                <span id="modal-year-badge" class="text-xs font-mono text-slate-400">TAHUN 2027</span>
+            </div>
+
+            <!-- Modal Title -->
+            <h3 id="modal-title" class="text-xl sm:text-2xl font-bold font-tech text-white mb-3">
+                Krisis Semikonduktor & Embargo Teknologi
+            </h3>
+
+            <!-- Modal Narrative Description -->
+            <p id="modal-description" class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6 font-light">
+                Perang dagang antara dua kekuatan besar berujung pada peningkapan embargo teknologi mikroprosesor canggih. Rantai pasok elektronik global terhambat total. Bagaimana strategi portofolio Anda?
+            </p>
+
+            <!-- Choices Container -->
+            <div id="modal-choices-container" class="space-y-3 mb-6">
+                <!-- Populated via JavaScript -->
+            </div>
+
+            <!-- Modal Footer Note -->
+            <div class="pt-4 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+                <span><i class="fa-solid fa-shield-cat text-teal-400 mr-1"></i> Kanvas Hidup Engine</span>
+                <span class="text-teal-400">Setiap Pilihan Mengubah Stabilitas & Wealth</span>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="w-full glass-panel border-t border-white/10 py-3 px-4 z-20 mt-8">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4 text-xs text-slate-400 font-mono">
+            <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-teal-400"></span>
+                <span class="font-bold text-slate-200 font-tech">KANVAS HIDUP • GEOPOLITICAL TERMINAL</span>
+                <span class="text-slate-500">• </span>
+            </div>
+            
+            <div class="flex items-center gap-6">
+                <span>STABILITAS: <span class="text-teal-400 font-bold" id="footer-stability-val">78/100</span></span>
+                <span>STATUS: <span class="text-emerald-400 font-bold">ONLINE</span></span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT SIMULATOR ENGINE -->
+    <script>
+        let currentAge = 25;
+        let currentYear = 2026;
+        let playerBalance = 2450000000; // Rp 2.450.000.000
+        let worldStability = 78; // Index 0-100
+        let currentFilter = 'all';
+
+        function formatCurrency(amount) {
+            return 'Rp ' + amount.toLocaleString('id-ID');
+        }
+
+        function updateBalanceDisplay() {
+            const balanceEl = document.getElementById('hud-balance');
+            const dossierWealthEl = document.getElementById('dossier-wealth');
+            
+            if (balanceEl) {
+                balanceEl.innerText = formatCurrency(playerBalance);
+            }
+            if (dossierWealthEl) {
+                dossierWealthEl.innerText = `Kelas Elit (${formatCurrency(playerBalance)})`;
+            }
+        }
+
+        function updateWorldStability(delta) {
+            worldStability = Math.max(10, Math.min(100, worldStability + delta));
+            
+            const stabilityEl = document.getElementById('hud-stability');
+            const footerStabilityEl = document.getElementById('footer-stability-val');
+            const threatBadge = document.getElementById('threat-level-badge');
+
+            let statusText = "STABIL";
+            let colorClass = "text-teal-300";
+
+            if (worldStability < 40) {
+                statusText = "KRITIS (DEFCON 2)";
+                colorClass = "text-rose-400";
+                if (threatBadge) threatBadge.innerText = "LEVEL ANCAMAN: TINGGI / KRITIS (DEFCON 2)";
+            } else if (worldStability < 70) {
+                statusText = "MODERAT (DEFCON 3)";
+                colorClass = "text-amber-300";
+                if (threatBadge) threatBadge.innerText = "LEVEL ANCAMAN: MODERAT (DEFCON 3)";
+            } else {
+                statusText = "STABIL (DEFCON 4)";
+                colorClass = "text-teal-300";
+                if (threatBadge) threatBadge.innerText = "LEVEL ANCAMAN: NORMAL / STABIL (DEFCON 4)";
+            }
+
+            if (stabilityEl) {
+                stabilityEl.innerText = `${worldStability} / 100 (${statusText})`;
+            }
+            if (footerStabilityEl) {
+                footerStabilityEl.innerText = `${worldStability}/100`;
+            }
+        }
+
+        function toggleProfileDossier() {
+            const modal = document.getElementById('profile-modal');
+            const modalCard = document.getElementById('profile-modal-card');
+
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    modal.classList.remove('opacity-0');
+                    modalCard.classList.remove('scale-95');
+                    modalCard.classList.add('scale-100');
+                }, 20);
+            } else {
+                closeProfileModal();
+            }
+        }
+
+        function closeProfileModal() {
+            const modal = document.getElementById('profile-modal');
+            const modalCard = document.getElementById('profile-modal-card');
+
+            modal.classList.add('opacity-0');
+            modalCard.classList.remove('scale-100');
+            modalCard.classList.add('scale-95');
+
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        function toggleModuleDrawer() {
+            const modal = document.getElementById('module-modal');
+            const modalCard = document.getElementById('module-modal-card');
+
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    modal.classList.remove('opacity-0');
+                    modalCard.classList.remove('scale-95');
+                    modalCard.classList.add('scale-100');
+                }, 20);
+            } else {
+                closeModuleModal();
+            }
+        }
+
+        function closeModuleModal() {
+            const modal = document.getElementById('module-modal');
+            const modalCard = document.getElementById('module-modal-card');
+
+            modal.classList.add('opacity-0');
+            modalCard.classList.remove('scale-100');
+            modalCard.classList.add('scale-95');
+
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        /* REGIONAL DATA MAP */
+        const regionDataMap = {
+            'asia-pacific': {
+                title: 'ANALISIS REGIONAL ASIA-PASIFIK',
+                subtitle: 'PUSAT SEMIKONDUKTOR & EV MANUFAKTUR',
+                icon: 'fa-microchip',
+                desc: 'Asia-Pasifik mendominasi 80% pasokan chip semikonduktor canggih global. Risiko konfrontasi maritim di Selat Taiwan membutuhkan perlindungan aset terstruktur.',
+                rec: 'Saham Chip Foundry & EV Supply',
+                yield: '+16.5% / Tahun',
+                actions: [
+                    { name: "Investasi Pabrik Chip Fab Regional", cost: 300000000, gain: 480000000, text: "Ekspansi modal berhasil membuahkan dividen manufaktur chip." },
+                    { name: "Hedge Krisis Selat Taiwan", cost: 150000000, gain: 200000000, text: "Kontrak proteksi risiko mengamankan aset dari depresiasi rantai pasok." }
+                ]
+            },
+            'north-america': {
+                title: 'ANALISIS REGIONAL AMERIKA UTARA',
+                subtitle: 'PASAR MODAL & HUB AI GLOBAL',
+                icon: 'fa-dollar-sign',
+                desc: 'Amerika Utara memimpin pasar keuangan dunia serta riset kecerdasan buatan kuantum. Likuiditas pasar sangat tinggi dengan perlindungan hukum aset terbaik.',
+                rec: 'Venture Capital & AI Megacaps',
+                yield: '+18.5% / Tahun',
+                actions: [
+                    { name: "Suntik Modal Startup AI Generatif", cost: 400000000, gain: 700000000, text: "Startup meluncurkan IPO sukses di Nasdaq!" },
+                    { name: "Beli Obligasi Pemerintah US Treasury", cost: 200000000, gain: 230000000, text: "Pendapatan bunga stabil masuk ke neraca kas Anda." }
+                ]
+            },
+            'europe': {
+                title: 'ANALISIS REGIONAL EROPA UNI',
+                subtitle: 'TRANSISI HIJAU & INDUSTRI MEWAH',
+                icon: 'fa-building-columns',
+                desc: 'Uni Eropa menetapkan batas emisi karbon paling ketat di dunia. Sektor energi terbarukan dan manufaktur otomotif presisi tinggi menjadi penggerak ekonomi utama.',
+                rec: 'Obligasi Karbon & Luxury Goods',
+                yield: '+9.2% / Tahun',
+                actions: [
+                    { name: "Investasi Kebun Angin Lepas Pantai", cost: 250000000, gain: 360000000, text: "Mendapat insentif subsidi energi hijau dari Komisi Eropa." },
+                    { name: "Beli Lisensi Kredit Karbon Industri", cost: 100000000, gain: 150000000, text: "Kredit karbon diperdagangkan dengan nilai premi tinggi." }
+                ]
+            },
+            'middle-east': {
+                title: 'ANALISIS REGIONAL TIMUR TENGAH',
+                subtitle: 'KEDAULATAN PETRODOLAR & REAL ESTAT MEWAH',
+                icon: 'fa-oil-well',
+                desc: 'Timur Tengah menguasai cadangan minyak bumi terbesar serta diversifikasi masif ke megaproyek kecerdasan buatan dan kota futuristik.',
+                rec: 'Sovereign Debt & Luxury Real Estate',
+                yield: '+21.0% / Tahun',
+                actions: [
+                    { name: "Akuisisi Unit Penthouse di Dubai Marina", cost: 500000000, gain: 850000000, text: "Nilai properti melonjak seiring masuknya modal eksklusif." },
+                    { name: "Sponsor Konsorsium Energi Fosil-Solar", cost: 300000000, gain: 450000000, text: "Deviden energi memberikan arus kas positif berlipat." }
+                ]
+            }
+        };
+
+        function openRegionModal(regionKey) {
+            const data = regionDataMap[regionKey];
+            if (!data) return;
+
+            document.getElementById('region-modal-title').innerText = data.title;
+            document.getElementById('region-modal-subtitle').innerText = data.subtitle;
+            document.getElementById('region-modal-desc').innerText = data.desc;
+            document.getElementById('region-modal-rec').innerText = data.rec;
+            document.getElementById('region-modal-yield').innerText = data.yield;
+
+            const actionsContainer = document.getElementById('region-actions-container');
+            actionsContainer.innerHTML = '';
+
+            data.actions.forEach((act) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full p-3.5 rounded-xl bg-slate-900/80 border border-white/10 hover:border-teal-400 hover:bg-slate-800/80 transition-all text-left flex items-center justify-between group cursor-pointer active:scale-98";
+                btn.onclick = () => executeRegionAction(act);
+
+                btn.innerHTML = `
+                    <div>
+                        <span class="text-xs font-bold text-white group-hover:text-teal-300 transition-colors block">
+                            ${act.name}
+                        </span>
+                        <span class="text-[10px] text-slate-400">Modal: ${formatCurrency(act.cost)}</span>
+                    </div>
+                    <span class="text-xs font-mono font-bold text-emerald-400 border border-emerald-500/30 px-2.5 py-1 rounded-lg bg-emerald-950/70">
+                        Eksekusi
+                    </span>
+                `;
+                actionsContainer.appendChild(btn);
+            });
+
+            const modal = document.getElementById('region-modal');
+            const modalCard = document.getElementById('region-modal-card');
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalCard.classList.remove('scale-95');
+                modalCard.classList.add('scale-100');
+            }, 20);
+        }
+
+        function closeRegionModal() {
+            const modal = document.getElementById('region-modal');
+            const modalCard = document.getElementById('region-modal-card');
+
+            modal.classList.add('opacity-0');
+            modalCard.classList.remove('scale-100');
+            modalCard.classList.add('scale-95');
+
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        function executeRegionAction(actionObj) {
+            if (playerBalance < actionObj.cost) {
+                appendEventLog("FINANSIAL", "TRANSAKSI GAGAL", "Saldo tidak mencukupi untuk mengeksekusi manuver regional ini.", "Sisa Saldo Kurang");
+                closeRegionModal();
+                return;
+            }
+
+            playerBalance = playerBalance - actionObj.cost + actionObj.gain;
+            const profit = actionObj.gain - actionObj.cost;
+            updateBalanceDisplay();
+            updateWorldStability(+3);
+
+            appendEventLog("GEOPOLITIK", actionObj.name, actionObj.text, `Profit: +${formatCurrency(profit)}`);
+            closeRegionModal();
+        }
+
+        function executeMacroAction(actionType) {
+            if (actionType === 'offshore') {
+                const cost = 100000000;
+                if (playerBalance < cost) return;
+                playerBalance -= cost;
+                updateBalanceDisplay();
+                updateWorldStability(+2);
+                appendEventLog("FINANSIAL", "LINDUNGI MODAL OFFSHORE", "Likuiditas sebesar Rp 100 Juta berhasil diamankan di rekening Swiss Suaka Pajak.", "Proteksi Aset Aktif");
+            } else if (actionType === 'hedging') {
+                const cost = 200000000;
+                if (playerBalance < cost) return;
+                playerBalance -= cost;
+                playerBalance += 280000000;
+                updateBalanceDisplay();
+                updateWorldStability(+4);
+                appendEventLog("PASAR MAKRO", "HEDGING EMAS & FOREX", "Kontrak bullion emas menutup kerugian inflasi nasional dengan hasil menguntungkan.", "Net Gain +Rp 80.000.000");
+            } else if (actionType === 'lobbying') {
+                const cost = 350000000;
+                if (playerBalance < cost) return;
+                playerBalance -= cost;
+                updateBalanceDisplay();
+                updateWorldStability(+6);
+                appendEventLog("GEOPOLITIK", "LOBBYING DIPLOMASI TINGKAT TINGGI", "Firma lobbying Anda berhasil mengamankan hak tarif bea masuk khusus untuk ekspor perusahaan.", "Akses Konsesi Perdagangan");
+            }
+        }
+
+        function scanGlobalIntel() {
+            // Random gauge shift animation
+            const growth = Math.floor(Math.random() * 20) + 50;
+            const stress = Math.floor(Math.random() * 30) + 50;
+            const tech = Math.floor(Math.random() * 15) + 75;
+            const energy = Math.floor(Math.random() * 25) + 60;
+
+            document.getElementById('bar-growth').style.width = `${growth}%`;
+            document.getElementById('bar-stress').style.width = `${stress}%`;
+            document.getElementById('bar-tech').style.width = `${tech}%`;
+            document.getElementById('bar-energy').style.width = `${energy}%`;
+
+            document.getElementById('gauge-growth').innerText = `+${(growth/20).toFixed(1)}% / Thn`;
+            document.getElementById('gauge-stress').innerText = `${stress} / 100`;
+            document.getElementById('gauge-tech').innerText = `${tech} / 100`;
+            document.getElementById('gauge-energy').innerText = `$${energy + 20} / bbl`;
+
+            appendEventLog("GEOPOLITIK", "PEMINDAIAN INTELIJEN MAKRO", "Pemindaian satelit & bursa saham telah selesai. Indikator makro diperbarui.", "Intel Realtime Aktual");
+        }
+
+        /* GEOPOLITICAL MACRO EVENT POOL */
+        const macroEvents = [
+            {
+                category: "KRISIS GEOPOLITIK",
+                title: "Embargo Chip Semikonduktor Global",
+                description: "Sengketa perdagangan teknologi menyebabkan berhentinya pengiriman chip kelas atas ke pasar berkembang. Industri elektronik mengalami stagnasi.",
+                choices: [
+                    { text: "Beli Saham Produsen Chip Lokal Domestik", outcome: "Pemerintah memberikan insentif besar kepada produsen lokal.", resultBadge: "+ Rp 450.000.000", balanceChange: 450000000, stabilityDelta: +2 },
+                    { text: "Lakukan Impor Jalur Alternatif Lewat Negara Ketiga", outcome: "Biaya logistik melambung tinggi mengurangi margin operasional.", resultBadge: "- Rp 120.000.000", balanceChange: -120000000, stabilityDelta: -4 }
+                ]
+            },
+            {
+                category: "PASAR MAKRO",
+                title: "Kesepakatan Pajak Karbon Antarnegara",
+                description: "Pemimpin dunia menandatangani regulasi pajak karbon baru. Perusahaan dengan Jejak Karbon tinggi dikenakan denda berat.",
+                choices: [
+                    { text: "Konversi Seluruh Listrik Operasional ke Energi Surya", outcome: "Mendapat sertifikat hijau dan keringanan pajak investasi.", resultBadge: "+ Rp 300.000.000 (Tax Credit)", balanceChange: 300000000, stabilityDelta: +5 },
+                    { text: "Bayar Denda Emisi Karbon Sementara", outcome: "Denda dibayarkan langsung dari kas operasional perusahaan.", resultBadge: "- Rp 180.000.000", balanceChange: -180000000, stabilityDelta: -2 }
+                ]
+            },
+            {
+                category: "TEKNOLOGI AI",
+                title: "Perang AI Kuantum & Keamanan Siber",
+                description: "Peretasan masif tingkat negara menyerang infrastruktur perbankan global. Sistem perbankan tradisional melambat.",
+                choices: [
+                    { text: "Tingkatkan Enkripsi Siber ke Kuantum Proteksi", outcome: "Sistem keuangan Anda aman mutlak dari infiltrasi peretas.", resultBadge: "Proteksi Siber Maksimal", balanceChange: -80000000, stabilityDelta: +3 },
+                    { text: "Sewa Tim White-Hat Hacker Independen", outcome: "Ancaman terselesaikan namun memerlukan biaya audit siber berkelanjutan.", resultBadge: "- Rp 50.000.000", balanceChange: -50000000, stabilityDelta: 0 }
+                ]
+            },
+            {
+                category: "KRISIS ENERGI",
+                title: "Lonjakan Harga Minyak Dunia (Petrodolar Shock)",
+                description: "Konflik di Timur Tengah menghentikan pasokan Selat Hormuz. Harga minyak mentah dunia menembus $120 per barel.",
+                choices: [
+                    { text: "Jual Cadangan Futures Minyak yang Dimiliki", outcome: "Mendapatkan pangkas untung besar dari lonjakan harga komoditas.", resultBadge: "+ Rp 650.000.000", balanceChange: 650000000, stabilityDelta: -5 },
+                    { text: "Suntik Modal ke Konsorsium Mobil Listrik", outcome: "Permintaan kendaraan EV melonjak drastis pasca-krisis BBM.", resultBadge: "+ Rp 400.000.000", balanceChange: 400000000, stabilityDelta: +4 }
+                ]
+            }
+        ];
+
+        function triggerAgeAdvance() {
+            currentAge++;
+            currentYear++;
+
+            document.getElementById('hud-year').innerText = `TAHUN ${currentYear}`;
+            
+            const dossierAgeEl = document.getElementById('dossier-age');
+            if (dossierAgeEl) dossierAgeEl.innerText = `${currentAge} Tahun`;
+
+            const randomIndex = Math.floor(Math.random() * macroEvents.length);
+            const selectedEvent = macroEvents[randomIndex];
+
+            openEventModal(selectedEvent);
+        }
+
+        function openEventModal(eventData) {
+            const modal = document.getElementById('event-modal');
+            const modalCard = document.getElementById('event-modal-card');
+            
+            document.getElementById('modal-category-badge').innerText = `[${eventData.category}]`;
+            document.getElementById('modal-year-badge').innerText = `TAHUN ${currentYear} (USIA ${currentAge})`;
+            document.getElementById('modal-title').innerText = eventData.title;
+            document.getElementById('modal-description').innerText = eventData.description;
+
+            const choicesContainer = document.getElementById('modal-choices-container');
+            choicesContainer.innerHTML = '';
+
+            eventData.choices.forEach((choice, idx) => {
+                const choiceBtn = document.createElement('button');
+                choiceBtn.className = "w-full p-3.5 rounded-xl bg-slate-900/70 border border-white/10 hover:border-teal-400 hover:bg-slate-800/80 transition-all text-left flex flex-col justify-between group cursor-pointer active:scale-98";
+                choiceBtn.onclick = () => makeChoice(eventData, choice);
+
+                choiceBtn.innerHTML = `
+                    <div class="flex items-center justify-between w-full">
+                        <span class="text-xs font-semibold text-slate-100 group-hover:text-teal-300 transition-colors">
+                            <i class="fa-solid fa-chevron-right text-[10px] text-teal-400 mr-2"></i> ${choice.text}
+                        </span>
+                        <span class="text-[10px] font-mono text-slate-500 group-hover:text-slate-300">PILIHAN ${idx + 1}</span>
+                    </div>
+                `;
+                choicesContainer.appendChild(choiceBtn);
+            });
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalCard.classList.remove('scale-95');
+                modalCard.classList.add('scale-100');
+            }, 20);
+        }
+
+        function makeChoice(eventData, choice) {
+            closeEventModal();
+
+            if (choice.balanceChange !== undefined) {
+                playerBalance += choice.balanceChange;
+                updateBalanceDisplay();
+            }
+
+            if (choice.stabilityDelta !== undefined) {
+                updateWorldStability(choice.stabilityDelta);
+            }
+
+            appendEventLog(eventData.category, eventData.title, choice.outcome, choice.resultBadge);
+        }
+
+        function closeEventModal() {
+            const modal = document.getElementById('event-modal');
+            const modalCard = document.getElementById('event-modal-card');
+
+            modal.classList.add('opacity-0');
+            modalCard.classList.remove('scale-100');
+            modalCard.classList.add('scale-95');
+
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        function appendEventLog(category, categoryBadge, outcome, resultBadge) {
+            const logContainer = document.getElementById('event-log-container');
+
+            const newLogItem = document.createElement('div');
+            
+            let catType = "log-geopolitics";
+            let categoryColorClass = "text-teal-400 border-teal-500/30 bg-teal-950/70";
+
+            if (category.includes("FINANSIAL") || category.includes("PASAR")) {
+                catType = "log-financial";
+                categoryColorClass = "text-emerald-400 border-emerald-500/30 bg-emerald-950/70";
+            } else if (category.includes("KRISIS") || category.includes("ENERGI")) {
+                catType = "log-crisis";
+                categoryColorClass = "text-amber-400 border-amber-500/30 bg-amber-950/70";
+            }
+
+            newLogItem.className = `p-3 rounded-xl bg-slate-900/60 border border-teal-500/30 transition-all hover:border-teal-500/50 animate-fade-in log-item ${catType}`;
+
+            newLogItem.innerHTML = `
+                <div class="flex items-center justify-between mb-1">
+                    <span class="text-[9px] font-mono px-2 py-0.5 rounded border ${categoryColorClass}">${category}</span>
+                    <span class="text-[10px] font-mono text-slate-400">THN ${currentYear} (USIA ${currentAge})</span>
+                </div>
+                <p class="text-xs font-semibold text-slate-100 mt-1">${categoryBadge}</p>
+                <p class="text-[11px] text-slate-300 mt-0.5">${outcome}</p>
+                <p class="text-[10px] text-teal-300 font-mono mt-1 font-semibold">${resultBadge}</p>
+            `;
+
+            logContainer.insertBefore(newLogItem, logContainer.firstChild);
+
+            // Re-apply filter
+            filterLogs(currentFilter);
+        }
+
+        function filterLogs(filterType) {
+            currentFilter = filterType;
+            const allItems = document.querySelectorAll('.log-item');
+
+            const btnAll = document.getElementById('filter-all');
+            const btnGeo = document.getElementById('filter-geopolitics');
+            const btnFin = document.getElementById('filter-financial');
+            const btnCri = document.getElementById('filter-crisis');
+
+            // Reset buttons styling
+            [btnAll, btnGeo, btnFin, btnCri].forEach(btn => {
+                if (btn) {
+                    btn.className = "px-2.5 py-1 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-white/10";
+                }
+            });
+
+            if (filterType === 'all' && btnAll) btnAll.className = "px-2.5 py-1 rounded-lg bg-teal-500/20 text-teal-300 border border-teal-500/40 font-bold";
+            if (filterType === 'geopolitics' && btnGeo) btnGeo.className = "px-2.5 py-1 rounded-lg bg-teal-500/20 text-teal-300 border border-teal-500/40 font-bold";
+            if (filterType === 'financial' && btnFin) btnFin.className = "px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-bold";
+            if (filterType === 'crisis' && btnCri) btnCri.className = "px-2.5 py-1 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/40 font-bold";
+
+            allItems.forEach(item => {
+                if (filterType === 'all') {
+                    item.style.display = 'block';
+                } else if (filterType === 'geopolitics' && item.classList.contains('log-geopolitics')) {
+                    item.style.display = 'block';
+                } else if (filterType === 'financial' && item.classList.contains('log-financial')) {
+                    item.style.display = 'block';
+                } else if (filterType === 'crisis' && item.classList.contains('log-crisis')) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        function clearEventLogs() {
+            const logContainer = document.getElementById('event-log-container');
+            logContainer.innerHTML = `
+                <div class="p-3 text-center text-xs font-mono text-slate-500">
+                    [LOG DIBERSIHKAN - SIAP MENCATAT PERISTIWA BARU]
+                </div>
+            `;
+        }
+
+        // Inisialisasi tampilan awal saat DOM siap
+        document.addEventListener('DOMContentLoaded', () => {
+            updateBalanceDisplay();
+            updateWorldStability(0);
+        });
+    </script>
+</body>
+</html>
