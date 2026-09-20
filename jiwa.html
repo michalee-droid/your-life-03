@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanvas Hidup - Sektor 06: Kedamaian Jiwa & Kesehatan Mental</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts: Inter & Orbitron -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        tech: ['Orbitron', 'sans-serif'],
+                    },
+                    colors: {
+                        cyber: {
+                            bg: '#040711',
+                            card: 'rgba(11, 17, 32, 0.6)',
+                            border: 'rgba(255, 255, 255, 0.12)',
+                            cyan: '#00F2FE',
+                            purple: '#8B5CF6',
+                            gold: '#F59E0B',
+                            emerald: '#10B981',
+                            rose: '#F43F5E'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #040711;
+            color: #E2E8F0;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Atmospheric Background Khusus Sektor Jiwa */
+        .bg-luxury-overlay {
+            background-image: 
+                radial-gradient(circle at 50% 20%, rgba(244, 63, 94, 0.15) 0%, transparent 60%),
+                radial-gradient(circle at 85% 70%, rgba(139, 92, 246, 0.15) 0%, transparent 55%),
+                radial-gradient(circle at 15% 85%, rgba(0, 242, 254, 0.12) 0%, transparent 50%),
+                linear-gradient(to bottom, rgba(4, 7, 17, 0.55), rgba(4, 7, 17, 0.85)),
+                url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1920&auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Glassmorphism Panels Transparan */
+        .glass-panel {
+            background: rgba(11, 18, 33, 0.60);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .glass-card {
+            background: rgba(15, 23, 42, 0.50);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Central Zen Orb Animations */
+        @keyframes zen-pulse {
+            0%, 100% {
+                box-shadow: 0 0 35px rgba(244, 63, 94, 0.4), inset 0 0 25px rgba(139, 92, 246, 0.3);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 70px rgba(244, 63, 94, 0.85), inset 0 0 50px rgba(0, 242, 254, 0.65);
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes aura-rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .zen-core-glow {
+            animation: zen-pulse 6s infinite ease-in-out;
+        }
+
+        .aura-ring-1 {
+            animation: aura-rotate 25s linear infinite;
+        }
+
+        .aura-ring-2 {
+            animation: aura-rotate 40s linear infinite reverse;
+        }
+
+        /* Custom Scrollbar */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 5px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(10, 15, 30, 0.3);
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(244, 63, 94, 0.4);
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(244, 63, 94, 0.7);
+        }
+
+        .glow-text-rose {
+            text-shadow: 0 0 15px rgba(244, 63, 94, 0.6);
+        }
+        .glow-text-cyan {
+            text-shadow: 0 0 15px rgba(0, 242, 254, 0.6);
+        }
+        .glow-text-emerald {
+            text-shadow: 0 0 15px rgba(16, 185, 129, 0.6);
+        }
+        .glow-text-purple {
+            text-shadow: 0 0 15px rgba(139, 92, 246, 0.6);
+        }
+    </style>
+</head>
+<body class="bg-luxury-overlay min-h-screen flex flex-col justify-between relative selection:bg-rose-500 selection:text-slate-950">
+
+    <!-- TOP HUD BAR MEWAH -->
+    <header class="w-full glass-panel sticky top-0 z-40 border-b border-white/10 px-4 sm:px-6 py-2.5">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3 sm:gap-4">
+            
+            <!-- Navigation Back & Branding -->
+            <div class="flex items-center gap-3">
+                <a href="index.html" class="w-8 h-8 rounded-xl bg-slate-900/80 border border-white/10 hover:border-rose-400 text-slate-300 hover:text-white flex items-center justify-center transition-all group" title="Kembali ke Kanvas Utama">
+                    <i class="fa-solid fa-arrow-left text-xs group-hover:-translate-x-0.5 transition-transform"></i>
+                </a>
+                <div class="flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse"></span>
+                    <span class="font-bold font-tech text-white text-xs sm:text-sm tracking-widest uppercase">
+                        KANVAS HIDUP <span class="text-rose-400 hidden sm:inline">• SEKTOR 06: JIWA</span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- HUD Info Container: Saldo, Kedamaian, Year, Navigation Drawer -->
+            <div class="flex items-center gap-2.5 sm:gap-4">
+
+                <!-- MODUL SKOR KEDAMAIAN BATIN -->
+                <div class="flex items-center gap-2.5 bg-gradient-to-r from-rose-950/80 via-slate-900/90 to-purple-950/80 px-3 py-1.5 rounded-xl border border-rose-500/40 shadow-[0_0_15px_rgba(244,63,148,0.15)]">
+                    <div class="w-7 h-7 rounded-lg bg-rose-500/20 border border-rose-400/40 flex items-center justify-center text-rose-400">
+                        <i class="fa-solid fa-yin-yang text-xs glow-text-rose animate-spin-slow"></i>
+                    </div>
+                    <div class="text-left">
+                        <div class="text-[8px] text-rose-300/80 font-mono uppercase tracking-wider flex items-center gap-1">
+                            <span>KEDAMAIAN</span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-rose-400 animate-ping"></span>
+                        </div>
+                        <div class="text-xs sm:text-sm font-bold font-tech text-rose-300 glow-text-rose leading-none" id="hud-peace-score">
+                            85% MINDFUL
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MODUL SALDO PEMAIN MEWAH -->
+                <div class="hidden md:flex items-center gap-3 bg-slate-900/80 px-3.5 py-1.5 rounded-xl border border-emerald-500/40 shadow-inner">
+                    <div class="w-7 h-7 rounded-lg bg-emerald-500/20 border border-emerald-400/40 flex items-center justify-center text-emerald-400">
+                        <i class="fa-solid fa-wallet text-xs glow-text-emerald"></i>
+                    </div>
+                    <div class="text-left">
+                        <div class="text-[8px] text-emerald-400/80 font-mono uppercase tracking-wider">Saldo</div>
+                        <div class="text-xs sm:text-sm font-bold font-tech text-emerald-300 glow-text-emerald leading-none" id="hud-balance">
+                            Rp 2.450.000.000
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Year Indicator -->
+                <div class="flex items-center gap-2 bg-slate-900/60 px-3 py-1.5 rounded-xl border border-amber-500/30">
+                    <i class="fa-solid fa-calendar-days text-amber-400 text-xs"></i>
+                    <div class="text-right">
+                        <div class="text-[8px] text-slate-400 font-mono uppercase">Tahun</div>
+                        <div class="text-xs font-bold font-tech text-amber-300 leading-none" id="hud-year">2026</div>
+                    </div>
+                </div>
+
+                <!-- Module Drawer Trigger -->
+                <button onclick="toggleModuleDrawer()" class="w-9 h-9 rounded-xl bg-slate-900/80 border border-rose-500/40 hover:border-rose-400 text-rose-300 flex items-center justify-center transition-all cursor-pointer shadow-lg active:scale-95" title="Buka Navigasi Modul">
+                    <i class="fa-solid fa-compass text-sm"></i>
+                </button>
+
+            </div>
+
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-6 flex-1 w-full space-y-8">
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Left Main Column (Interactive Soul Orb & Soul Practices) -->
+            <div class="lg:col-span-8 flex flex-col space-y-6">
+                
+                <!-- PUSAT KEDAMAIAN & RESILIENSI PANEL -->
+                <section class="glass-panel rounded-3xl p-6 sm:p-8 relative overflow-hidden border border-rose-500/40 shadow-2xl transition-all duration-500" id="soul-hub-card">
+                    
+                    <!-- Ambient Inner Glowing Aura -->
+                    <div class="absolute -top-24 -left-24 w-96 h-96 bg-rose-500/15 rounded-full blur-3xl pointer-events-none"></div>
+                    <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-purple-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+                    <!-- Header & Zen Interactive Orb -->
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-8 relative z-10 border-b border-white/10 pb-8">
+                        
+                        <!-- Title & Philosophy Description -->
+                        <div class="space-y-3 text-center md:text-left flex-1">
+                            
+                            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-rose-950/75 border border-rose-500/40 text-rose-300 text-xs font-mono">
+                                <span class="w-2 h-2 rounded-full bg-rose-400 animate-ping"></span>
+                                <span>SEKTOR 06 • SANCTUARY BATIN & MANAJEMEN STRES</span>
+                            </div>
+
+                            <h1 class="text-3xl sm:text-4xl font-black font-tech tracking-tight text-white uppercase glow-text-rose">
+                                RESILIENSI BATIN
+                            </h1>
+
+                            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-lg font-light">
+                                Di balik layar eksekutif yang padat, keheningan jiwa adalah pondasi tertinggi performa puncak. Pengelolaan stres, ketenangan stoikisme, dan meditasi terpandu membantu menyelaraskan ambisi finansial dengan keheningan nurani.
+                            </p>
+
+                            <!-- Mini Quick Action Stats Badge -->
+                            <div class="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-1">
+                                <div class="px-3 py-1 rounded-lg bg-slate-900/60 border border-white/10 text-[11px] font-mono text-slate-300">
+                                    <i class="fa-solid fa-heart-pulse text-rose-400 mr-1.5"></i> Status: <span class="text-rose-300 font-bold" id="quick-mental-state">Sangat Stabil</span>
+                                </div>
+                                <div class="px-3 py-1 rounded-lg bg-slate-900/60 border border-white/10 text-[11px] font-mono text-slate-300">
+                                    <i class="fa-solid fa-brain text-purple-400 mr-1.5"></i> Resiliensi: <span class="text-purple-300 font-bold">85/100</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Animated Central Zen Meditation Orb -->
+                        <div class="relative flex items-center justify-center shrink-0 my-2 md:my-0">
+                            <!-- Outer Rotating Rings -->
+                            <div class="w-36 h-36 sm:w-40 sm:h-40 rounded-full border border-dashed border-rose-400/40 aura-ring-1 absolute pointer-events-none"></div>
+                            <div class="w-44 h-44 sm:w-48 sm:h-48 rounded-full border border-purple-500/30 aura-ring-2 absolute pointer-events-none"></div>
+
+                            <!-- Interactive Orb Core Button -->
+                            <button onclick="startMeditationSession()" id="btn-zen-orb" title="Klik untuk Memulai Sesi Meditasi Singkat" 
+                                    class="w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-gradient-to-br from-rose-950/90 via-slate-900/90 to-purple-950/90 border border-rose-400/60 zen-core-glow flex flex-col items-center justify-center p-2 text-center shadow-2xl hover:scale-105 hover:border-rose-300 transition-all cursor-pointer group">
+                                <i class="fa-solid fa-spa text-3xl text-rose-400 group-hover:text-rose-300 group-hover:scale-110 transition-all animate-pulse mb-1" id="orb-icon"></i>
+                                <span class="text-[9px] font-mono text-rose-300 tracking-wider font-bold uppercase" id="orb-text-1">SESI MEDITASI</span>
+                                <span class="text-[8px] text-slate-400 font-mono" id="orb-text-2">HENINGKAN PIKIRAN</span>
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <!-- CONTROL BUTTONS: Sesi Meditasi Instant & Trigger Event -->
+                    <div class="mt-6 flex flex-wrap items-center justify-between gap-4 relative z-10">
+                        
+                        <!-- Instant Meditation Action Button -->
+                        <button onclick="startMeditationSession()" 
+                                class="flex-1 min-w-[220px] inline-flex items-center justify-center px-6 py-3.5 rounded-2xl bg-gradient-to-r from-rose-600/90 via-purple-600/90 to-indigo-600/90 hover:from-rose-500 hover:to-indigo-500 text-white font-tech font-bold text-xs sm:text-sm tracking-wider uppercase shadow-xl hover:brightness-110 transition-all duration-300 cursor-pointer active:scale-95 border border-rose-300/30">
+                            <i class="fa-solid fa-om mr-2.5 text-rose-200 text-base"></i>
+                            <span>Mulai Sesi Meditasi (+5% Jiwa)</span>
+                        </button>
+
+                        <!-- Random Soul Event Decision Button -->
+                        <button onclick="triggerRandomSoulEvent()" 
+                                class="flex-1 min-w-[220px] inline-flex items-center justify-center px-6 py-3.5 rounded-2xl bg-slate-900/80 hover:bg-slate-800/90 text-rose-300 font-tech font-bold text-xs sm:text-sm tracking-wider uppercase border border-rose-500/40 shadow-lg transition-all duration-300 cursor-pointer active:scale-95 group">
+                            <i class="fa-solid fa-dice text-rose-400 mr-2.5 group-hover:rotate-180 transition-transform duration-500"></i>
+                            <span>Eksplor Peristiwa Batin</span>
+                        </button>
+
+                    </div>
+
+                </section>
+
+                <!-- MODUL PRAKTIK & LAYANAN JIWA (4 PRAKTIK UTAMA) -->
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between px-1">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-leaf text-rose-400"></i>
+                            <h2 class="text-sm font-bold font-tech text-white uppercase tracking-wider">MODUL PRAKTIK & KESEJAHTERAAN BATIN</h2>
+                        </div>
+                        <span class="text-[10px] font-mono text-slate-400">PILIH OPSI UNTUK INTERAKSI</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        
+                        <!-- 1. Retret Meditasi & Silent Sanctuary -->
+                        <div class="glass-card rounded-2xl p-5 border border-rose-500/30 hover:border-rose-400/80 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+                            <div class="absolute -right-10 -bottom-10 w-32 h-32 bg-rose-500/10 rounded-full blur-2xl group-hover:bg-rose-500/20 transition-all pointer-events-none"></div>
+                            
+                            <div>
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="w-10 h-10 rounded-xl bg-rose-500/20 border border-rose-500/40 flex items-center justify-center text-rose-400">
+                                        <i class="fa-solid fa-mountain-sun text-base"></i>
+                                    </div>
+                                    <span class="text-[10px] font-mono text-rose-300 bg-rose-950/80 px-2.5 py-1 rounded-full border border-rose-500/30">RETRET MEWAH</span>
+                                </div>
+                                <h3 class="font-bold font-tech text-sm text-white group-hover:text-rose-300 transition-colors">Retret Hening Pegunungan</h3>
+                                <p class="text-xs text-slate-300 mt-1.5 leading-relaxed font-light">
+                                    Isolasi total 7 hari di sanctuary khusus untuk penyucian batin dan detoksifikasi informasi digital eksekutif.
+                                </p>
+                            </div>
+
+                            <div class="mt-5 pt-3 border-t border-white/10 flex items-center justify-between">
+                                <div class="text-xs font-mono font-bold text-rose-400">
+                                    Rp 35.000.000
+                                </div>
+                                <button onclick="executeSoulPractice('Retret Hening Pegunungan', 35000000, 10, -10, 'Kembali dengan ketenangan stoik yang tak tergoyahkan dan fokus tajam.')" 
+                                        class="px-3.5 py-1.5 rounded-xl bg-rose-600/30 hover:bg-rose-600 text-rose-200 hover:text-white border border-rose-500/40 text-xs font-semibold transition-all cursor-pointer active:scale-95">
+                                    Ikuti Retret
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- 2. Konsultasi Psikiater Eksekutif -->
+                        <div class="glass-card rounded-2xl p-5 border border-purple-500/30 hover:border-purple-400/80 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+                            <div class="absolute -right-10 -bottom-10 w-32 h-32 bg-purple-500/10 rounded-full blur-2xl group-hover:bg-purple-500/20 transition-all pointer-events-none"></div>
+                            
+                            <div>
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="w-10 h-10 rounded-xl bg-purple-500/20 border border-purple-500/40 flex items-center justify-center text-purple-400">
+                                        <i class="fa-solid fa-user-doctor text-base"></i>
+                                    </div>
+                                    <span class="text-[10px] font-mono text-purple-300 bg-purple-950/80 px-2.5 py-1 rounded-full border border-purple-500/30">TERAPI KLINIK</span>
+                                </div>
+                                <h3 class="font-bold font-tech text-sm text-white group-hover:text-purple-300 transition-colors">Psikiater Eksekutif & Stress Therapy</h3>
+                                <p class="text-xs text-slate-300 mt-1.5 leading-relaxed font-light">
+                                    Sesi profesional pencegahan burnout eksekutif, evaluasi pola tidur, dan regulasi emosi kepemimpinan.
+                                </p>
+                            </div>
+
+                            <div class="mt-5 pt-3 border-t border-white/10 flex items-center justify-between">
+                                <div class="text-xs font-mono font-bold text-purple-400">
+                                    Rp 15.000.000
+                                </div>
+                                <button onclick="executeSoulPractice('Konsultasi Psikiater Eksekutif', 15000000, 6, -15, 'Tingkat burnout menurun drastis dan pola tidur kembali optimal.')" 
+                                        class="px-3.5 py-1.5 rounded-xl bg-purple-600/30 hover:bg-purple-600 text-purple-200 hover:text-white border border-purple-500/40 text-xs font-semibold transition-all cursor-pointer active:scale-95">
+                                    Mulai Sesi
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- 3. Kajian Filsafat Stoikisme -->
+                        <div class="glass-card rounded-2xl p-5 border border-cyan-500/30 hover:border-cyan-400/80 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+                            <div class="absolute -right-10 -bottom-10 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl group-hover:bg-cyan-500/20 transition-all pointer-events-none"></div>
+                            
+                            <div>
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="w-10 h-10 rounded-xl bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-400">
+                                        <i class="fa-solid fa-book-journal-whills text-base"></i>
+                                    </div>
+                                    <span class="text-[10px] font-mono text-cyan-300 bg-cyan-950/80 px-2.5 py-1 rounded-full border border-cyan-500/30">WISDOM</span>
+                                </div>
+                                <h3 class="font-bold font-tech text-sm text-white group-hover:text-cyan-300 transition-colors">Mentorship Filsafat Stoikisme</h3>
+                                <p class="text-xs text-slate-300 mt-1.5 leading-relaxed font-light">
+                                    Pembelajaran privat ajaran Marcus Aurelius & Seneca tentang kontrol dikotomi kehidupan dan resiliensi modal emosi.
+                                </p>
+                            </div>
+
+                            <div class="mt-5 pt-3 border-t border-white/10 flex items-center justify-between">
+                                <div class="text-xs font-mono font-bold text-cyan-400">
+                                    Rp 10.000.000
+                                </div>
+                                <button onclick="executeSoulPractice('Mentorship Filsafat Stoikisme', 10000000, 5, -5, 'Memahami dikotomi kendali batin, tidak lagi terpengaruh opini luar.')" 
+                                        class="px-3.5 py-1.5 rounded-xl bg-cyan-600/30 hover:bg-cyan-600 text-cyan-200 hover:text-white border border-cyan-500/40 text-xs font-semibold transition-all cursor-pointer active:scale-95">
+                                    Pelajari Stoik
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- 4. Filantropi Jiwa & Pengabdian Sosial -->
+                        <div class="glass-card rounded-2xl p-5 border border-emerald-500/30 hover:border-emerald-400/80 transition-all duration-300 flex flex-col justify-between group relative overflow-hidden">
+                            <div class="absolute -right-10 -bottom-10 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-all pointer-events-none"></div>
+                            
+                            <div>
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400">
+                                        <i class="fa-solid fa-hand-holding-heart text-base"></i>
+                                    </div>
+                                    <span class="text-[10px] font-mono text-emerald-300 bg-emerald-950/80 px-2.5 py-1 rounded-full border border-emerald-500/30">KONTRIBUSI</span>
+                                </div>
+                                <h3 class="font-bold font-tech text-sm text-white group-hover:text-emerald-300 transition-colors">Program Filantropi & Beasiswa</h3>
+                                <p class="text-xs text-slate-300 mt-1.5 leading-relaxed font-light">
+                                    Menyalurkan sebagian aset untuk pendirian yayasan pendidikan dan pemulihan ekosistem lingkungan.
+                                </p>
+                            </div>
+
+                            <div class="mt-5 pt-3 border-t border-white/10 flex items-center justify-between">
+                                <div class="text-xs font-mono font-bold text-emerald-400">
+                                    Rp 100.000.000
+                                </div>
+                                <button onclick="executeSoulPractice('Program Filantropi Utama', 100000000, 12, -8, 'Mendapatkan kebahagiaan sejati lewat pembedayaan ratusan hidup manusia.')" 
+                                        class="px-3.5 py-1.5 rounded-xl bg-emerald-600/30 hover:bg-emerald-600 text-emerald-200 hover:text-white border border-emerald-500/40 text-xs font-semibold transition-all cursor-pointer active:scale-95">
+                                    Salurkan Dana
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Column (Stats Indicators & Realtime Log Engine) -->
+            <div class="lg:col-span-4 flex flex-col space-y-6">
+                
+                <!-- INDIKATOR MATRIKS JIWA & KESEHATAN MENTAL -->
+                <div class="glass-panel rounded-3xl p-6 border border-rose-500/30 shadow-xl space-y-4">
+                    
+                    <div class="flex items-center justify-between pb-3 border-b border-white/10">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-chart-pie text-rose-400 text-sm"></i>
+                            <h3 class="text-xs font-bold font-tech text-white uppercase tracking-wider">MATRIKS KESEJAHTERAAN BATIN</h3>
+                        </div>
+                        <span class="text-[9px] font-mono text-rose-300 bg-rose-950/80 px-2 py-0.5 rounded border border-rose-500/30">LIVE INDIKATOR</span>
+                    </div>
+
+                    <div class="space-y-3.5 text-xs">
+                        
+                        <!-- 1. Kedamaian Batin Progress -->
+                        <div>
+                            <div class="flex items-center justify-between mb-1 font-mono">
+                                <span class="text-slate-300 flex items-center gap-1.5">
+                                    <i class="fa-solid fa-yin-yang text-rose-400"></i> Kedamaian Batin
+                                </span>
+                                <span class="text-rose-300 font-bold" id="stat-peace-val">88%</span>
+                            </div>
+                            <div class="w-full h-2 rounded-full bg-slate-900 border border-white/10 overflow-hidden">
+                                <div id="stat-peace-bar" class="h-full bg-gradient-to-r from-rose-500 to-purple-500 transition-all duration-500" style="width: 88%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- 2. Resiliensi Mental Progress -->
+                        <div>
+                            <div class="flex items-center justify-between mb-1 font-mono">
+                                <span class="text-slate-300 flex items-center gap-1.5">
+                                    <i class="fa-solid fa-shield-heart text-purple-400"></i> Resiliensi Stres
+                                </span>
+                                <span class="text-purple-300 font-bold" id="stat-resilience-val">85/100</span>
+                            </div>
+                            <div class="w-full h-2 rounded-full bg-slate-900 border border-white/10 overflow-hidden">
+                                <div id="stat-resilience-bar" class="h-full bg-gradient-to-r from-purple-500 to-indigo-500 transition-all duration-500" style="width: 85%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- 3. Tingkat Burnout (Reverse Progress Bar) -->
+                        <div>
+                            <div class="flex items-center justify-between mb-1 font-mono">
+                                <span class="text-slate-300 flex items-center gap-1.5">
+                                    <i class="fa-solid fa-fire text-amber-400"></i> Tingkat Burnout Stres
+                                </span>
+                                <span class="text-emerald-400 font-bold" id="stat-burnout-val">12% (Rendah)</span>
+                            </div>
+                            <div class="w-full h-2 rounded-full bg-slate-900 border border-white/10 overflow-hidden">
+                                <div id="stat-burnout-bar" class="h-full bg-gradient-to-r from-emerald-400 via-amber-400 to-rose-500 transition-all duration-500" style="width: 12%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- 4. Alignment Nilai Hidup -->
+                        <div>
+                            <div class="flex items-center justify-between mb-1 font-mono">
+                                <span class="text-slate-300 flex items-center gap-1.5">
+                                    <i class="fa-solid fa-compass text-cyan-400"></i> Alignment Nilai Hidup
+                                </span>
+                                <span class="text-cyan-300 font-bold" id="stat-alignment-val">90%</span>
+                            </div>
+                            <div class="w-full h-2 rounded-full bg-slate-900 border border-white/10 overflow-hidden">
+                                <div id="stat-alignment-bar" class="h-full bg-gradient-to-r from-cyan-400 to-emerald-400 transition-all duration-500" style="width: 90%;"></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="pt-2 text-[10px] text-slate-400 font-mono flex items-center justify-between border-t border-white/10">
+                        <span><i class="fa-solid fa-circle-check text-emerald-400 mr-1"></i> STATUS EMOSI: BALANCED</span>
+                        <span class="text-rose-400">SANCTUARY SEKTOR 06</span>
+                    </div>
+
+                </div>
+
+                <!-- LOG PERISTIWA & REKAM AKTIVITAS JIWA -->
+                <div class="glass-panel rounded-3xl p-6 border border-rose-500/30 shadow-xl flex flex-col h-[400px]">
+                    
+                    <!-- Log Header -->
+                    <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-4">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-rose-400 animate-pulse"></span>
+                            <h3 class="text-xs font-bold font-tech text-white uppercase tracking-wider">REKAM PERISTIWA JIWA</h3>
+                        </div>
+                        <button onclick="clearSoulLogs()" class="text-[10px] font-mono text-slate-400 hover:text-rose-300 transition-colors flex items-center gap-1 cursor-pointer">
+                            <i class="fa-solid fa-rotate-left"></i> CLEAR
+                        </button>
+                    </div>
+
+                    <!-- Stream Scrollable Container -->
+                    <div class="flex-1 overflow-y-auto custom-scrollbar space-y-3 pr-1" id="soul-log-container">
+                        
+                        <!-- Initial Log Entry -->
+                        <div class="p-3 rounded-xl bg-slate-900/60 border border-rose-500/30">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-[9px] font-mono text-rose-300 border border-rose-500/30 px-2 py-0.5 rounded bg-rose-950/70">JIWA & BATIN</span>
+                                <span class="text-[10px] font-mono text-slate-400">THN 2026</span>
+                            </div>
+                            <p class="text-xs font-semibold text-slate-100">Sektor 06 Terhubung</p>
+                            <p class="text-[11px] text-slate-300 mt-0.5">Sanctuary jiwa & pemulihan resiliensi batin aktif secara penuh.</p>
+                        </div>
+
+                        <div class="p-3 rounded-xl bg-slate-900/60 border border-purple-500/30">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-[9px] font-mono text-purple-300 border border-purple-500/30 px-2 py-0.5 rounded bg-purple-950/70">EVALUASI MENTAL</span>
+                                <span class="text-[10px] font-mono text-slate-400">THN 2026</span>
+                            </div>
+                            <p class="text-xs font-semibold text-slate-100">Keseimbangan Terjaga</p>
+                            <p class="text-[11px] text-slate-300 mt-0.5">Tingkat kedamaian awal dikonfigurasi pada level 85% Mindful.</p>
+                        </div>
+
+                    </div>
+
+                    <!-- Log Footer Status -->
+                    <div class="pt-3 border-t border-white/10 text-[10px] font-mono text-slate-400 flex items-center justify-between">
+                        <span><i class="fa-solid fa-terminal text-rose-400 mr-1"></i> LOG SYSTEM</span>
+                        <span class="text-rose-400">REALTIME SOUL RECORD</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- POPUP MODAL 1: NAVIGASI TELEPORTASI MODUL (10 SEKTOR UTAMA) -->
+    <div id="module-modal" onclick="closeModuleModal()" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+        <div onclick="event.stopPropagation()" id="module-modal-card" class="glass-panel w-full max-w-5xl rounded-3xl p-6 sm:p-8 border border-rose-500/40 shadow-2xl relative transform scale-95 transition-transform duration-300 max-h-[90vh] overflow-y-auto custom-scrollbar">
+            
+            <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-rose-950/80 border border-rose-500/40 flex items-center justify-center text-rose-300 text-lg shadow-inner">
+                        <i class="fa-solid fa-compass"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-base sm:text-lg font-bold font-tech text-white uppercase tracking-wider">PUSAT NAVIGASI SEKTOR</h3>
+                        <p class="text-[11px] text-slate-400 font-mono">TELEPORTASI ANTAR MODUL SIMULATOR</p>
+                    </div>
+                </div>
+                <button onclick="closeModuleModal()" class="w-9 h-9 rounded-xl bg-slate-900/70 border border-white/10 hover:border-rose-400 text-slate-400 hover:text-white flex items-center justify-center transition-all cursor-pointer">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Grid 10 Sektor -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                
+                <!-- 1. Modul Pendidikan -->
+                <a href="pendidikan.html" class="relative group rounded-2xl overflow-hidden border border-indigo-500/30 hover:border-cyan-400 shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between p-4 min-h-[140px]">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&auto=format&fit=crop&q=80');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/40"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-400 border border-indigo-500/40 flex items-center justify-center backdrop-blur-md">
+                                <i class="fa-solid fa-graduation-cap text-xs"></i>
+                            </div>
+                            <span class="text-[9px] font-mono text-indigo-300 bg-indigo-950/80 px-2 py-0.5 rounded border border-indigo-500/40 backdrop-blur-md">SEKTOR 01</span>
+                        </div>
+                        <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors drop-shadow">PENDIDIKAN</h4>
+                        <p class="text-[10px] text-slate-300 mt-0.5">Gelar eksekutif & sertifikasi.</p>
+                    </div>
+                </a>
+
+                <!-- 2. Modul Pekerjaan -->
+                <a href="pekerjaan.html" class="relative group rounded-2xl overflow-hidden border border-blue-500/30 hover:border-cyan-400 shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between p-4 min-h-[140px]">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&auto=format&fit=crop&q=80');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/40"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-400 border border-blue-500/40 flex items-center justify-center backdrop-blur-md">
+                                <i class="fa-solid fa-briefcase text-xs"></i>
+                            </div>
+                            <span class="text-[9px] font-mono text-blue-300 bg-blue-950/80 px-2 py-0.5 rounded border border-blue-500/40 backdrop-blur-md">SEKTOR 02</span>
+                        </div>
+                        <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors drop-shadow">PEKERJAAN</h4>
+                        <p class="text-[10px] text-slate-300 mt-0.5">Karir korporat & kepemimpinan.</p>
+                    </div>
+                </a>
+
+                <!-- 3. Modul Finansial & Aset -->
+                <a href="finansial.html" class="relative group rounded-2xl overflow-hidden border border-emerald-500/30 hover:border-cyan-400 shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between p-4 min-h-[140px]">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&auto=format&fit=crop&q=80');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/40"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center backdrop-blur-md">
+                                <i class="fa-solid fa-chart-line text-xs"></i>
+                            </div>
+                            <span class="text-[9px] font-mono text-emerald-300 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-500/40 backdrop-blur-md">SEKTOR 03</span>
+                        </div>
+                        <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors drop-shadow">FINANSIAL & ASET</h4>
+                        <p class="text-[10px] text-slate-300 mt-0.5">Portofolio saham & real estat.</p>
+                    </div>
+                </a>
+
+                <!-- 4. Modul Aktivitas -->
+                <a href="aktivitas.html" class="relative group rounded-2xl overflow-hidden border border-amber-500/30 hover:border-cyan-400 shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between p-4 min-h-[140px]">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&auto=format&fit=crop&q=80');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/40"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 border border-amber-500/40 flex items-center justify-center backdrop-blur-md">
+                                <i class="fa-solid fa-dumbbell text-xs"></i>
+                            </div>
+                            <span class="text-[9px] font-mono text-amber-300 bg-amber-950/80 px-2 py-0.5 rounded border border-amber-500/40 backdrop-blur-md">SEKTOR 04</span>
+                        </div>
+                        <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors drop-shadow">AKTIVITAS</h4>
+                        <p class="text-[10px] text-slate-300 mt-0.5">Kebugaran & hobi eksekutif.</p>
+                    </div>
+                </a>
+
+                <!-- 5. Modul Bisnis & Risiko -->
+                <a href="bisnis.html" class="relative group rounded-2xl overflow-hidden border border-purple-500/30 hover:border-cyan-400 shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between p-4 min-h-[140px]">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=600&auto=format&fit=crop&q=80');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/40"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="w-8 h-8 rounded-lg bg-purple-500/20 text-purple-400 border border-purple-500/40 flex items-center justify-center backdrop-blur-md">
+                                <i class="fa-solid fa-rocket text-xs"></i>
+                            </div>
+                            <span class="text-[9px] font-mono text-purple-300 bg-purple-950/80 px-2 py-0.5 rounded border border-purple-500/40 backdrop-blur-md">SEKTOR 05</span>
+                        </div>
+                        <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors drop-shadow">BISNIS & RISIKO</h4>
+                        <p class="text-[10px] text-slate-300 mt-0.5">Startup & modal ventura.</p>
+                    </div>
+                </a>
+
+                <!-- 6. Modul Soul System (Aktif saat ini) -->
+                <div class="relative group rounded-2xl overflow-hidden border-2 border-rose-500 shadow-xl flex flex-col justify-between p-4 min-h-[140px]">
+                    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&auto=format&fit=crop&q=80');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-rose-950/90 via-slate-950/80 to-slate-950/60"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="w-8 h-8 rounded-lg bg-rose-500/30 text-rose-300 border border-rose-400 flex items-center justify-center backdrop-blur-md">
+                                <i class="fa-solid fa-yin-yang text-xs animate-spin-slow"></i>
+                            </div>
+                            <span class="text-[9px] font-mono text-rose-200 bg-rose-900/90 px-2 py-0.5 rounded border border-rose-400 font-bold">SEKTOR AKTIF</span>
+                        </div>
+                        <h4 class="font-bold font-tech text-xs text-rose-300 drop-shadow">JIWA & BATIN</h4>
+                        <p class="text-[10px] text-rose-100/80 mt-0.5">Meditasi & ketenangan stoik.</p>
+                    </div>
+                </div>
+
+                <!-- 7. Modul Jejaring Digital -->
+                <a href="jejaring.html" class="relative group rounded-2xl overflow-hidden border border-cyan-500/30 hover:border-cyan-400 shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between p-4 min-h-[140px]">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&auto=format&fit=crop&q=80');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/40"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 border border-cyan-500/40 flex items-center justify-center backdrop-blur-md">
+                                <i class="fa-solid fa-network-wired text-xs"></i>
+                            </div>
+                            <span class="text-[9px] font-mono text-cyan-300 bg-cyan-950/80 px-2 py-0.5 rounded border border-cyan-500/40 backdrop-blur-md">SEKTOR 07</span>
+                        </div>
+                        <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors drop-shadow">JEJARING DIGITAL</h4>
+                        <p class="text-[10px] text-slate-300 mt-0.5">Personal branding & koneksi.</p>
+                    </div>
+                </a>
+
+                <!-- 8. Modul Kondisi Dunia -->
+                <a href="kondisi-dunia.html" class="relative group rounded-2xl overflow-hidden border border-teal-500/30 hover:border-cyan-400 shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between p-4 min-h-[140px]">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=600&auto=format&fit=crop&q=80');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/40"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="w-8 h-8 rounded-lg bg-teal-500/20 text-teal-400 border border-teal-500/40 flex items-center justify-center backdrop-blur-md">
+                                <i class="fa-solid fa-earth-americas text-xs"></i>
+                            </div>
+                            <span class="text-[9px] font-mono text-teal-300 bg-teal-950/80 px-2 py-0.5 rounded border border-teal-500/40 backdrop-blur-md">SEKTOR 08</span>
+                        </div>
+                        <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors drop-shadow">KONDISI DUNIA</h4>
+                        <p class="text-[10px] text-slate-300 mt-0.5">Intelijen geopolitik global.</p>
+                    </div>
+                </a>
+
+                <!-- 9. Shopping -->
+                <a href="shopping.html" class="relative group rounded-2xl overflow-hidden border border-amber-400/30 hover:border-cyan-400 shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between p-4 min-h-[140px]">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&auto=format&fit=crop&q=80');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/40"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="w-8 h-8 rounded-lg bg-amber-400/20 text-amber-300 border border-amber-400/40 flex items-center justify-center backdrop-blur-md">
+                                <i class="fa-solid fa-gem text-xs"></i>
+                            </div>
+                            <span class="text-[9px] font-mono text-amber-300 bg-amber-950/80 px-2 py-0.5 rounded border border-amber-500/40 backdrop-blur-md">SEKTOR 09</span>
+                        </div>
+                        <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors drop-shadow">SHOPPING</h4>
+                        <p class="text-[10px] text-slate-300 mt-0.5">Supercar, arloji & gaya hidup.</p>
+                    </div>
+                </a>
+
+                <!-- 10. Interaksi -->
+                <a href="interaksi.html" class="relative group rounded-2xl overflow-hidden border border-fuchsia-500/30 hover:border-cyan-400 shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between p-4 min-h-[140px] sm:col-span-2 md:col-span-3">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&auto=format&fit=crop&q=80');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/40"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="w-8 h-8 rounded-lg bg-fuchsia-500/20 text-fuchsia-400 border border-fuchsia-500/40 flex items-center justify-center backdrop-blur-md">
+                                <i class="fa-solid fa-comments text-xs"></i>
+                            </div>
+                            <span class="text-[9px] font-mono text-fuchsia-300 bg-fuchsia-950/80 px-2 py-0.5 rounded border border-fuchsia-500/40 backdrop-blur-md">SEKTOR 10</span>
+                        </div>
+                        <h4 class="font-bold font-tech text-xs text-white group-hover:text-cyan-300 transition-colors drop-shadow">INTERAKSI SOSIAL & ASMARA</h4>
+                        <p class="text-[10px] text-slate-300 mt-0.5">Relasi romantis & pergaulan elit.</p>
+                    </div>
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- POPUP MODAL 2: EVENT DECISION JIWA & KESEHATAN MENTAL -->
+    <div id="soul-event-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+        <div class="glass-panel w-full max-w-xl rounded-3xl p-6 md:p-8 border border-rose-500/40 shadow-2xl relative transform scale-95 transition-transform duration-300" id="soul-event-card">
+            
+            <!-- Modal Header Badge -->
+            <div class="flex items-center justify-between mb-4">
+                <span id="modal-category-badge" class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-rose-950/80 text-rose-300 border border-rose-500/40 uppercase tracking-widest">
+                    [PERISTIWA BATIN STOIK]
+                </span>
+                <span id="modal-year-badge" class="text-xs font-mono text-slate-400">TAHUN 2026</span>
+            </div>
+
+            <!-- Modal Title -->
+            <h3 id="modal-title" class="text-xl sm:text-2xl font-bold font-tech text-white mb-3">
+                Ujian Integritas & Dilema Ambisi
+            </h3>
+
+            <!-- Modal Narrative Description -->
+            <p id="modal-description" class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6 font-light">
+                Sebuah tawaran proyek berkeuntungan sangat besar mengharuskan Anda memotong standar keselamatan dan etika kerja tim. Akankah Anda mengambilnya demi keuntungan finansial cepat?
+            </p>
+
+            <!-- Choices Container -->
+            <div id="modal-choices-container" class="space-y-3 mb-6">
+                <!-- Populated via JavaScript -->
+            </div>
+
+            <!-- Modal Footer Note -->
+            <div class="pt-4 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+                <span><i class="fa-solid fa-om text-rose-400 mr-1"></i> Kanvas Hidup Soul Engine</span>
+                <span class="text-rose-400">Dampak Pada Kedamaian Batin</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- MODAL 3: COUNTDOWN TIMER SESI MEDITASI INTERAKTIF -->
+    <div id="meditation-timer-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-lg hidden opacity-0 transition-opacity duration-300">
+        <div class="glass-panel max-w-md w-full rounded-3xl p-8 border border-rose-500/50 text-center flex flex-col items-center justify-center relative shadow-2xl">
+            
+            <div class="w-24 h-24 rounded-full bg-rose-950/80 border border-rose-400 zen-core-glow flex items-center justify-center mb-6">
+                <i class="fa-solid fa-spa text-4xl text-rose-400 animate-pulse"></i>
+            </div>
+
+            <h3 class="text-xl font-bold font-tech text-white uppercase tracking-wider mb-2">SESI MEDITASI HENING</h3>
+            <p class="text-xs text-slate-300 font-light mb-6">Tarik napas perlahan... Biarkan semua beban pikiran dan proyek eksekutif mereda...</p>
+
+            <div class="text-4xl font-bold font-tech text-rose-400 glow-text-rose mb-6" id="meditation-counter-text">
+                00:05
+            </div>
+
+            <div class="w-full h-1.5 rounded-full bg-slate-900 border border-white/10 overflow-hidden mb-4">
+                <div id="meditation-progress-bar" class="h-full bg-rose-500 transition-all duration-1000" style="width: 100%;"></div>
+            </div>
+
+            <span class="text-[10px] font-mono text-slate-400 uppercase tracking-widest">PROSES PENETRALAN STRES REALTIME</span>
+        </div>
+    </div>
+
+    <footer class="w-full glass-panel border-t border-white/10 py-3 px-4 z-20 mt-8">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4 text-xs text-slate-400 font-mono">
+            <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-rose-400"></span>
+                <span class="font-bold text-slate-200 font-tech">KANVAS HIDUP</span>
+                <span class="text-slate-500">• SEKTOR 06: JIWA</span>
+            </div>
+            
+            <div class="flex items-center gap-6">
+                <span>SANCTUARY STATUS: <span class="text-emerald-400 font-bold">HARMONIOUS</span></span>
+                <span>RESILIENSI: <span class="text-rose-400 font-bold">OPTIMAL</span></span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT ENGINE LOGIC -->
+    <script>
+        // System States
+        let playerBalance = 2450000000;
+        let peaceScore = 85;
+        let resilienceScore = 85;
+        let burnoutRate = 12;
+        let alignmentScore = 90;
+        let currentYear = 2026;
+
+        function formatCurrency(amount) {
+            return 'Rp ' + amount.toLocaleString('id-ID');
+        }
+
+        function updateUI() {
+            // Update Balance
+            const balanceEl = document.getElementById('hud-balance');
+            if (balanceEl) balanceEl.innerText = formatCurrency(playerBalance);
+
+            // Update Peace Score HUD
+            const peaceEl = document.getElementById('hud-peace-score');
+            if (peaceEl) {
+                let statusTag = "MINDFUL";
+                if (peaceScore >= 90) statusTag = "ZEN MASTER";
+                else if (peaceScore < 60) statusTag = "TEREKAP STRES";
+                peaceEl.innerText = `${peaceScore}% ${statusTag}`;
+            }
+
+            // Update Progress Bars & Values
+            document.getElementById('stat-peace-val').innerText = `${peaceScore}%`;
+            document.getElementById('stat-peace-bar').style.width = `${Math.min(peaceScore, 100)}%`;
+
+            document.getElementById('stat-resilience-val').innerText = `${resilienceScore}/100`;
+            document.getElementById('stat-resilience-bar').style.width = `${Math.min(resilienceScore, 100)}%`;
+
+            let burnoutText = " (Rendah)";
+            if (burnoutRate > 60) burnoutText = " (KRITIS)";
+            else if (burnoutRate > 35) burnoutText = " (Sedang)";
+            
+            document.getElementById('stat-burnout-val').innerText = `${burnoutRate}%${burnoutText}`;
+            document.getElementById('stat-burnout-bar').style.width = `${Math.min(burnoutRate, 100)}%`;
+
+            document.getElementById('stat-alignment-val').innerText = `${alignmentScore}%`;
+            document.getElementById('stat-alignment-bar').style.width = `${Math.min(alignmentScore, 100)}%`;
+
+            // Mental State Tag Quick Label
+            const quickMentalEl = document.getElementById('quick-mental-state');
+            if (quickMentalEl) {
+                if (peaceScore >= 85) quickMentalEl.innerText = "Sangat Harmonis";
+                else if (peaceScore >= 65) quickMentalEl.innerText = "Stabil";
+                else quickMentalEl.innerText = "Butuh Istirahat";
+            }
+        }
+
+        function appendSoulLog(category, categoryBadge, title, outcome, resultBadge) {
+            const logContainer = document.getElementById('soul-log-container');
+
+            const newLogItem = document.createElement('div');
+            newLogItem.className = "p-3 rounded-xl bg-slate-900/60 border border-rose-500/30 transition-all hover:border-rose-400/50 animate-fade-in";
+
+            let categoryColorClass = "text-rose-300 border-rose-500/30 bg-rose-950/70";
+            if (category.includes("RETRET") || category.includes("MEDITASI")) categoryColorClass = "text-purple-300 border-purple-500/30 bg-purple-950/70";
+            else if (category.includes("TERAPI")) categoryColorClass = "text-cyan-300 border-cyan-500/30 bg-cyan-950/70";
+            else if (category.includes("FILANTROPI")) categoryColorClass = "text-emerald-300 border-emerald-500/30 bg-emerald-950/70";
+
+            newLogItem.innerHTML = `
+                <div class="flex items-center justify-between mb-1">
+                    <span class="text-[9px] font-mono px-2 py-0.5 rounded border ${categoryColorClass}">${category}</span>
+                    <span class="text-[10px] font-mono text-slate-400">THN ${currentYear}</span>
+                </div>
+                <p class="text-xs font-semibold text-slate-100 mt-1">${title}</p>
+                <p class="text-[11px] text-slate-300 mt-0.5">${outcome}</p>
+                <p class="text-[10px] text-rose-300 font-mono mt-1 font-semibold">${resultBadge}</p>
+            `;
+
+            logContainer.insertBefore(newLogItem, logContainer.firstChild);
+        }
+
+        function clearSoulLogs() {
+            const logContainer = document.getElementById('soul-log-container');
+            logContainer.innerHTML = `
+                <div class="p-3 text-center text-xs font-mono text-slate-500">
+                    [LOG BATIN DIBERSIHKAN - SIAP CATAT PERISTIWA BARU]
+                </div>
+            `;
+        }
+
+        // Interactive Practice Action Handler
+        function executeSoulPractice(practiceName, cost, peaceGain, burnoutChange, narrative) {
+            if (playerBalance < cost) {
+                alert("Saldo dana tidak mencukupi untuk mengikuti aktivitas ini!");
+                return;
+            }
+
+            playerBalance -= cost;
+            peaceScore = Math.min(100, peaceScore + peaceGain);
+            burnoutRate = Math.max(0, burnoutRate + burnoutChange);
+            resilienceScore = Math.min(100, resilienceScore + Math.floor(peaceGain / 2));
+
+            updateUI();
+            appendSoulLog("PRAKTIK JIWA", "AKTIVITAS BATIN", practiceName, narrative, `+${peaceGain}% Kedamaian | Saldo: -${formatCurrency(cost)}`);
+        }
+
+        // Meditation Countdown Session Simulation
+        function startMeditationSession() {
+            const modal = document.getElementById('meditation-timer-modal');
+            const counterText = document.getElementById('meditation-counter-text');
+            const progressBar = document.getElementById('meditation-progress-bar');
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+            }, 20);
+
+            let secondsLeft = 5;
+            counterText.innerText = `00:0${secondsLeft}`;
+            progressBar.style.width = '100%';
+
+            const interval = setInterval(() => {
+                secondsLeft--;
+                counterText.innerText = `00:0${secondsLeft}`;
+                progressBar.style.width = `${(secondsLeft / 5) * 100}%`;
+
+                if (secondsLeft <= 0) {
+                    clearInterval(interval);
+                    modal.classList.add('opacity-0');
+                    setTimeout(() => {
+                        modal.classList.add('hidden');
+                        
+                        // Apply Bonus
+                        peaceScore = Math.min(100, peaceScore + 5);
+                        burnoutRate = Math.max(0, burnoutRate - 5);
+                        updateUI();
+                        appendSoulLog("MEDITASI INSTAN", "KEHENINGAN BATIN", "Sesi Meditasi 5 Detik Completed", "Fokus emosional dan kejernihan pikiran kembali pulih sepenuhnya.", "+5% Kedamaian Batin & -5% Burnout");
+                    }, 300);
+                }
+            }, 1000);
+        }
+
+        // Soul Random Events Database
+        const soulEvents = [
+            {
+                category: "DILEMA MORAL & ETIKA",
+                title: "Tawaran Proyek Berisiko Tinggi",
+                description: "Sebuah akuisisi perusahaan kompetitor memberikan potensi keuntungan besar, namun mengharuskan Anda memotong dana pesangon karyawan.",
+                choices: [
+                    { 
+                        text: "Tolak Akuisisi Demi Keadilan Karyawan", 
+                        outcome: "Anda memilih integritas stoik. Rasa hormat industri meningkat pesat.", 
+                        resultBadge: "+10% Kedamaian Batin | +5% Alignment", 
+                        peaceChange: 10, 
+                        burnoutChange: -5,
+                        balanceChange: 0 
+                    },
+                    { 
+                        text: "Lanjutkan Akuisisi Demi Keuntungan Finansial", 
+                        outcome: "Keuntungan cair, namun rasa bersalah memicu beban pikiran.", 
+                        resultBadge: "+ Rp 400.000.000 | -15% Kedamaian", 
+                        peaceChange: -15, 
+                        burnoutChange: 15,
+                        balanceChange: 400000000 
+                    }
+                ]
+            },
+            {
+                category: "STOIKISME & KENDALI BATIN",
+                title: "Kritik Tajam & Fitnah Media Usaha",
+                description: "Media bisnis merilis artikel yang memutarbalikkan fakta tentang strategi korporasi Anda. Bagaimana reaksi batin Anda?",
+                choices: [
+                    { 
+                        text: "Terapkan Dikotomi Kendali: Biarkan & Fokus Kerja Saja", 
+                        outcome: "Anda tidak membiarkan hal di luar kendali merusak kedamaian jiwa.", 
+                        resultBadge: "+8% Resiliensi Stres | Stabilitas Terjaga", 
+                        peaceChange: 8, 
+                        burnoutChange: -8,
+                        balanceChange: 0 
+                    },
+                    { 
+                        text: "Sewa Tim PR Mahal Untuk Serangan Balik", 
+                        outcome: "Konflik memanas di media sosial dan menguras energi mental.", 
+                        resultBadge: "- Rp 50.000.000 | -10% Kedamaian", 
+                        peaceChange: -10, 
+                        burnoutChange: 10,
+                        balanceChange: -50000000 
+                    }
+                ]
+            },
+            {
+                category: "PANGGILAN SPIRITUAL",
+                title: "Undangan Pembicara Retret Global",
+                description: "Anda diundang menjadi pembicara utama forum kesehatan mental eksekutif di Swiss. Kesempatan berbagi filosofi kepemimpinan hamba.",
+                choices: [
+                    { 
+                        text: "Hadir & Bagikan Pengalaman Batin Anda", 
+                        outcome: "Penyampaian Anda menginspirasi ratusan CEO dunia dan memberikan kepuasan jiwa.", 
+                        resultBadge: "+12% Alignment | +8% Kedamaian", 
+                        peaceChange: 8, 
+                        burnoutChange: -5,
+                        balanceChange: -20000000 
+                    },
+                    { 
+                        text: "Tolak Undangan & Fokus Pekerjaan Kantor", 
+                        outcome: "Memilih tidak menambah beban jadwal perjalanan internasional.", 
+                        resultBadge: "Kondisi Fisik & Stabilitas Terjaga", 
+                        peaceChange: 0, 
+                        burnoutChange: 0,
+                        balanceChange: 0 
+                    }
+                ]
+            }
+        ];
+
+        function triggerRandomSoulEvent() {
+            const randomIndex = Math.floor(Math.random() * soulEvents.length);
+            const eventData = soulEvents[randomIndex];
+            openSoulEventModal(eventData);
+        }
+
+        function openSoulEventModal(eventData) {
+            const modal = document.getElementById('soul-event-modal');
+            const modalCard = document.getElementById('soul-event-card');
+            
+            document.getElementById('modal-category-badge').innerText = `[${eventData.category}]`;
+            document.getElementById('modal-year-badge').innerText = `TAHUN ${currentYear}`;
+            document.getElementById('modal-title').innerText = eventData.title;
+            document.getElementById('modal-description').innerText = eventData.description;
+
+            const choicesContainer = document.getElementById('modal-choices-container');
+            choicesContainer.innerHTML = '';
+
+            eventData.choices.forEach((choice, idx) => {
+                const choiceBtn = document.createElement('button');
+                choiceBtn.className = "w-full p-3.5 rounded-xl bg-slate-900/70 border border-white/10 hover:border-rose-400 hover:bg-slate-800/80 transition-all text-left flex flex-col justify-between group cursor-pointer active:scale-98";
+                choiceBtn.onclick = () => makeSoulChoice(eventData, choice);
+
+                choiceBtn.innerHTML = `
+                    <div class="flex items-center justify-between w-full">
+                        <span class="text-xs font-semibold text-slate-100 group-hover:text-rose-300 transition-colors">
+                            <i class="fa-solid fa-chevron-right text-[10px] text-rose-400 mr-2"></i> ${choice.text}
+                        </span>
+                        <span class="text-[10px] font-mono text-slate-500 group-hover:text-slate-300">OPSI ${idx + 1}</span>
+                    </div>
+                `;
+                choicesContainer.appendChild(choiceBtn);
+            });
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalCard.classList.remove('scale-95');
+                modalCard.classList.add('scale-100');
+            }, 20);
+        }
+
+        function makeSoulChoice(eventData, choice) {
+            closeSoulEventModal();
+
+            if (choice.balanceChange) playerBalance += choice.balanceChange;
+            if (choice.peaceChange) peaceScore = Math.min(100, Math.max(0, peaceScore + choice.peaceChange));
+            if (choice.burnoutChange) burnoutRate = Math.min(100, Math.max(0, burnoutRate + choice.burnoutChange));
+
+            updateUI();
+            appendSoulLog(eventData.category, "PERISTIWA BATIN", eventData.title, choice.outcome, choice.resultBadge);
+        }
+
+        function closeSoulEventModal() {
+            const modal = document.getElementById('soul-event-modal');
+            const modalCard = document.getElementById('soul-event-card');
+
+            modal.classList.add('opacity-0');
+            modalCard.classList.remove('scale-100');
+            modalCard.classList.add('scale-95');
+
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // Navigation Module Drawer Handlers
+        function toggleModuleDrawer() {
+            const modal = document.getElementById('module-modal');
+            const modalCard = document.getElementById('module-modal-card');
+
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    modal.classList.remove('opacity-0');
+                    modalCard.classList.remove('scale-95');
+                    modalCard.classList.add('scale-100');
+                }, 20);
+            } else {
+                closeModuleModal();
+            }
+        }
+
+        function closeModuleModal() {
+            const modal = document.getElementById('module-modal');
+            const modalCard = document.getElementById('module-modal-card');
+
+            modal.classList.add('opacity-0');
+            modalCard.classList.remove('scale-100');
+            modalCard.classList.add('scale-95');
+
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // Initialize UI State on Load
+        document.addEventListener('DOMContentLoaded', () => {
+            updateUI();
+        });
+    </script>
+</body>
+</html>
