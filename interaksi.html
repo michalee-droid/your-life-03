@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sektor 10: Interaksi Sosial & Asmara - Kanvas Hidup</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts: Inter & Orbitron -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        tech: ['Orbitron', 'sans-serif'],
+                    },
+                    colors: {
+                        cyber: {
+                            bg: '#040711',
+                            card: 'rgba(11, 17, 32, 0.6)',
+                            border: 'rgba(255, 255, 255, 0.12)',
+                            cyan: '#00F2FE',
+                            purple: '#8B5CF6',
+                            gold: '#F59E0B',
+                            emerald: '#10B981',
+                            rose: '#F43F5E',
+                            pink: '#EC4899',
+                            fuchsia: '#D946EF'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #040711;
+            color: #E2E8F0;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Atmospheric Romance Luxury Background */
+        .bg-luxury-overlay {
+            background-image: 
+                radial-gradient(circle at 50% 15%, rgba(244, 63, 94, 0.18) 0%, transparent 60%),
+                radial-gradient(circle at 85% 65%, rgba(217, 70, 239, 0.15) 0%, transparent 55%),
+                radial-gradient(circle at 15% 80%, rgba(0, 242, 254, 0.12) 0%, transparent 50%),
+                linear-gradient(to bottom, rgba(4, 7, 17, 0.55), rgba(4, 7, 17, 0.85)),
+                url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1920&auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Glassmorphism Panels */
+        .glass-panel {
+            background: rgba(11, 18, 33, 0.65);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .glass-card {
+            background: rgba(15, 23, 42, 0.50);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .glass-card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card-hover:hover {
+            background: rgba(20, 30, 55, 0.70);
+            border-color: rgba(244, 63, 94, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(244, 63, 94, 0.2);
+        }
+
+        /* Glowing Effects */
+        .glow-text-cyan { text-shadow: 0 0 12px rgba(0, 242, 254, 0.6); }
+        .glow-text-rose { text-shadow: 0 0 12px rgba(244, 63, 94, 0.6); }
+        .glow-text-gold { text-shadow: 0 0 12px rgba(245, 158, 11, 0.6); }
+        .glow-text-emerald { text-shadow: 0 0 12px rgba(16, 185, 129, 0.6); }
+        .glow-text-fuchsia { text-shadow: 0 0 12px rgba(217, 70, 239, 0.6); }
+
+        /* Custom Scrollbar */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 5px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(10, 15, 30, 0.3);
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(244, 63, 94, 0.4);
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(244, 63, 94, 0.7);
+        }
+
+        /* Tab Transition Effects */
+        .tab-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .tab-content.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Animated Heart Pulse */
+        @keyframes heart-pulse {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(244,63,94,0.6)); }
+            50% { transform: scale(1.15); filter: drop-shadow(0 0 15px rgba(244,63,94,0.9)); }
+        }
+        .pulse-heart {
+            animation: heart-pulse 2s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-luxury-overlay min-h-screen flex flex-col justify-between relative selection:bg-rose-500 selection:text-white">
+
+    <!-- TOP HUD BAR MEWAH -->
+    <header class="w-full glass-panel sticky top-0 z-40 border-b border-white/10 px-4 sm:px-6 py-2.5">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3 sm:gap-4">
+            
+            <!-- Branding Label Kiri -->
+            <a href="index.html" class="flex items-center gap-2.5 group cursor-pointer">
+                <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-rose-500/20 to-fuchsia-500/20 border border-rose-500/40 flex items-center justify-center text-rose-400 group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-gem text-sm glow-text-rose"></i>
+                </div>
+                <div>
+                    <div class="flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+                        <span class="font-bold font-tech text-white text-xs sm:text-sm tracking-widest uppercase">KANVAS HIDUP</span>
+                    </div>
+                    <span class="text-[9px] font-mono text-rose-400 block -mt-0.5">SEKTOR 10: INTERAKSI & ASMARA</span>
+                </div>
+            </a>
+
+            <!-- HUD Info Container Kanan: Saldo, Charm, Reputasi, Year & Teleportation -->
+            <div class="flex items-center flex-wrap gap-2.5 sm:gap-4">
+
+                <!-- Charm / Daya Tarik HUD -->
+                <div class="flex items-center gap-2 bg-slate-900/80 px-3 py-1.5 rounded-xl border border-rose-500/30 shadow-inner">
+                    <i class="fa-solid fa-sparkles text-rose-400 text-xs pulse-heart"></i>
+                    <div class="text-left">
+                        <div class="text-[8px] text-slate-400 font-mono uppercase">Pesona</div>
+                        <div class="text-xs font-bold font-tech text-rose-300 glow-text-rose leading-none" id="hud-charm">92 / 100</div>
+                    </div>
+                </div>
+
+                <!-- Reputasi Sosial HUD -->
+                <div class="flex items-center gap-2 bg-slate-900/80 px-3 py-1.5 rounded-xl border border-fuchsia-500/30 shadow-inner">
+                    <i class="fa-solid fa-crown text-fuchsia-400 text-xs"></i>
+                    <div class="text-left">
+                        <div class="text-[8px] text-slate-400 font-mono uppercase">Reputasi</div>
+                        <div class="text-xs font-bold font-tech text-fuchsia-300 glow-text-fuchsia leading-none" id="hud-reputation">Elit VIP</div>
+                    </div>
+                </div>
+
+                <!-- MODUL SALDO PEMAIN MEWAH -->
+                <div class="flex items-center gap-2.5 bg-gradient-to-r from-emerald-950/80 via-slate-900/90 to-emerald-950/80 px-3.5 py-1.5 rounded-xl border border-emerald-500/40 shadow-[0_0_15px_rgba(16,185,129,0.15)]">
+                    <div class="w-7 h-7 rounded-lg bg-emerald-500/20 border border-emerald-400/40 flex items-center justify-center text-emerald-400 shadow-inner">
+                        <i class="fa-solid fa-wallet text-xs glow-text-emerald"></i>
+                    </div>
+                    <div class="text-left">
+                        <div class="text-[8px] text-emerald-400/80 font-mono uppercase tracking-wider flex items-center gap-1">
+                            <span>Balance</span>
+                        </div>
+                        <div class="text-xs sm:text-sm font-bold font-tech text-emerald-300 glow-text-emerald leading-none" id="hud-balance">
+                            Rp 2.450.000.000
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Year Indicator HUD -->
+                <div class="hidden md:flex items-center gap-2 bg-slate-900/60 px-3 py-1.5 rounded-xl border border-amber-500/30">
+                    <i class="fa-solid fa-calendar-days text-amber-400 text-xs"></i>
+                    <div class="text-right">
+                        <div class="text-[8px] text-slate-400 font-mono uppercase">Tahun</div>
+                        <div class="text-xs font-bold font-tech text-amber-300 glow-text-gold leading-none" id="hud-year">2026</div>
+                    </div>
+                </div>
+
+                <!-- Teleport Button to 10 Sectors -->
+                <button onclick="toggleModuleDrawer()" title="Pusat Teleportasi Sektor" class="p-2 rounded-xl bg-slate-900/80 hover:bg-rose-950/50 border border-rose-500/40 text-rose-300 hover:text-white transition-all cursor-pointer">
+                    <i class="fa-solid fa-cubes text-sm"></i>
+                </button>
+
+            </div>
+
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 py-6 flex-1 w-full space-y-8">
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- LEFT MAIN COLUMN: Sector Controls & Tabs (8 Cols) -->
+            <div class="lg:col-span-8 flex flex-col space-y-6">
+                
+                <!-- HERO HEADER CARD SEKTOR 10 -->
+                <section class="glass-panel rounded-3xl p-6 sm:p-8 relative overflow-hidden border border-rose-500/40 shadow-2xl">
+                    <!-- Ambient Glow Effects -->
+                    <div class="absolute -top-20 -left-20 w-80 h-80 bg-rose-500/15 rounded-full blur-3xl pointer-events-none"></div>
+                    <div class="absolute -bottom-20 -right-20 w-80 h-80 bg-fuchsia-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 relative z-10 border-b border-white/10 pb-6">
+                        <div class="space-y-2">
+                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-950/80 border border-rose-500/40 text-rose-300 text-xs font-mono">
+                                <i class="fa-solid fa-heart text-rose-400 text-xs"></i>
+                                <span>SEKTOR 10 • HIGH SOCIETY & ROMANCE</span>
+                            </div>
+                            <h1 class="text-2xl sm:text-3xl font-black font-tech tracking-tight text-white uppercase glow-text-rose">
+                                INTERAKSI SOSIAL & ASMARA
+                            </h1>
+                            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-xl font-light">
+                                Kelola relasi romantis eksklusif, bangun dinamika keluarga berkelas, dan rajut pengaruh di lingkaran *high society* teratas.
+                            </p>
+                        </div>
+
+                        <!-- Status Relasi Saat Ini Card -->
+                        <div class="bg-slate-900/80 border border-rose-500/40 rounded-2xl p-4 flex items-center gap-3 shrink-0 shadow-lg w-full sm:w-auto">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-rose-500/30 to-fuchsia-600/30 border border-rose-400/50 flex items-center justify-center text-rose-300 text-xl shadow-inner shrink-0" id="hero-partner-avatar">
+                                <i class="fa-solid fa-user-heart"></i>
+                            </div>
+                            <div>
+                                <div class="text-[9px] text-slate-400 font-mono uppercase tracking-wider">Status Pasangan Utama</div>
+                                <div class="text-sm font-bold font-tech text-rose-300 glow-text-rose" id="hero-partner-name">Lajang (Mencari Relasi)</div>
+                                <div class="text-[10px] text-emerald-400 font-mono mt-0.5" id="hero-partner-status"><i class="fa-solid fa-circle-check"></i> Siap Menjalin Hubungan</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB NAVIGATION BUTTONS -->
+                    <div class="mt-6 flex flex-wrap gap-2 relative z-10">
+                        <button onclick="switchTab('tab-romance')" id="btn-tab-romance" class="flex-1 min-w-[140px] px-4 py-3 rounded-xl font-tech text-xs uppercase tracking-wider font-bold transition-all border border-rose-500/50 bg-rose-500/20 text-rose-200 shadow-lg flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-heart-pulse text-rose-400"></i>
+                            <span>1. Asmara & Jodoh</span>
+                        </button>
+                        <button onclick="switchTab('tab-clubs')" id="btn-tab-clubs" class="flex-1 min-w-[140px] px-4 py-3 rounded-xl font-tech text-xs uppercase tracking-wider font-bold transition-all border border-white/10 bg-slate-900/60 text-slate-300 hover:text-white hover:border-rose-500/30 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-glass-cheers text-fuchsia-400"></i>
+                            <span>2. Jejaring & Klub</span>
+                        </button>
+                        <button onclick="switchTab('tab-family')" id="btn-tab-family" class="flex-1 min-w-[140px] px-4 py-3 rounded-xl font-tech text-xs uppercase tracking-wider font-bold transition-all border border-white/10 bg-slate-900/60 text-slate-300 hover:text-white hover:border-rose-500/30 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-house-chimney-window text-cyan-400"></i>
+                            <span>3. Harmoni Keluarga</span>
+                        </button>
+                    </div>
+
+                </section>
+
+                <!-- ================= TAB 1: DUNIA ASMARA & JODOH ELIT ================= -->
+                <div id="tab-romance" class="tab-content active space-y-6">
+                    
+                    <!-- Section Header -->
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h2 class="text-base font-bold font-tech text-white uppercase tracking-wider flex items-center gap-2">
+                                <i class="fa-solid fa-fire text-rose-400"></i> TOKOH ROMANTIS & PASANGAN ELIT
+                            </h2>
+                            <p class="text-xs text-slate-400">Pilih dan bina relasi romantis dengan figur-figur terkemuka dari kalangan papan atas.</p>
+                        </div>
+                    </div>
+
+                    <!-- PROSPECTIVE PARTNERS GRID -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5" id="partners-container">
+                        <!-- Populated by JavaScript Dynamically -->
+                    </div>
+
+                </div>
+
+                <!-- ================= TAB 2: JEJARING ELIT & KLUB SOSIAL ================= -->
+                <div id="tab-clubs" class="tab-content space-y-6">
+                    
+                    <!-- Klub Sosial Eksklusif -->
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h2 class="text-base font-bold font-tech text-white uppercase tracking-wider flex items-center gap-2">
+                                    <i class="fa-solid fa-building-columns text-fuchsia-400"></i> KLUB SOSIAL & PERKUMPULAN HIGH SOCIETY
+                                </h2>
+                                <p class="text-xs text-slate-400">Keanggotaan eksklusif memberikan hak istimewa, koneksi bisnis, dan akses event tertutup.</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="clubs-container">
+                            <!-- Populated via JS -->
+                        </div>
+                    </div>
+
+                    <!-- Event Sosial & Gala Night -->
+                    <div class="space-y-4 pt-4 border-t border-white/10">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h2 class="text-base font-bold font-tech text-white uppercase tracking-wider flex items-center gap-2">
+                                    <i class="fa-solid fa-champagne-glasses text-gold"></i> AGENDA GALA & EVENT HIGH SOCIETY
+                                </h2>
+                                <p class="text-xs text-slate-400">Hadir di acara-acara bergengsi untuk menaikkan Reputasi Sosial dan memperluas lingkar pengaruh.</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 gap-4" id="events-container">
+                            <!-- Populated via JS -->
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ================= TAB 3: HARMONI KELUARGA & DINASTI ================= -->
+                <div id="tab-family" class="tab-content space-y-6">
+                    
+                    <div class="glass-panel rounded-3xl p-6 border border-cyan-500/30 space-y-6">
+                        <div>
+                            <h2 class="text-base font-bold font-tech text-white uppercase tracking-wider flex items-center gap-2">
+                                <i class="fa-solid fa-users-rays text-cyan-400"></i> ANGGOTA KELUARGA UTAMA
+                            </h2>
+                            <p class="text-xs text-slate-400">Jaga keharmonisan keluarga Vance untuk memastikan stabilitas emosional dan dukungan dinasti.</p>
+                        </div>
+
+                        <!-- Family Members Grid -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="family-container">
+                            <!-- Populated via JS -->
+                        </div>
+
+                        <!-- Family Actions Module -->
+                        <div class="pt-4 border-t border-white/10 space-y-3">
+                            <h3 class="text-xs font-bold font-tech text-slate-200 uppercase tracking-wider">AKSI KEHARMONISAN KELUARGA</h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                
+                                <button onclick="executeFamilyAction('dinner')" class="p-3.5 rounded-xl bg-slate-900/70 border border-cyan-500/30 hover:border-cyan-400 text-left transition-all hover:bg-slate-800/80 group flex items-center justify-between cursor-pointer">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-9 h-9 rounded-lg bg-cyan-500/20 text-cyan-300 flex items-center justify-center border border-cyan-500/30">
+                                            <i class="fa-solid fa-utensils text-sm"></i>
+                                        </div>
+                                        <div>
+                                            <div class="text-xs font-bold text-white group-hover:text-cyan-300">Makan Malam Malam Mingguan</div>
+                                            <div class="text-[10px] text-slate-400">Biaya: Rp 15.000.000 • +8% Harmoni</div>
+                                        </div>
+                                    </div>
+                                    <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:text-cyan-300"></i>
+                                </button>
+
+                                <button onclick="executeFamilyAction('vacation')" class="p-3.5 rounded-xl bg-slate-900/70 border border-cyan-500/30 hover:border-cyan-400 text-left transition-all hover:bg-slate-800/80 group flex items-center justify-between cursor-pointer">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-9 h-9 rounded-lg bg-indigo-500/20 text-indigo-300 flex items-center justify-center border border-indigo-500/30">
+                                            <i class="fa-solid fa-plane-departure text-sm"></i>
+                                        </div>
+                                        <div>
+                                            <div class="text-xs font-bold text-white group-hover:text-indigo-300">Liburan Villa Mewah di Swiss</div>
+                                            <div class="text-[10px] text-slate-400">Biaya: Rp 120.000.000 • +20% Harmoni</div>
+                                        </div>
+                                    </div>
+                                    <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:text-indigo-300"></i>
+                                </button>
+
+                                <button onclick="executeFamilyAction('trustfund')" class="p-3.5 rounded-xl bg-slate-900/70 border border-cyan-500/30 hover:border-cyan-400 text-left transition-all hover:bg-slate-800/80 group flex items-center justify-between cursor-pointer">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-9 h-9 rounded-lg bg-emerald-500/20 text-emerald-300 flex items-center justify-center border border-emerald-500/30">
+                                            <i class="fa-solid fa-piggy-bank text-sm"></i>
+                                        </div>
+                                        <div>
+                                            <div class="text-xs font-bold text-white group-hover:text-emerald-300">Top Up Trust Fund Keluarga</div>
+                                            <div class="text-[10px] text-slate-400">Biaya: Rp 250.000.000 • +15% Reputasi Dinasti</div>
+                                        </div>
+                                    </div>
+                                    <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:text-emerald-300"></i>
+                                </button>
+
+                                <button onclick="executeFamilyAction('gift')" class="p-3.5 rounded-xl bg-slate-900/70 border border-cyan-500/30 hover:border-cyan-400 text-left transition-all hover:bg-slate-800/80 group flex items-center justify-between cursor-pointer">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-9 h-9 rounded-lg bg-amber-500/20 text-amber-300 flex items-center justify-center border border-amber-500/30">
+                                            <i class="fa-solid fa-gift text-sm"></i>
+                                        </div>
+                                        <div>
+                                            <div class="text-xs font-bold text-white group-hover:text-amber-300">Kirim Hadiah Koleksi Langka</div>
+                                            <div class="text-[10px] text-slate-400">Biaya: Rp 45.000.000 • +12% Harmoni</div>
+                                        </div>
+                                    </div>
+                                    <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:text-amber-300"></i>
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- RIGHT COLUMN: Social Attributes & Event Log (4 Cols) -->
+            <div class="lg:col-span-4 flex flex-col space-y-6">
+                
+                <!-- ATRIBUT SOSIAL & CHARM WIDGET -->
+                <div class="glass-panel rounded-3xl p-6 border border-rose-500/30 shadow-xl space-y-4">
+                    <div class="flex items-center justify-between pb-3 border-b border-white/10">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-rose-400 animate-pulse"></span>
+                            <h3 class="text-xs font-bold font-tech text-white uppercase tracking-wider">MATRIKS REPUTASI & PESONA</h3>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3.5 text-xs">
+                        <!-- Daya Tarik / Charm -->
+                        <div>
+                            <div class="flex justify-between font-mono text-[11px] mb-1">
+                                <span class="text-slate-300"><i class="fa-solid fa-sparkles text-rose-400 mr-1"></i> Daya Tarik Personal</span>
+                                <span class="text-rose-300 font-bold" id="attr-charm-val">92%</span>
+                            </div>
+                            <div class="w-full h-2 rounded-full bg-slate-900 border border-white/10 overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-rose-500 to-pink-400 rounded-full transition-all duration-500" id="attr-charm-bar" style="width: 92%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Reputasi Elit -->
+                        <div>
+                            <div class="flex justify-between font-mono text-[11px] mb-1">
+                                <span class="text-slate-300"><i class="fa-solid fa-crown text-fuchsia-400 mr-1"></i> Pengaruh High Society</span>
+                                <span class="text-fuchsia-300 font-bold" id="attr-rep-val">85%</span>
+                            </div>
+                            <div class="w-full h-2 rounded-full bg-slate-900 border border-white/10 overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-fuchsia-500 to-purple-400 rounded-full transition-all duration-500" id="attr-rep-bar" style="width: 85%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Harmoni Keluarga -->
+                        <div>
+                            <div class="flex justify-between font-mono text-[11px] mb-1">
+                                <span class="text-slate-300"><i class="fa-solid fa-house-heart text-cyan-400 mr-1"></i> Keharmonisan Dinasti</span>
+                                <span class="text-cyan-300 font-bold" id="attr-family-val">88%</span>
+                            </div>
+                            <div class="w-full h-2 rounded-full bg-slate-900 border border-white/10 overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-cyan-500 to-teal-400 rounded-full transition-all duration-500" id="attr-family-bar" style="width: 88%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stats Quick Badges -->
+                    <div class="grid grid-cols-2 gap-2.5 pt-2 font-mono text-[10px]">
+                        <div class="p-2.5 rounded-xl bg-slate-900/60 border border-white/10 text-center">
+                            <span class="text-slate-400 block">KONTAK VIP</span>
+                            <span class="text-sm font-bold text-white font-tech" id="stat-vip-count">14 Relasi</span>
+                        </div>
+                        <div class="p-2.5 rounded-xl bg-slate-900/60 border border-white/10 text-center">
+                            <span class="text-slate-400 block">KLUB AKTIF</span>
+                            <span class="text-sm font-bold text-fuchsia-300 font-tech" id="stat-clubs-count">2 Member</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LOG PERISTIWA & REKAM AKTIVITAS SOSIAL -->
+                <div class="glass-panel rounded-3xl p-6 border border-rose-500/30 shadow-xl flex flex-col h-[460px]">
+                    
+                    <!-- Log Header -->
+                    <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-4">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-rose-400 animate-pulse"></span>
+                            <h3 class="text-xs font-bold font-tech text-white uppercase tracking-wider">REKAM AKTIVITAS SOSIAL</h3>
+                        </div>
+                        <button onclick="clearEventLogs()" class="text-[10px] font-mono text-slate-400 hover:text-rose-300 transition-colors flex items-center gap-1">
+                            <i class="fa-solid fa-rotate-left"></i> CLEAR
+                        </button>
+                    </div>
+
+                    <!-- Stream Scrollable Container -->
+                    <div class="flex-1 overflow-y-auto custom-scrollbar space-y-3 pr-1" id="event-log-container">
+                        
+                        <div class="p-3 rounded-xl bg-slate-900/60 border border-rose-500/30">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-[9px] font-mono text-rose-400 border border-rose-500/30 px-2 py-0.5 rounded bg-rose-950/70">ASMARA</span>
+                                <span class="text-[10px] font-mono text-slate-400">THN 2026</span>
+                            </div>
+                            <p class="text-xs font-semibold text-slate-100">Sektor Interaksi Aktif</p>
+                            <p class="text-[11px] text-slate-300 mt-0.5">Sistem jejaring & asmara siap dijalankan.</p>
+                        </div>
+
+                    </div>
+
+                    <!-- Log Footer Status -->
+                    <div class="pt-3 border-t border-white/10 text-[10px] font-mono text-slate-400 flex items-center justify-between">
+                        <span><i class="fa-solid fa-terminal text-rose-400 mr-1"></i> SYSTEM: LIVE</span>
+                        <span class="text-emerald-400">SYNCED</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- POPUP MODAL 1: DOSIER DOSEN & TOKOH PASANGAN -->
+    <div id="dossier-modal" onclick="closeDossierModal()" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+        <div onclick="event.stopPropagation()" id="dossier-modal-card" class="glass-panel w-full max-w-2xl rounded-3xl p-6 sm:p-8 border border-rose-500/40 shadow-2xl relative transform scale-95 transition-transform duration-300 max-h-[90vh] overflow-y-auto custom-scrollbar">
+            
+            <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-rose-950/80 border border-rose-500/40 flex items-center justify-center text-rose-300 text-lg shadow-inner">
+                        <i class="fa-solid fa-address-card"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-base sm:text-lg font-bold font-tech text-white uppercase tracking-wider" id="dossier-title">DOSIER PROFIL EKSKLUSIF</h3>
+                        <p class="text-[11px] text-slate-400 font-mono">INFORMASI INTI & LATAR BELAKANG</p>
+                    </div>
+                </div>
+                <button onclick="closeDossierModal()" class="w-9 h-9 rounded-xl bg-slate-900/70 border border-white/10 hover:border-rose-400 text-slate-400 hover:text-white flex items-center justify-center transition-all cursor-pointer">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <div id="dossier-content" class="space-y-4">
+                <!-- Dynamically filled by JS -->
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+                <span><i class="fa-solid fa-shield-halved text-rose-400 mr-1"></i> DATA INTELIJEN HIGH SOCIETY</span>
+                <span class="text-rose-400">TERVERIFIKASI</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- POPUP MODAL 2: EVENT INTERAKTIF SCENARIO (KENCAN & GALA) -->
+    <div id="interactive-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+        <div id="interactive-modal-card" class="glass-panel w-full max-w-xl rounded-3xl p-6 sm:p-8 border border-rose-500/40 shadow-2xl relative transform scale-95 transition-transform duration-300">
+            
+            <div class="flex items-center justify-between mb-4">
+                <span id="int-badge" class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-rose-950/80 text-rose-300 border border-rose-500/40 uppercase tracking-widest">
+                    [EVENT INTERAKTIF]
+                </span>
+                <span id="int-subtitle" class="text-xs font-mono text-slate-400">TAHUN 2026</span>
+            </div>
+
+            <h3 id="int-title" class="text-xl sm:text-2xl font-bold font-tech text-white mb-3">
+                Malam Kencan Eksklusif
+            </h3>
+
+            <p id="int-desc" class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6 font-light">
+                Deskripsi skenario romantis atau event sosial...
+            </p>
+
+            <div id="int-choices" class="space-y-3 mb-6">
+                <!-- Dynamically injected choices -->
+            </div>
+
+            <div class="pt-4 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+                <span><i class="fa-solid fa-heart text-rose-400 mr-1"></i> Kanvas Hidup Romance Engine</span>
+                <span class="text-rose-400">Pilihan Berdampak Pada Afeksi & Saldo</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- POPUP MODAL 3: MATRIKS MODUL TELEPORTASI (10 SEKTOR) -->
+    <div id="module-modal" onclick="closeModuleModal()" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+        <div onclick="event.stopPropagation()" id="module-modal-card" class="glass-panel w-full max-w-5xl rounded-3xl p-6 sm:p-8 border border-cyan-500/40 shadow-2xl relative transform scale-95 transition-transform duration-300 max-h-[90vh] overflow-y-auto custom-scrollbar">
+            
+            <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-cyan-950/80 border border-cyan-500/40 flex items-center justify-center text-cyan-300 text-lg shadow-inner">
+                        <i class="fa-solid fa-door-open"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-base sm:text-lg font-bold font-tech text-white uppercase tracking-wider">PUSAT NAVIGASI</h3>
+                        <p class="text-[11px] text-slate-400 font-mono">10 KANAL AKSES SEKTOR UTAMA</p>
+                    </div>
+                </div>
+                <button onclick="closeModuleModal()" class="w-9 h-9 rounded-xl bg-slate-900/70 border border-white/10 hover:border-cyan-400 text-slate-400 hover:text-white flex items-center justify-center transition-all cursor-pointer">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- 10 Module Portals Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <a href="pendidikan.html" class="relative group rounded-2xl overflow-hidden border border-indigo-500/30 hover:border-cyan-400 shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between p-4 min-h-[130px]">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&auto=format&fit=crop&q=80');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/40"></div>
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-1">
+                            <i class="fa-solid fa-graduation-cap text-indigo-400"></i>
+                            <span class="text-[9px] font-mono text-indigo-300 bg-indigo-950/80 px-2 py-0.5 rounded">SEKTOR 01</span>
+                        </div>
+                        <h4 class="font-bold font-tech text-xs text-white">PENDIDIKAN</h4>
+                    </div>
+                </a>
+
+                <a href="pekerjaan.html" class="relative group rounded-2xl overflow-hidden border border-blue-500/30 hover:border-cyan-400 shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between p-4 min-h-[130px]">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&auto=format&fit=crop&q=80');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/40"></div>
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-1">
+                            <i class="fa-solid fa-briefcase text-blue-400"></i>
+                            <span class="text-[9px] font-mono text-blue-300 bg-blue-950/80 px-2 py-0.5 rounded">SEKTOR 02</span>
+                        </div>
+                        <h4 class="font-bold font-tech text-xs text-white">PEKERJAAN</h4>
+                    </div>
+                </a>
+
+                <a href="finansial.html" class="relative group rounded-2xl overflow-hidden border border-emerald-500/30 hover:border-cyan-400 shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between p-4 min-h-[130px]">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&auto=format&fit=crop&q=80');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/40"></div>
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-1">
+                            <i class="fa-solid fa-chart-line text-emerald-400"></i>
+                            <span class="text-[9px] font-mono text-emerald-300 bg-emerald-950/80 px-2 py-0.5 rounded">SEKTOR 03</span>
+                        </div>
+                        <h4 class="font-bold font-tech text-xs text-white">FINANSIAL & ASET</h4>
+                    </div>
+                </a>
+
+                <a href="aktivitas.html" class="relative group rounded-2xl overflow-hidden border border-amber-500/30 hover:border-cyan-400 shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between p-4 min-h-[130px]">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&auto=format&fit=crop&q=80');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/40"></div>
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-1">
+                            <i class="fa-solid fa-dumbbell text-amber-400"></i>
+                            <span class="text-[9px] font-mono text-amber-300 bg-amber-950/80 px-2 py-0.5 rounded">SEKTOR 04</span>
+                        </div>
+                        <h4 class="font-bold font-tech text-xs text-white">AKTIVITAS</h4>
+                    </div>
+                </a>
+
+                <a href="bisnis.html" class="relative group rounded-2xl overflow-hidden border border-purple-500/30 hover:border-cyan-400 shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between p-4 min-h-[130px]">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=600&auto=format&fit=crop&q=80');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/40"></div>
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-1">
+                            <i class="fa-solid fa-rocket text-purple-400"></i>
+                            <span class="text-[9px] font-mono text-purple-300 bg-purple-950/80 px-2 py-0.5 rounded">SEKTOR 05</span>
+                        </div>
+                        <h4 class="font-bold font-tech text-xs text-white">BISNIS & RISIKO</h4>
+                    </div>
+                </a>
+
+                <a href="soul.html" class="relative group rounded-2xl overflow-hidden border border-rose-500/30 hover:border-cyan-400 shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between p-4 min-h-[130px]">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&auto=format&fit=crop&q=80');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/40"></div>
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-1">
+                            <i class="fa-solid fa-yin-yang text-rose-400"></i>
+                            <span class="text-[9px] font-mono text-rose-300 bg-rose-950/80 px-2 py-0.5 rounded">SEKTOR 06</span>
+                        </div>
+                        <h4 class="font-bold font-tech text-xs text-white">JIWA</h4>
+                    </div>
+                </a>
+
+                <a href="jejaring.html" class="relative group rounded-2xl overflow-hidden border border-cyan-500/30 hover:border-cyan-400 shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between p-4 min-h-[130px]">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&auto=format&fit=crop&q=80');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/40"></div>
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-1">
+                            <i class="fa-solid fa-network-wired text-cyan-400"></i>
+                            <span class="text-[9px] font-mono text-cyan-300 bg-cyan-950/80 px-2 py-0.5 rounded">SEKTOR 07</span>
+                        </div>
+                        <h4 class="font-bold font-tech text-xs text-white">JEJARING DIGITAL</h4>
+                    </div>
+                </a>
+
+                <a href="kondisi-dunia.html" class="relative group rounded-2xl overflow-hidden border border-teal-500/30 hover:border-cyan-400 shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between p-4 min-h-[130px]">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=600&auto=format&fit=crop&q=80');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/40"></div>
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-1">
+                            <i class="fa-solid fa-earth-americas text-teal-400"></i>
+                            <span class="text-[9px] font-mono text-teal-300 bg-teal-950/80 px-2 py-0.5 rounded">SEKTOR 08</span>
+                        </div>
+                        <h4 class="font-bold font-tech text-xs text-white">KONDISI DUNIA</h4>
+                    </div>
+                </a>
+
+                <a href="shopping.html" class="relative group rounded-2xl overflow-hidden border border-amber-400/30 hover:border-cyan-400 shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between p-4 min-h-[130px]">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&auto=format&fit=crop&q=80');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/40"></div>
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-1">
+                            <i class="fa-solid fa-gem text-amber-300"></i>
+                            <span class="text-[9px] font-mono text-amber-300 bg-amber-950/80 px-2 py-0.5 rounded">SEKTOR 09</span>
+                        </div>
+                        <h4 class="font-bold font-tech text-xs text-white">SHOPPING</h4>
+                    </div>
+                </a>
+
+                <a href="interaksi.html" class="relative group rounded-2xl overflow-hidden border border-fuchsia-500/50 ring-2 ring-rose-500/50 shadow-xl transition-all duration-300 hover:scale-[1.02] flex flex-col justify-between p-4 min-h-[130px] sm:col-span-2 md:col-span-3">
+                    <div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style="background-image: url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&auto=format&fit=crop&q=80');"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/40"></div>
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-1">
+                            <i class="fa-solid fa-comments text-fuchsia-400"></i>
+                            <span class="text-[9px] font-mono text-fuchsia-300 bg-fuchsia-950/80 px-2 py-0.5 rounded">SEKTOR 10 (AKTIF)</span>
+                        </div>
+                        <h4 class="font-bold font-tech text-xs text-white">INTERAKSI SOSIAL & ASMARA</h4>
+                    </div>
+                </a>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+                <span><i class="fa-solid fa-network-wired text-cyan-400 mr-1"></i> TELEPORTASI SEKTOR</span>
+                <span class="text-cyan-400">PILIH DESTINASI UTAMA</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- FOOTER -->
+    <footer class="w-full glass-panel border-t border-white/10 py-3 px-4 z-20 mt-8">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4 text-xs text-slate-400 font-mono">
+            <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-rose-400"></span>
+                <span class="font-bold text-slate-200 font-tech">KANVAS HIDUP SIMULATOR</span>
+            </div>
+            
+            <div class="flex items-center gap-6">
+                <span>SEKTOR 10: <span class="text-rose-400 font-bold">INTERAKSI & ASMARA</span></span>
+                <span>ENGINE: <span class="text-cyan-400 font-bold">EXECUTIVE LIFE V2.5</span></span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT ENGINE LOGIC -->
+    <script>
+        // Game State Variables
+        let playerState = {
+            balance: 2450000000,
+            year: 2026,
+            charm: 92,
+            reputation: "Elit VIP",
+            repScore: 85,
+            familyHarmony: 88,
+            activePartnerId: null, // ID partner if dating
+            vipContactsCount: 14,
+            clubsCount: 2
+        };
+
+        // Romantic Partners Data
+        const partnersData = [
+            {
+                id: "p1",
+                name: "Elena Rostova",
+                age: 24,
+                title: "Kurator Seni & Pewaris Dinasti Galeri",
+                socialClass: "Bangsawan / High Society",
+                bio: "Wanita anggun keturunan bangsawan Eropa yang mengelola jaringan galeri seni mewah di Asia. Menyukai keindahan klasik, wine eksklusif, dan diskusi filsafat.",
+                image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&auto=format&fit=crop&q=80",
+                affection: 45, // 0 - 100
+                relationLevel: "PDKT / Teman Dekat", // PDKT, Berpacaran, Tunangan, Menikah
+                hobby: "Koleksi Lukisan Renaissance & Biola",
+                requirements: "Minimal Pesona 80 & Saldo Rp 1 Miliar"
+            },
+            {
+                id: "p2",
+                name: "Sophia Lin",
+                age: 26,
+                title: "Managing Partner Venture Capital",
+                socialClass: "Konglomerat Teknologi",
+                bio: "Mantan mahasiswi Stanford yang tajam dan visioner. Ia memimpin dana investasi modal ventura terbesar bernilai miliaran dolar di kawasan Pasifik.",
+                image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&auto=format&fit=crop&q=80",
+                affection: 30,
+                relationLevel: "Kenalan Elit",
+                hobby: "Polo, Heliskiing & Startups",
+                requirements: "Minimal Reputasi Elit & Karir Direktur"
+            },
+            {
+                id: "p3",
+                name: "Isabella Moretti",
+                age: 25,
+                title: "Creative Director High Fashion House",
+                socialClass: "Elit Industri Kreatif Global",
+                bio: "Desainer berbakat asal Milan yang memimpin rumah mode adibusana ternama. Sering berpindah antara Paris, New York, dan Jakarta.",
+                image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&auto=format&fit=crop&q=80",
+                affection: 60,
+                relationLevel: "PDKT Intensif",
+                hobby: "Runway Show, Photography & Yachting",
+                requirements: "Minimal Pesona 85 & Gaya Hidup Mewah"
+            },
+            {
+                id: "p4",
+                name: "Dr. Valerie Chen",
+                age: 27,
+                title: "Peneliti Bioteknologi & Pianis Konser",
+                socialClass: "Keluarga Cendekiawan Senior",
+                bio: "Gadis berkharisma tinggi yang menggabungkan kecerdasan sains bioteknologi dengan kemahiran memainkan piano di hall konser dunia.",
+                image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&auto=format&fit=crop&q=80",
+                affection: 20,
+                relationLevel: "Kenalan Baru",
+                hobby: "Musik Klasik, Lab Research & Chess",
+                requirements: "Pendidikan S2/S3 & Reputasi Bersih"
+            }
+        ];
+
+        // High Society Clubs Data
+        const clubsData = [
+            {
+                id: "c1",
+                name: "The Royal Ascot Society",
+                type: "Klub Eksklusif Oligarki",
+                fee: 150000000,
+                status: "Terdaftar (Member VIP)",
+                badge: "ACTIVE",
+                desc: "Perkumpulan rahasia para pemilik konglomerasi & bangsawan."
+            },
+            {
+                id: "c2",
+                name: "Apex Venture Syndicate",
+                type: "Klub Investor Angel",
+                fee: 250000000,
+                status: "Terdaftar (Member Platinum)",
+                badge: "ACTIVE",
+                desc: "Jaringan pemilik modal privat terbesar untuk startup Unicorn."
+            },
+            {
+                id: "c3",
+                name: "Philanthropy & Arts Circle",
+                type: "Klub Filantropi & Donor",
+                fee: 100000000,
+                status: "Belum Bergabung",
+                badge: "GUEST",
+                desc: "Wadah kegiatan amal sosial elit dan apresiasi mahakarya seni."
+            },
+            {
+                id: "c4",
+                name: "Supercar & Yacht Owners Club",
+                type: "Klub Kolektor Mewah",
+                fee: 300000000,
+                status: "Belum Bergabung",
+                badge: "GUEST",
+                desc: "Komunitas pemilik kendaraan eksotik, yacht, dan jet pribadi."
+            }
+        ];
+
+        // High Society Events Data
+        const eventsData = [
+            {
+                id: "e1",
+                title: "Gala Dinner & Charity Auction di Superyacht",
+                cost: 85000000,
+                repGain: "+12% Reputasi",
+                charmReq: 80,
+                desc: "Malam amal eksklusif di atas Yacht mewah melintasi teluk Jakarta. Dihadiri para menteri dan pengusaha papan atas."
+            },
+            {
+                id: "e2",
+                title: "Private Wine Tasting & Classical Symphony",
+                cost: 45000000,
+                repGain: "+8% Reputasi",
+                charmReq: 75,
+                desc: "Cicipi anggur vintage tahun 1945 langka sembari menikmati alunan simfoni privat di gedung cagar budaya."
+            },
+            {
+                id: "e3",
+                title: "International Executive Golf Championship",
+                cost: 60000000,
+                repGain: "+10% Reputasi",
+                charmReq: 70,
+                desc: "Turnamen golf persahabatan tingkat internasional di lapangan golf resor pribadi."
+            }
+        ];
+
+        // Family Members Data
+        const familyData = [
+            {
+                id: "f1",
+                name: "Raymond Vance",
+                relation: "Ayah Utama",
+                title: "Senior Chairman Vance Corp",
+                harmony: 90,
+                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=80"
+            },
+            {
+                id: "f2",
+                name: "Eleanor Vance",
+                relation: "Ibu",
+                title: "Presiden Yayasan Filantropi Vance",
+                harmony: 85,
+                image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&auto=format&fit=crop&q=80"
+            },
+            {
+                id: "f3",
+                name: "Clarissa Vance",
+                relation: "Adik Perempuan",
+                title: "Mahasiswi Desain Interior di London",
+                harmony: 89,
+                image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&auto=format&fit=crop&q=80"
+            }
+        ];
+
+        function formatCurrency(amount) {
+            return 'Rp ' + amount.toLocaleString('id-ID');
+        }
+
+        function updateHUD() {
+            document.getElementById('hud-balance').innerText = formatCurrency(playerState.balance);
+            document.getElementById('hud-charm').innerText = `${playerState.charm} / 100`;
+            document.getElementById('hud-reputation').innerText = playerState.reputation;
+            document.getElementById('hud-year').innerText = playerState.year;
+
+            // Widget bars
+            document.getElementById('attr-charm-val').innerText = `${playerState.charm}%`;
+            document.getElementById('attr-charm-bar').style.width = `${playerState.charm}%`;
+
+            document.getElementById('attr-rep-val').innerText = `${playerState.repScore}%`;
+            document.getElementById('attr-rep-bar').style.width = `${playerState.repScore}%`;
+
+            document.getElementById('attr-family-val').innerText = `${playerState.familyHarmony}%`;
+            document.getElementById('attr-family-bar').style.width = `${playerState.familyHarmony}%`;
+
+            document.getElementById('stat-vip-count').innerText = `${playerState.vipContactsCount} Relasi`;
+            document.getElementById('stat-clubs-count').innerText = `${playerState.clubsCount} Member`;
+
+            // Active partner hero widget update
+            const activeP = partnersData.find(p => p.id === playerState.activePartnerId);
+            if (activeP) {
+                document.getElementById('hero-partner-name').innerText = activeP.name;
+                document.getElementById('hero-partner-status').innerText = `Status: ${activeP.relationLevel} (${activeP.affection}%)`;
+                document.getElementById('hero-partner-avatar').innerHTML = `<img src="${activeP.image}" class="w-full h-full object-cover rounded-xl" />`;
+            } else {
+                document.getElementById('hero-partner-name').innerText = "Lajang (Mencari Relasi)";
+                document.getElementById('hero-partner-status').innerText = "Siap Menjalin Hubungan";
+                document.getElementById('hero-partner-avatar').innerHTML = `<i class="fa-solid fa-user-heart"></i>`;
+            }
+        }
+
+        function showToast(message, type = "info") {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            
+            let badgeBg = "bg-rose-950/90 border-rose-500/50 text-rose-200";
+            if (type === "success") badgeBg = "bg-emerald-950/90 border-emerald-500/50 text-emerald-200";
+            if (type === "warning") badgeBg = "bg-amber-950/90 border-amber-500/50 text-amber-200";
+
+            toast.className = `px-4 py-3 rounded-2xl glass-panel border shadow-2xl text-xs font-mono flex items-center gap-3 transition-all duration-300 pointer-events-auto ${badgeBg}`;
+            toast.innerHTML = `
+                <i class="fa-solid fa-bell text-rose-400"></i>
+                <span>${message}</span>
+            `;
+
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 300);
+            }, 3500);
+        }
+
+        function appendLog(category, action, result) {
+            const container = document.getElementById('event-log-container');
+            const item = document.createElement('div');
+            item.className = "p-3 rounded-xl bg-slate-900/60 border border-rose-500/30 transition-all hover:border-rose-400";
+            
+            item.innerHTML = `
+                <div class="flex items-center justify-between mb-1">
+                    <span class="text-[9px] font-mono text-rose-400 border border-rose-500/30 px-2 py-0.5 rounded bg-rose-950/70">${category}</span>
+                    <span class="text-[10px] font-mono text-slate-400">THN ${playerState.year}</span>
+                </div>
+                <p class="text-xs font-semibold text-slate-100">${action}</p>
+                <p class="text-[11px] text-slate-300 mt-0.5">${result}</p>
+            `;
+
+            container.insertBefore(item, container.firstChild);
+        }
+
+        function clearEventLogs() {
+            document.getElementById('event-log-container').innerHTML = `
+                <div class="p-3 text-center text-xs font-mono text-slate-500">
+                    [LOG DIBERSIHKAN]
+                </div>
+            `;
+        }
+
+        function renderPartners() {
+            const container = document.getElementById('partners-container');
+            container.innerHTML = '';
+
+            partnersData.forEach(partner => {
+                const isCurrentActive = playerState.activePartnerId === partner.id;
+                
+                const card = document.createElement('div');
+                card.className = `glass-card glass-card-hover rounded-3xl p-5 border flex flex-col justify-between space-y-4 relative overflow-hidden ${isCurrentActive ? 'border-rose-400 ring-2 ring-rose-500/30 bg-slate-900/80' : 'border-white/10'}`;
+
+                card.innerHTML = `
+                    <div class="flex items-start gap-4">
+                        <img src="${partner.image}" alt="${partner.name}" class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-cover border border-rose-500/40 shadow-lg shrink-0" />
+                        <div class="space-y-1 flex-1 min-w-0">
+                            <div class="flex items-center justify-between">
+                                <h3 class="font-bold font-tech text-sm sm:text-base text-white truncate">${partner.name}</h3>
+                                <span class="text-[9px] font-mono px-2 py-0.5 rounded ${isCurrentActive ? 'bg-rose-500/30 text-rose-300 border border-rose-400/50' : 'bg-slate-800 text-slate-300'}">${partner.relationLevel}</span>
+                            </div>
+                            <p class="text-[11px] text-rose-300 font-medium">${partner.title}</p>
+                            <p class="text-[10px] text-slate-400 font-mono"><i class="fa-solid fa-crown text-amber-400 mr-1"></i> ${partner.socialClass}</p>
+                            <p class="text-[11px] text-slate-300 line-clamp-2 mt-1">${partner.bio}</p>
+                        </div>
+                    </div>
+
+                    <!-- Affection Progress Meter -->
+                    <div class="space-y-1 bg-slate-950/50 p-2.5 rounded-xl border border-white/5">
+                        <div class="flex justify-between text-[10px] font-mono">
+                            <span class="text-slate-400"><i class="fa-solid fa-heart text-rose-500 mr-1"></i> Tingkat Afeksi & Cinta</span>
+                            <span class="text-rose-300 font-bold">${partner.affection}%</span>
+                        </div>
+                        <div class="w-full h-1.5 rounded-full bg-slate-900 overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-rose-500 to-fuchsia-500 rounded-full transition-all duration-500" style="width: ${partner.affection}%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Action Buttons -->
+                    <div class="grid grid-cols-2 gap-2 pt-1">
+                        <button onclick="datePartner('${partner.id}')" class="px-3 py-2 rounded-xl bg-gradient-to-r from-rose-500/80 to-pink-600/80 hover:from-rose-500 hover:to-pink-500 text-white text-xs font-bold font-tech uppercase tracking-wider transition-all shadow-md active:scale-95 cursor-pointer">
+                            <i class="fa-solid fa-champagne-glasses mr-1"></i> Kencan
+                        </button>
+                        <button onclick="giftPartner('${partner.id}')" class="px-3 py-2 rounded-xl bg-slate-900/80 border border-rose-500/40 hover:bg-slate-800 text-rose-300 text-xs font-bold font-tech uppercase tracking-wider transition-all active:scale-95 cursor-pointer">
+                            <i class="fa-solid fa-gift mr-1"></i> Hadiah Mewah
+                        </button>
+                        <button onclick="proposePartner('${partner.id}')" class="px-3 py-2 rounded-xl bg-slate-900/80 border border-fuchsia-500/40 hover:bg-fuchsia-950/50 text-fuchsia-300 text-xs font-bold font-tech uppercase tracking-wider transition-all active:scale-95 cursor-pointer">
+                            <i class="fa-solid fa-ring mr-1"></i> Komitmen
+                        </button>
+                        <button onclick="openPartnerDossier('${partner.id}')" class="px-3 py-2 rounded-xl bg-slate-900/80 border border-cyan-500/40 hover:bg-slate-800 text-cyan-300 text-xs font-bold font-tech uppercase tracking-wider transition-all active:scale-95 cursor-pointer">
+                            <i class="fa-solid fa-id-badge mr-1"></i> Dossier
+                        </button>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        function renderClubs() {
+            const container = document.getElementById('clubs-container');
+            container.innerHTML = '';
+
+            clubsData.forEach(club => {
+                const isMember = club.badge === "ACTIVE";
+
+                const card = document.createElement('div');
+                card.className = "glass-card rounded-2xl p-4 border border-white/10 flex flex-col justify-between space-y-3";
+
+                card.innerHTML = `
+                    <div class="flex items-start justify-between gap-3">
+                        <div>
+                            <span class="text-[9px] font-mono text-fuchsia-300 bg-fuchsia-950/80 border border-fuchsia-500/30 px-2 py-0.5 rounded">${club.type}</span>
+                            <h3 class="font-bold font-tech text-sm text-white mt-1">${club.name}</h3>
+                            <p class="text-[11px] text-slate-300 mt-0.5">${club.desc}</p>
+                        </div>
+                    </div>
+                    <div class="pt-2 border-t border-white/10 flex items-center justify-between text-xs">
+                        <span class="font-mono text-[11px] text-emerald-400 font-bold">${formatCurrency(club.fee)} / Thn</span>
+                        ${isMember 
+                            ? `<span class="px-3 py-1 rounded-xl bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 font-mono text-[10px] font-bold"><i class="fa-solid fa-check mr-1"></i> TERDAFTAR</span>`
+                            : `<button onclick="joinClub('${club.id}')" class="px-3 py-1.5 rounded-xl bg-fuchsia-600 hover:bg-fuchsia-500 text-white font-tech text-[10px] uppercase tracking-wider font-bold cursor-pointer transition-all">Bergabung</button>`
+                        }
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        function renderEvents() {
+            const container = document.getElementById('events-container');
+            container.innerHTML = '';
+
+            eventsData.forEach(evt => {
+                const card = document.createElement('div');
+                card.className = "glass-card rounded-2xl p-4 border border-amber-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4";
+
+                card.innerHTML = `
+                    <div class="space-y-1 flex-1">
+                        <div class="flex items-center gap-2">
+                            <span class="text-[9px] font-mono bg-amber-950/80 text-amber-300 border border-amber-500/30 px-2 py-0.5 rounded uppercase">AGENDA ELIT</span>
+                            <span class="text-[10px] font-mono text-emerald-400">${evt.repGain}</span>
+                        </div>
+                        <h3 class="font-bold font-tech text-sm text-white">${evt.title}</h3>
+                        <p class="text-[11px] text-slate-300">${evt.desc}</p>
+                    </div>
+                    <div class="flex items-center gap-3 shrink-0 w-full md:w-auto justify-between md:justify-end border-t md:border-t-0 border-white/10 pt-3 md:pt-0">
+                        <div class="text-left md:text-right font-mono">
+                            <div class="text-[9px] text-slate-400">BIAYA EKSKLUSIF</div>
+                            <div class="text-xs font-bold text-amber-300">${formatCurrency(evt.cost)}</div>
+                        </div>
+                        <button onclick="attendEvent('${evt.id}')" class="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-tech text-xs uppercase tracking-wider font-bold cursor-pointer transition-all shadow-lg active:scale-95">
+                            <i class="fa-solid fa-ticket mr-1"></i> Hadir Gala
+                        </button>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        function renderFamily() {
+            const container = document.getElementById('family-container');
+            container.innerHTML = '';
+
+            familyData.forEach(member => {
+                const card = document.createElement('div');
+                card.className = "glass-card rounded-2xl p-4 border border-cyan-500/30 flex items-center gap-3";
+
+                card.innerHTML = `
+                    <img src="${member.image}" class="w-14 h-14 rounded-xl object-cover border border-cyan-400/40 shrink-0" />
+                    <div class="space-y-0.5 flex-1 min-w-0">
+                        <span class="text-[9px] font-mono text-cyan-300 bg-cyan-950/80 px-2 py-0.5 rounded">${member.relation}</span>
+                        <h4 class="font-bold font-tech text-xs text-white truncate">${member.name}</h4>
+                        <div class="flex items-center justify-between text-[10px] font-mono text-slate-400">
+                            <span>Harmoni</span>
+                            <span class="text-cyan-300 font-bold">${member.harmony}%</span>
+                        </div>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        // DATING ACTION WITH INTERACTIVE SCENARIO
+        function datePartner(partnerId) {
+            const partner = partnersData.find(p => p.id === partnerId);
+            const dateCost = 25000000; // Rp 25 Juta per kencan mewah
+
+            if (playerState.balance < dateCost) {
+                showToast("Saldo tidak mencukupi untuk kencan di restoran Michelin!", "warning");
+                return;
+            }
+
+            openInteractiveModal({
+                title: `Kencan Mewah dengan ${partner.name}`,
+                badge: "ROMANCE SCENARIO",
+                subtitle: partner.title,
+                desc: `Anda mengundang ${partner.name} ke pemesanan meja pribadi di Private Dining Room lantai teratas Penthouse. Suasana romantis dengan pemandangan gemerlap kota. Skenario percakapan apa yang akan Anda tawarkan?`,
+                choices: [
+                    {
+                        text: "Bicarakan Visi Masa Depan, Karir & Passion Bersama",
+                        action: () => {
+                            playerState.balance -= dateCost;
+                            partner.affection = Math.min(100, partner.affection + 15);
+                            playerState.charm = Math.min(100, playerState.charm + 2);
+                            if (!playerState.activePartnerId) playerState.activePartnerId = partner.id;
+                            
+                            updateHUD();
+                            renderPartners();
+                            appendLog("KENCAN MEWAH", `Kencan dengan ${partner.name}`, `Afeksi bertambah +15%. ${partner.name} terkesan dengan visi hidup Anda. (-Rp 25.000.000)`);
+                            showToast(`Kencan sukses! Afeksi ${partner.name} meningkat pesat (+15%).`, "success");
+                            closeInteractiveModal();
+                        }
+                    },
+                    {
+                        text: "Hadiahkan Perhiasan Berlian Langka sebagai Kejutan",
+                        action: () => {
+                            const bonusCost = 80000000;
+                            if (playerState.balance < dateCost + bonusCost) {
+                                showToast("Saldo tidak mencukupi untuk kejutan perhiasan!", "warning");
+                                return;
+                            }
+                            playerState.balance -= (dateCost + bonusCost);
+                            partner.affection = Math.min(100, partner.affection + 28);
+                            playerState.charm = Math.min(100, playerState.charm + 4);
+                            if (!playerState.activePartnerId) playerState.activePartnerId = partner.id;
+
+                            updateHUD();
+                            renderPartners();
+                            appendLog("HADIAH KENCAN", `Kejutan Berlian untuk ${partner.name}`, `Afeksi meroket +28%. (-Rp 105.000.000)`);
+                            showToast(`Kejutan sangat berhasil! Afeksi ${partner.name} meroket +28%.`, "success");
+                            closeInteractiveModal();
+                        }
+                    }
+                ]
+            });
+        }
+
+        // GIFT PARTNER ACTION
+        function giftPartner(partnerId) {
+            const partner = partnersData.find(p => p.id === partnerId);
+            const giftCost = 50000000; // Rp 50 Juta
+
+            if (playerState.balance < giftCost) {
+                showToast("Saldo tidak mencukupi untuk membeli tas/arloji koleksi!", "warning");
+                return;
+            }
+
+            playerState.balance -= giftCost;
+            partner.affection = Math.min(100, partner.affection + 12);
+            
+            updateHUD();
+            renderPartners();
+            appendLog("HADIAH SOSIAL", `Mengirimkan Tas Hermes/Arloji ke ${partner.name}`, `Afeksi bertambah +12%. (-Rp 50.000.000)`);
+            showToast(`Hadiah terkirim! Afeksi ${partner.name} bertambah +12%.`, "success");
+        }
+
+        // PROPOSE / COMMITMENT ACTION
+        function proposePartner(partnerId) {
+            const partner = partnersData.find(p => p.id === partnerId);
+
+            if (partner.affection < 75) {
+                showToast(`Afeksi ${partner.name} belum mencapai 75%. Lakukan lebih banyak kencan dan perhatian!`, "warning");
+                return;
+            }
+
+            openInteractiveModal({
+                title: `Mengajukan Komitmen Pernikahan`,
+                badge: "KOMITMEN PERNIKAHAN",
+                subtitle: partner.name,
+                desc: `Afeksi ${partner.name} telah mencapai ${partner.affection}%. Apakah Anda yakin ingin melamar ${partner.name} dengan cincin berlian Custom Tiffany & Co 5 Karat seharga Rp 500 Juta?`,
+                choices: [
+                    {
+                        text: "Lamar Sekarang & Gelar Pesta Tunangan Mewah",
+                        action: () => {
+                            const ringCost = 500000000;
+                            if (playerState.balance < ringCost) {
+                                showToast("Saldo tidak mencukupi untuk cincin lamaran!", "warning");
+                                return;
+                            }
+                            playerState.balance -= ringCost;
+                            partner.relationLevel = "Tunangan / Calon Istri";
+                            partner.affection = 100;
+                            playerState.activePartnerId = partner.id;
+                            playerState.repScore = Math.min(100, playerState.repScore + 10);
+
+                            updateHUD();
+                            renderPartners();
+                            appendLog("PERNIKAHAN & DINASTI", `Pertunangan Resmi dengan ${partner.name}`, `Selamat! Lamaran diterima. Reputasi dinasti meningkat. (-Rp 500.000.000)`);
+                            showToast(`Selamat! Lamaran Anda diterima oleh ${partner.name}!`, "success");
+                            closeInteractiveModal();
+                        }
+                    },
+                    {
+                        text: "Tunda Dulu, Pertahankan Status Berpacaran",
+                        action: () => {
+                            closeInteractiveModal();
+                        }
+                    }
+                ]
+            });
+        }
+
+        // JOIN HIGH SOCIETY CLUB
+        function joinClub(clubId) {
+            const club = clubsData.find(c => c.id === clubId);
+
+            if (playerState.balance < club.fee) {
+                showToast("Saldo tidak cukup untuk biaya keanggotaan klub!", "warning");
+                return;
+            }
+
+            playerState.balance -= club.fee;
+            club.badge = "ACTIVE";
+            playerState.clubsCount++;
+            playerState.repScore = Math.min(100, playerState.repScore + 8);
+
+            updateHUD();
+            renderClubs();
+            appendLog("KLUB SOSIAL", `Bergabung dengan ${club.name}`, `Mendapatkan kartu keanggotaan VIP. Reputasi meningkat. (-${formatCurrency(club.fee)})`);
+            showToast(`Berhasil bergabung dengan ${club.name}!`, "success");
+        }
+
+        // ATTEND GALA EVENT
+        function attendEvent(eventId) {
+            const evt = eventsData.find(e => e.id === eventId);
+
+            if (playerState.balance < evt.cost) {
+                showToast("Saldo tidak mencukupi untuk tiket VIP Gala!", "warning");
+                return;
+            }
+
+            openInteractiveModal({
+                title: evt.title,
+                badge: "HIGH SOCIETY GALA",
+                subtitle: evt.repGain,
+                desc: `${evt.desc} Sapaan dan interaksi apa yang akan Anda fokuskan malam ini?`,
+                choices: [
+                    {
+                        text: "Fokus Berikatan dengan Konglomerat & Investor Kunci",
+                        action: () => {
+                            playerState.balance -= evt.cost;
+                            playerState.repScore = Math.min(100, playerState.repScore + 12);
+                            playerState.vipContactsCount += 2;
+
+                            updateHUD();
+                            appendLog("EVENT HIGH SOCIETY", `Menghadiri ${evt.title}`, `Mendapatkan 2 kontak investor VIP baru dan reputasi naik. (-${formatCurrency(evt.cost)})`);
+                            showToast("Gala sukses besar! Kontak VIP dan Reputasi Anda meningkat.", "success");
+                            closeInteractiveModal();
+                        }
+                    },
+                    {
+                        text: "Lakukan Donasi Amal Terbuka Rp 100 Juta untuk Sorotan Media",
+                        action: () => {
+                            const donation = 100000000;
+                            if (playerState.balance < evt.cost + donation) {
+                                showToast("Saldo tidak mencukupi untuk donasi spektakuler!", "warning");
+                                return;
+                            }
+                            playerState.balance -= (evt.cost + donation);
+                            playerState.repScore = Math.min(100, playerState.repScore + 20);
+                            playerState.charm = Math.min(100, playerState.charm + 5);
+
+                            updateHUD();
+                            appendLog("DONASI FILANTROPI", `Lelang Amal di ${evt.title}`, `Nama Anda diliput media utama sebagai filantropis terkemuka. (-${formatCurrency(evt.cost + donation)})`);
+                            showToast("Donasi spektakuler! Reputasi Anda meroket tajam.", "success");
+                            closeInteractiveModal();
+                        }
+                    }
+                ]
+            });
+        }
+
+        // EXECUTE FAMILY ACTIONS
+        function executeFamilyAction(actionType) {
+            if (actionType === 'dinner') {
+                const cost = 15000000;
+                if (playerState.balance < cost) return showToast("Saldo tidak cukup!", "warning");
+                playerState.balance -= cost;
+                playerState.familyHarmony = Math.min(100, playerState.familyHarmony + 8);
+                familyData.forEach(m => m.harmony = Math.min(100, m.harmony + 5));
+                updateHUD();
+                renderFamily();
+                appendLog("HARMONI KELUARGA", "Makan Malam Keluarga Vance", "Keharmonisan meningkat +8%. (-Rp 15.000.000)");
+                showToast("Makan malam hangat meningkatkan keharmonisan keluarga.", "success");
+            } else if (actionType === 'vacation') {
+                const cost = 120000000;
+                if (playerState.balance < cost) return showToast("Saldo tidak cukup!", "warning");
+                playerState.balance -= cost;
+                playerState.familyHarmony = Math.min(100, playerState.familyHarmony + 20);
+                familyData.forEach(m => m.harmony = Math.min(100, m.harmony + 15));
+                updateHUD();
+                renderFamily();
+                appendLog("LIBURAN KELUARGA", "Liburan Resor Mewah Swiss", "Keharmonisan meroket +20%. (-Rp 120.000.000)");
+                showToast("Liburan impian keluarga berjalan dengan sangat sukses!", "success");
+            } else if (actionType === 'trustfund') {
+                const cost = 250000000;
+                if (playerState.balance < cost) return showToast("Saldo tidak cukup!", "warning");
+                playerState.balance -= cost;
+                playerState.repScore = Math.min(100, playerState.repScore + 15);
+                updateHUD();
+                appendLog("DINASTI VANCE", "Injeksi Modal Trust Fund Keluarga", "Stabilitas finansial masa depan dinasti makin kokoh. (-Rp 250.000.000)");
+                showToast("Trust fund berhasil ditambahkan untuk generasi mendatang.", "success");
+            } else if (actionType === 'gift') {
+                const cost = 45000000;
+                if (playerState.balance < cost) return showToast("Saldo tidak cukup!", "warning");
+                playerState.balance -= cost;
+                playerState.familyHarmony = Math.min(100, playerState.familyHarmony + 12);
+                updateHUD();
+                appendLog("HADIAH KELUARGA", "Mengirimkan Jam Tangan Kolektor ke Ayah", "Ayah terkesan dengan perhatian Anda. (-Rp 45.000.000)");
+                showToast("Hadiah keluarga terkirim dengan indah.", "success");
+            }
+        }
+
+        // TAB SWITCHING
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+
+            // Reset tab button states
+            ['btn-tab-romance', 'btn-tab-clubs', 'btn-tab-family'].forEach(btnId => {
+                const btn = document.getElementById(btnId);
+                btn.className = "flex-1 min-w-[140px] px-4 py-3 rounded-xl font-tech text-xs uppercase tracking-wider font-bold transition-all border border-white/10 bg-slate-900/60 text-slate-300 hover:text-white hover:border-rose-500/30 flex items-center justify-center gap-2";
+            });
+
+            const activeBtn = document.getElementById(`btn-${tabId}`);
+            activeBtn.className = "flex-1 min-w-[140px] px-4 py-3 rounded-xl font-tech text-xs uppercase tracking-wider font-bold transition-all border border-rose-500/50 bg-rose-500/20 text-rose-200 shadow-lg flex items-center justify-center gap-2";
+        }
+
+        // PARTNER DOSSIER MODAL
+        function openPartnerDossier(partnerId) {
+            const partner = partnersData.find(p => p.id === partnerId);
+            const modal = document.getElementById('dossier-modal');
+            const card = document.getElementById('dossier-modal-card');
+            const content = document.getElementById('dossier-content');
+
+            content.innerHTML = `
+                <div class="flex items-center gap-4 bg-slate-900/60 p-4 rounded-2xl border border-white/10">
+                    <img src="${partner.image}" class="w-20 h-20 rounded-2xl object-cover border border-rose-400/50" />
+                    <div>
+                        <h4 class="font-bold font-tech text-lg text-white">${partner.name}</h4>
+                        <p class="text-xs text-rose-300">${partner.title}</p>
+                        <p class="text-[10px] font-mono text-slate-400 mt-1"><i class="fa-solid fa-cake-candles mr-1"></i> Usia: ${partner.age} Tahun</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 text-xs font-mono">
+                    <div class="p-3 rounded-xl bg-slate-900/50 border border-white/10">
+                        <span class="text-slate-400 block text-[10px]">KELAS SOSIAL</span>
+                        <span class="text-white font-bold">${partner.socialClass}</span>
+                    </div>
+                    <div class="p-3 rounded-xl bg-slate-900/50 border border-white/10">
+                        <span class="text-slate-400 block text-[10px]">STATUS RELASI</span>
+                        <span class="text-rose-300 font-bold">${partner.relationLevel}</span>
+                    </div>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-slate-900/50 border border-white/10 space-y-1">
+                    <span class="text-[10px] font-mono text-slate-400 uppercase">Hobi & Kesenangan Eksklusif</span>
+                    <p class="text-xs text-slate-200 font-medium">${partner.hobby}</p>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-slate-900/50 border border-white/10 space-y-1">
+                    <span class="text-[10px] font-mono text-slate-400 uppercase">Kriteria Karakter Pasangan</span>
+                    <p class="text-xs text-cyan-300 font-mono">${partner.requirements}</p>
+                </div>
+            `;
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                card.classList.remove('scale-95');
+                card.classList.add('scale-100');
+            }, 20);
+        }
+
+        function closeDossierModal() {
+            const modal = document.getElementById('dossier-modal');
+            const card = document.getElementById('dossier-modal-card');
+            modal.classList.add('opacity-0');
+            card.classList.remove('scale-100');
+            card.classList.add('scale-95');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        }
+
+        // INTERACTIVE SCENARIO MODAL
+        function openInteractiveModal(data) {
+            const modal = document.getElementById('interactive-modal');
+            const card = document.getElementById('interactive-modal-card');
+
+            document.getElementById('int-badge').innerText = `[${data.badge}]`;
+            document.getElementById('int-title').innerText = data.title;
+            document.getElementById('int-subtitle').innerText = data.subtitle || '';
+            document.getElementById('int-desc').innerText = data.desc;
+
+            const choicesContainer = document.getElementById('int-choices');
+            choicesContainer.innerHTML = '';
+
+            data.choices.forEach((choice, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full p-3.5 rounded-xl bg-slate-900/80 border border-white/10 hover:border-rose-400 hover:bg-slate-800/90 transition-all text-left flex items-center justify-between group cursor-pointer active:scale-98";
+                btn.onclick = choice.action;
+
+                btn.innerHTML = `
+                    <span class="text-xs font-semibold text-slate-100 group-hover:text-rose-300">
+                        <i class="fa-solid fa-chevron-right text-[10px] text-rose-400 mr-2"></i> ${choice.text}
+                    </span>
+                    <span class="text-[10px] font-mono text-slate-500">PILIHAN ${idx + 1}</span>
+                `;
+
+                choicesContainer.appendChild(btn);
+            });
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                card.classList.remove('scale-95');
+                card.classList.add('scale-100');
+            }, 20);
+        }
+
+        function closeInteractiveModal() {
+            const modal = document.getElementById('interactive-modal');
+            const card = document.getElementById('interactive-modal-card');
+            modal.classList.add('opacity-0');
+            card.classList.remove('scale-100');
+            card.classList.add('scale-95');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        }
+
+        // MODULE DRAWER TELEPORTATION MODAL
+        function toggleModuleDrawer() {
+            const modal = document.getElementById('module-modal');
+            const card = document.getElementById('module-modal-card');
+
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    modal.classList.remove('opacity-0');
+                    card.classList.remove('scale-95');
+                    card.classList.add('scale-100');
+                }, 20);
+            } else {
+                closeModuleModal();
+            }
+        }
+
+        function closeModuleModal() {
+            const modal = document.getElementById('module-modal');
+            const card = document.getElementById('module-modal-card');
+            modal.classList.add('opacity-0');
+            card.classList.remove('scale-100');
+            card.classList.add('scale-95');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateHUD();
+            renderPartners();
+            renderClubs();
+            renderEvents();
+            renderFamily();
+        });
+    </script>
+</body>
+</html>
